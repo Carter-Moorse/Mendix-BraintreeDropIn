@@ -6,28 +6,24 @@
 import { CSSProperties } from "react";
 import { ActionValue, EditableValue } from "mendix";
 
-export type BootstrapStyleEnum = "default" | "primary" | "success" | "info" | "inverse" | "warning" | "danger";
-
-export type BraintreedropinTypeEnum = "badge" | "label";
+export type SubmitButtonStyleEnum = "default" | "primary" | "success" | "info" | "inverse" | "warning" | "danger";
 
 export interface BraintreeDropInContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    valueAttribute?: EditableValue<string | BigJs.Big>;
-    braintreedropinValue: string;
-    bootstrapStyle: BootstrapStyleEnum;
-    braintreedropinType: BraintreedropinTypeEnum;
-    onClickAction?: ActionValue;
+    clientToken: EditableValue<string>;
+    submitButtonStyle: SubmitButtonStyleEnum;
+    submitButtonText: string;
+    onFormSubmit?: ActionValue;
 }
 
 export interface BraintreeDropInPreviewProps {
     class: string;
     style: string;
-    valueAttribute: string;
-    braintreedropinValue: string;
-    bootstrapStyle: BootstrapStyleEnum;
-    braintreedropinType: BraintreedropinTypeEnum;
-    onClickAction: {} | null;
+    clientToken: string;
+    submitButtonStyle: SubmitButtonStyleEnum;
+    submitButtonText: string;
+    onFormSubmit: {} | null;
 }

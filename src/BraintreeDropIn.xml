@@ -10,26 +10,18 @@
     </icon>
     <properties>
         <propertyGroup caption="General">
-            <property key="valueAttribute" type="attribute" required="false">
-                <caption>Value attribute</caption>
-                <description>The attribute that contains the braintreedropin value</description>
+            <property key="clientToken" type="attribute" required="true">
+                <caption>Client token</caption>
+                <description>Token generated from the Java action ...</description>
                 <attributeTypes>
                     <attributeType name="String"/>
-                    <attributeType name="Enum"/>
-                    <attributeType name="Integer"/>
-                    <attributeType name="Decimal"/>
-                    <attributeType name="Long"/>
                 </attributeTypes>
             </property>
-            <property key="braintreedropinValue" type="string" required="false">
-                <caption>Default value</caption>
-                <description>The braintreedropin value shown when no value is provided via the attribute</description>
-            </property>
         </propertyGroup>
-        <propertyGroup caption="Display">
-            <property key="bootstrapStyle" type="enumeration" defaultValue="default">
-                <caption>BraintreeDropIn style</caption>
-                <description>The appearance of the braintreedropin</description>
+        <propertyGroup caption="Style">
+            <property key="submitButtonStyle" type="enumeration" defaultValue="default">
+                <caption>Submit button style</caption>
+                <description></description>
                 <enumerationValues>
                     <enumerationValue key="default">Default</enumerationValue>
                     <enumerationValue key="primary">Primary</enumerationValue>
@@ -40,19 +32,15 @@
                     <enumerationValue key="danger">Danger</enumerationValue>
                 </enumerationValues>
             </property>
-            <property key="braintreedropinType" type="enumeration" required="true" defaultValue="badge">
-                <caption>Type</caption>
-                <description>Render it as either a badge or a color label</description>
-                <enumerationValues>
-                    <enumerationValue key="badge">Badge</enumerationValue>
-                    <enumerationValue key="label">Label</enumerationValue>
-                </enumerationValues>
+            <property key="submitButtonText" type="string" required="false">
+                <caption>Submit button text</caption>
+                <description>The braintreedropin value shown when no value is provided via the attribute</description>
             </property>
         </propertyGroup>
         <propertyGroup caption="Events">
-            <property key="onClickAction" type="action" required="false">
-                <caption>On click action</caption>
-                <description>Action to trigger when button / label is clicked</description>
+            <property key="onFormSubmit" type="action" required="false">
+                <caption>On form submit action</caption>
+                <description>Action to trigger when submit button is clicked and form is successfully processed</description>
             </property>
         </propertyGroup>
     </properties>

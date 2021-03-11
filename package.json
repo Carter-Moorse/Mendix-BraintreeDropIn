@@ -24,11 +24,15 @@
   "devDependencies": {
     "@mendix/pluggable-widgets-tools": "^8.14.0",
     "@types/big.js": "^4.0.5",
+    "@types/braintree-web": "^3.69.3",
+    "@types/braintree-web-drop-in": "^1.22.3",
     "@types/classnames": "^2.2.4",
     "@types/react": "~16.9.0",
     "@types/react-dom": "~16.9.0"
   },
   "dependencies": {
+    "braintree-web": "^3.74.0",
+    "braintree-web-drop-in": "^1.27.0",
     "classnames": "^2.2.6"
   }
 }
