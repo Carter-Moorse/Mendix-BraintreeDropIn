@@ -14,6 +14,7 @@ export interface BraintreeDropInContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     clientToken: EditableValue<string>;
+    nonce: EditableValue<string>;
     submitButtonStyle: SubmitButtonStyleEnum;
     submitButtonText: string;
     onFormSubmit?: ActionValue;
@@ -23,6 +24,7 @@ export interface BraintreeDropInPreviewProps {
     class: string;
     style: string;
     clientToken: string;
+    nonce: string;
     submitButtonStyle: SubmitButtonStyleEnum;
     submitButtonText: string;
     onFormSubmit: {} | null;

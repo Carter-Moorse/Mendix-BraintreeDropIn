@@ -6,7 +6,7 @@
   "copyright": "2020 Mendix Technology BV",
   "author": "Carter Moorse",
   "config": {
-    "projectPath": "./tests/testProject/",
+    "projectPath": "../Mendix-BraintreeGateway",
     "mendixHost": "http://localhost:8080",
     "developmentPort": "3000"
   },

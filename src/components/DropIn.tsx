@@ -28,7 +28,6 @@ export interface DropInState {
 export class DropIn extends Component<DropInProps, DropInState> {
   static defaultProps = {
     className: 'braintree-dropin-react',
-    submitButtonText: 'Purchase',
     renderSubmitButton
   }
 
@@ -74,7 +73,7 @@ export class DropIn extends Component<DropInProps, DropInState> {
 
   setup = () => {
     const options: braintree.Options = this.props.options;
-    options.container = 'braintree-dropin-react-form'; 
+    options.container = '.braintree-dropin-react-form';
     braintree.create(options, (err, dropinInstance) => {
       if (err) {
         if (this.props.onError) {
@@ -92,19 +91,19 @@ export class DropIn extends Component<DropInProps, DropInState> {
             isSubmitButtonDisabled: false
           })
         }
-  
+
         dropinInstance.on('paymentMethodRequestable', () => {
           this.setState({
             isSubmitButtonDisabled: false
           })
         })
-  
+
         dropinInstance.on('noPaymentMethodRequestable', () => {
           this.setState({
             isSubmitButtonDisabled: true
           })
         })
-  
+
         this.setState({
           dropInInstance: dropinInstance
         })

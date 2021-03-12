@@ -11,7 +11,8 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     console.log('payload', payload)
     // ...
     // Execute microflow
-    this.props.onFormSubmit?.execute()
+    this.props.nonce.setValue(payload.nonce);
+    if (this.props.onFormSubmit?.canExecute) this.props.onFormSubmit?.execute();
   }
 
   onCreate = (instance) => {
@@ -37,7 +38,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   renderSubmitButton = (props: SubmitButtonProps) => {
     return (
       <button
-        className={this.props.submitButtonStyle}
+        className={`btn btn-${this.props.submitButtonStyle}`}
         onClick={props.onClick}
         disabled={props.isDisabled}
       >{this.props.submitButtonText}</button>
@@ -67,6 +68,8 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           renderSubmitButton={this.renderSubmitButton}
         ></DropIn>
       );
+    } else {
+      return null;
     }
   }
 }

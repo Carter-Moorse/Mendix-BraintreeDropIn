@@ -12,7 +12,14 @@
         <propertyGroup caption="General">
             <property key="clientToken" type="attribute" required="true">
                 <caption>Client token</caption>
-                <description>Token generated from the Java action ...</description>
+                <description>Token used to authorise the client</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="nonce" type="attribute" required="true">
+                <caption>Client nonce</caption>
+                <description>Nonce gathered from the client after a successful purchase</description>
                 <attributeTypes>
                     <attributeType name="String"/>
                 </attributeTypes>
