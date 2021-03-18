@@ -1,6 +1,7 @@
 import { Component, createElement } from "react";
 
-import * as braintree from "braintree-web-drop-in";
+import * as braintreeDropIn from "braintree-web-drop-in";
+import * as braintreeWeb from "braintree-web";
 
 export interface SubmitButtonProps {
   onClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined,
@@ -10,7 +11,7 @@ export interface SubmitButtonProps {
 const renderSubmitButton = (props: SubmitButtonProps) => <button onClick={props.onClick} disabled={props.isDisabled}>Purchase</button>
 
 export interface DropInProps {
-  options: braintree.Options,
+  options: braintreeDropIn.Options,
   handlePaymentMethod: Function,
   onCreate: Function,
   onError: Function,
@@ -21,7 +22,7 @@ export interface DropInProps {
 }
 
 export interface DropInState {
-  dropInInstance: braintree.Dropin | undefined,
+  dropInInstance: braintreeDropIn.Dropin | undefined,
   isSubmitButtonDisabled: boolean
 }
 
@@ -40,12 +41,12 @@ export class DropIn extends Component<DropInProps, DropInState> {
   }
 
   componentDidMount = () => {
-    if (!braintree || this.state.dropInInstance) return
+    if (!braintreeDropIn || this.state.dropInInstance) return
     this.setup()
   }
 
-  componentDidUpdate = (prevProps: DropInProps) => {
-    if (prevProps.options !== this.props.options) {
+  componentDidUpdate = (prevProps: DropInProps, prevState: DropInState) => {
+    if (this.state.dropInInstance !== prevState.dropInInstance && prevProps.options !== this.props.options) {
       this.tearDown().then(() => {
         this.setState({
           dropInInstance: undefined,
@@ -71,10 +72,26 @@ export class DropIn extends Component<DropInProps, DropInState> {
     })
   }
 
+  getDeviceData = () => {
+    return new Promise<string>((resolve, reject) => {
+      braintreeWeb.client.create({
+        authorization: this.props.options.authorization
+      }).then((clientInstance) => {
+        braintreeWeb.dataCollector.create({
+          client: clientInstance
+        }).then((dataCollectorInstance) => {
+          resolve(dataCollectorInstance.deviceData);
+        });
+      }).catch(function (err) {
+        reject(err);
+      });
+    })
+  }
+
   setup = () => {
-    const options: braintree.Options = this.props.options;
+    const options: braintreeDropIn.Options = this.props.options;
     options.container = '.braintree-dropin-react-form';
-    braintree.create(options, (err, dropinInstance) => {
+    braintreeDropIn.create(options, (err, dropinInstance) => {
       if (err) {
         if (this.props.onError) {
           this.props.onError(err)
@@ -146,7 +163,11 @@ export class DropIn extends Component<DropInProps, DropInState> {
                 this.props.onError(err)
               }
             } else {
-              this.props.handlePaymentMethod(payload)
+              this.getDeviceData().then((clientData) => {
+                this.props.handlePaymentMethod(payload, clientData)
+              }).catch((err) => {
+                this.props.onError(err);
+              })
             }
           })
         } else {

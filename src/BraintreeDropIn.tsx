@@ -7,11 +7,11 @@ import { DropIn, SubmitButtonProps } from "./components/DropIn";
 import "./ui/BraintreeDropIn.css";
 
 export default class BraintreeDropIn extends Component<BraintreeDropInContainerProps> {
-  handlePaymentMethod = (payload) => {
-    console.log('payload', payload)
+  handlePaymentMethod = (payload, deviceData) => {
     // ...
-    // Execute microflow
+    this.props.deviceData.setValue(deviceData);
     this.props.nonce.setValue(payload.nonce);
+    // Execute microflow
     if (this.props.onFormSubmit?.canExecute) this.props.onFormSubmit?.execute();
   }
 
@@ -52,10 +52,9 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     if (authorization) {
       const options: braintree.Options = {
         authorization,
-        container: '',
-        locale: 'en_GB',
-        vaultManager: false
+        container: ''
       }
+      if (this.props.clientOptions.value) Object.assign(options, JSON.parse(this.props.clientOptions.value?.toString()))
       return (
         <DropIn
           options={options}
