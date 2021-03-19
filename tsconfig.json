@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedParameters": false
   },
   "extends": "./node_modules/@mendix/pluggable-widgets-tools/configs/tsconfig.base.json"
 }

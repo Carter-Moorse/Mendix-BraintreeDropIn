@@ -20,6 +20,10 @@ export interface BraintreeDropInContainerProps {
     submitButtonStyle: SubmitButtonStyleEnum;
     submitButtonText: string;
     onFormSubmit?: ActionValue;
+    onCreate?: ActionValue;
+    onDestroyStart?: ActionValue;
+    onDestroyEnd?: ActionValue;
+    onError?: ActionValue;
 }
 
 export interface BraintreeDropInPreviewProps {
@@ -32,4 +36,8 @@ export interface BraintreeDropInPreviewProps {
     submitButtonStyle: SubmitButtonStyleEnum;
     submitButtonText: string;
     onFormSubmit: {} | null;
+    onCreate: {} | null;
+    onDestroyStart: {} | null;
+    onDestroyEnd: {} | null;
+    onError: {} | null;
 }

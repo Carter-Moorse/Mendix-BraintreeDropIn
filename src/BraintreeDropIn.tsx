@@ -7,32 +7,36 @@ import { DropIn, SubmitButtonProps } from "./components/DropIn";
 import "./ui/BraintreeDropIn.css";
 
 export default class BraintreeDropIn extends Component<BraintreeDropInContainerProps> {
-  handlePaymentMethod = (payload, deviceData) => {
+  handlePaymentMethod = (payload) => {
     // ...
-    this.props.deviceData.setValue(deviceData);
+    this.props.deviceData.setValue(payload.deviceData);
     this.props.nonce.setValue(payload.nonce);
     // Execute microflow
     if (this.props.onFormSubmit?.canExecute) this.props.onFormSubmit?.execute();
   }
 
   onCreate = (instance) => {
-    console.log('onCreate', instance)
+    // console.log('onCreate', instance)
     // ...
+    if (this.props.onCreate?.canExecute) this.props.onCreate?.execute();
   }
 
   onDestroyStart = () => {
-    console.log('onDestroyStart')
+    // console.log('onDestroyStart')
     // ...
+    if (this.props.onDestroyStart?.canExecute) this.props.onDestroyStart?.execute();
   }
 
   onDestroyEnd = () => {
-    console.log('onDestroyEnd')
+    // console.log('onDestroyEnd')
     // ...
+    if (this.props.onDestroyEnd?.canExecute) this.props.onDestroyEnd?.execute();
   }
 
   onError = (error) => {
-    console.log('onError', error)
+    // console.log('onError', error)
     // ...
+    if (this.props.onError?.canExecute) this.props.onError?.execute();
   }
 
   renderSubmitButton = (props: SubmitButtonProps) => {

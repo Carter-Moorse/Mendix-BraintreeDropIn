@@ -12,11 +12,11 @@ const renderSubmitButton = (props: SubmitButtonProps) => <button onClick={props.
 
 export interface DropInProps {
   options: braintreeDropIn.Options,
-  handlePaymentMethod: Function,
-  onCreate: Function,
-  onError: Function,
-  onDestroyStart: Function,
-  onDestroyEnd: Function,
+  handlePaymentMethod: (payload: braintreeDropIn.PaymentMethodPayload) => void,
+  onCreate: (instance: braintreeDropIn.Dropin | undefined) => void,
+  onError: (error: object) => void,
+  onDestroyStart: () => void,
+  onDestroyEnd: (error: object | null | undefined) => void,
   className: string,
   renderSubmitButton: (props: SubmitButtonProps) => JSX.Element
 }
@@ -91,6 +91,7 @@ export class DropIn extends Component<DropInProps, DropInState> {
   setup = () => {
     const options: braintreeDropIn.Options = this.props.options;
     options.container = '.braintree-dropin-react-form';
+    options.dataCollector = true;
     braintreeDropIn.create(options, (err, dropinInstance) => {
       if (err) {
         if (this.props.onError) {
@@ -125,7 +126,7 @@ export class DropIn extends Component<DropInProps, DropInState> {
           dropInInstance: dropinInstance
         })
       } else {
-        this.props.onError('No dropinInstance')
+        this.props.onError(new Error('No dropinInstance'))
       }
     })
   }
@@ -163,15 +164,20 @@ export class DropIn extends Component<DropInProps, DropInState> {
                 this.props.onError(err)
               }
             } else {
-              this.getDeviceData().then((clientData) => {
-                this.props.handlePaymentMethod(payload, clientData)
-              }).catch((err) => {
-                this.props.onError(err);
-              })
+              if (payload.deviceData) {
+                this.props.handlePaymentMethod(payload)
+              } else {
+                this.getDeviceData().then((deviceData) => {
+                  payload.deviceData = deviceData
+                  this.props.handlePaymentMethod(payload)
+                }).catch((err) => {
+                  this.props.onError(err);
+                })
+              }
             }
           })
         } else {
-          this.props.onError('No dropinInstance')
+          this.props.onError(new Error('No dropinInstance'))
         }
       })
     }
