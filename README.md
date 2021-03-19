@@ -1,17 +1,2 @@
-## BraintreeDropIn
-[Braintree drop-in implemented as Mendix pluggable widget]
-
-## Features
-[feature highlights]
-
-## Usage
-[step by step instructions]
-
-## Demo project
-[link to sandbox]
-
-## Issues, suggestions and feature requests
-[link to GitHub issues]
-
-## Development and contribution
-[specify contribute]
+# Mendix-BraintreeDropIn 💳
+This widget wraps the Braintree Drop In client into a Mendix pluggable widget. It requires the [Mendix-BraintreeGateWay](https://github.com/shelterbox/Mendix-BraintreeGateway) to fully function.
