@@ -18,6 +18,7 @@ export interface BraintreeDropInContainerProps {
     nonce: EditableValue<string>;
     deviceData: EditableValue<string>;
     submitButtonStyle: SubmitButtonStyleEnum;
+    submitButtonClass: string;
     submitButtonText: string;
     onFormSubmit?: ActionValue;
     onCreate?: ActionValue;
@@ -34,6 +35,7 @@ export interface BraintreeDropInPreviewProps {
     nonce: string;
     deviceData: string;
     submitButtonStyle: SubmitButtonStyleEnum;
+    submitButtonClass: string;
     submitButtonText: string;
     onFormSubmit: {} | null;
     onCreate: {} | null;

@@ -48,9 +48,13 @@
           <enumerationValue key="danger">Danger</enumerationValue>
         </enumerationValues>
       </property>
+      <property key="submitButtonClass" type="string" required="false">
+        <caption>Submit button class</caption>
+        <description></description>
+      </property>
       <property key="submitButtonText" type="string" required="false">
         <caption>Submit button text</caption>
-        <description>The braintreedropin value shown when no value is provided via the attribute</description>
+        <description></description>
       </property>
     </propertyGroup>
     <propertyGroup caption="Events">
@@ -64,7 +68,7 @@
       </property>
       <property key="onDestroyStart" type="action" required="false">
         <caption>On form destroy start</caption>
-        <description>Action to trigger when form starts destuction</description>
+        <description>Action to trigger when form starts destruction</description>
       </property>
       <property key="onDestroyEnd" type="action" required="false">
         <caption>On form destroy end</caption>

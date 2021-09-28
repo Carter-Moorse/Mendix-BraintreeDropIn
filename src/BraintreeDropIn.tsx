@@ -42,7 +42,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   renderSubmitButton = (props: SubmitButtonProps) => {
     return (
       <button
-        className={`btn btn-${this.props.submitButtonStyle}`}
+        className={`btn btn-${this.props.submitButtonStyle} ${this.props.submitButtonClass}`}
         onClick={props.onClick}
         disabled={props.isDisabled}
       >{this.props.submitButtonText}</button>
