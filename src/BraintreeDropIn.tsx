@@ -1,3 +1,5 @@
+/// <reference types="../typings/MendixHelper" />
+
 import { Component, ReactNode, createElement } from "react";
 
 import * as braintree from "braintree-web-drop-in";
@@ -7,35 +9,42 @@ import { DropIn, SubmitButtonProps } from "./components/DropIn";
 import "./ui/BraintreeDropIn.css";
 
 export default class BraintreeDropIn extends Component<BraintreeDropInContainerProps> {
+  progressBar: number | undefined;
+
   handlePaymentMethod = (payload) => {
     // ...
     this.props.deviceData.setValue(payload.deviceData);
     this.props.nonce.setValue(payload.nonce);
     // Execute microflow
-    if (this.props.onFormSubmit?.canExecute) this.props.onFormSubmit?.execute();
+    if (this.props.onFormSubmit?.canExecute && !this.props.onFormSubmit?.isExecuting) this.props.onFormSubmit?.execute();
   }
 
   onCreate = (instance) => {
     // console.log('onCreate', instance)
     // ...
+    // Execute microflow
     if (this.props.onCreate?.canExecute) this.props.onCreate?.execute();
   }
 
   onDestroyStart = () => {
     // console.log('onDestroyStart')
     // ...
+    // Execute microflow
     if (this.props.onDestroyStart?.canExecute) this.props.onDestroyStart?.execute();
   }
 
   onDestroyEnd = () => {
     // console.log('onDestroyEnd')
     // ...
+    // Execute microflow
     if (this.props.onDestroyEnd?.canExecute) this.props.onDestroyEnd?.execute();
+    if (this.progressBar !== undefined) mx.ui.hideProgress(this.progressBar);
   }
 
   onError = (error) => {
     // console.log('onError', error)
     // ...
+    // Execute microflow
     if (this.props.onError?.canExecute) this.props.onError?.execute();
   }
 
@@ -44,9 +53,22 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       <button
         className={`btn btn-${this.props.submitButtonStyle} ${this.props.submitButtonClass}`}
         onClick={props.onClick}
-        disabled={props.isDisabled}
+        disabled={props.isDisabled || this.props.onFormSubmit?.isExecuting || !this.props.onFormSubmit?.canExecute}
       >{this.props.submitButtonText}</button>
     )
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check if submit status has changed?
+    if (this.props.onFormSubmit?.isExecuting !== prevProps.onFormSubmit?.isExecuting) {
+      // ... if so, show or hide the progress bar
+      if (this.props.onFormSubmit?.isExecuting && this.progressBar === undefined) {
+        this.progressBar = mx.ui.showProgress();
+      } else {
+        mx.ui.hideProgress(this.progressBar);
+        this.progressBar = undefined;
+      }
+    }
   }
 
   render(): ReactNode {
