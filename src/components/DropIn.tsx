@@ -13,10 +13,11 @@ const renderSubmitButton = (props: SubmitButtonProps) => <button onClick={props.
 export interface DropInProps {
   options: braintreeDropIn.Options,
   handlePaymentMethod: (payload: braintreeDropIn.PaymentMethodPayload) => void,
-  onCreate: (instance: braintreeDropIn.Dropin | undefined) => void,
-  onError: (error: object) => void,
-  onDestroyStart: () => void,
-  onDestroyEnd: (error: object | null | undefined) => void,
+  onSubmit?: () => void,
+  onCreate?: (instance: braintreeDropIn.Dropin | undefined) => void,
+  onError?: (error: object) => void,
+  onDestroyStart?: () => void,
+  onDestroyEnd?: (error: object | null | undefined) => void,
   className: string,
   renderSubmitButton: (props: SubmitButtonProps) => JSX.Element
 }
@@ -52,12 +53,10 @@ export class DropIn extends Component<DropInProps, DropInState> {
           dropInInstance: undefined,
           isSubmitButtonDisabled: true
         }, () => {
-          this.setup()
+          this.setup();
         })
       }).catch((err) => {
-        if (this.props.onError) {
-          this.props.onError(err)
-        }
+        this.props.onError?.(err);
       })
     }
   }
@@ -66,12 +65,11 @@ export class DropIn extends Component<DropInProps, DropInState> {
     if (!this.state.dropInInstance) return
 
     this.tearDown().catch((err) => {
-      if (this.props.onError) {
-        this.props.onError(err)
-      }
+      this.props.onError?.(err);
     })
   }
 
+  // ?
   getDeviceData = () => {
     return new Promise<string>((resolve, reject) => {
       braintreeWeb.client.create({
@@ -93,16 +91,14 @@ export class DropIn extends Component<DropInProps, DropInState> {
     options.container = '.braintree-dropin-react-form';
     options.dataCollector = true;
     braintreeDropIn.create(options, (err, dropinInstance) => {
+      // Execute events
       if (err) {
-        if (this.props.onError) {
-          this.props.onError(err)
-        }
-        return
+        this.props.onError?.(err);
+        return;
       } else {
-        if (this.props.onCreate) {
-          this.props.onCreate(dropinInstance)
-        }
+        this.props.onCreate?.(dropinInstance);
       }
+      // Setting states
       if (dropinInstance) {
         if (dropinInstance.isPaymentMethodRequestable()) {
           this.setState({
@@ -125,22 +121,25 @@ export class DropIn extends Component<DropInProps, DropInState> {
         this.setState({
           dropInInstance: dropinInstance
         })
-      } else {
-        this.props.onError(new Error('No dropinInstance'))
+      }
+      // Throw custom error
+      else {
+        this.props.onError?.(new Error('No dropinInstance'));
       }
     })
   }
 
   tearDown = () => {
-    if (this.props.onDestroyStart) {
-      this.props.onDestroyStart()
-    }
+    // Execute events
+    this.props.onDestroyStart?.();
+    // Synchronous callback -> Asynchronous callback
     return new Promise<void>((resolve, reject) => {
       if (this.state.dropInInstance) {
+        // Start teardown
         this.state.dropInInstance.teardown((err) => {
-          if (this.props.onDestroyEnd) {
-            this.props.onDestroyEnd(err)
-          }
+          // Execute callback
+          this.props.onDestroyEnd?.(err);
+          // Return result
           if (err) {
             return reject(err)
           } else {
@@ -152,32 +151,29 @@ export class DropIn extends Component<DropInProps, DropInState> {
   }
 
   handleSubmit = () => {
+    // Validate state
     if (this.state.dropInInstance && !this.state.isSubmitButtonDisabled) {
+      // Change state
       this.setState({ isSubmitButtonDisabled: true }, () => {
         if (this.state.dropInInstance) {
+          // Execute events
+          this.props.onSubmit?.();
+          // Request payment method
           this.state.dropInInstance.requestPaymentMethod((err, payload) => {
             this.setState({
               isSubmitButtonDisabled: false
             })
             if (err) {
-              if (this.props.onError) {
-                this.props.onError(err)
-              }
+              this.props.onError?.(err);
             } else {
-              if (payload.deviceData) {
-                this.props.handlePaymentMethod(payload)
-              } else {
-                this.getDeviceData().then((deviceData) => {
-                  payload.deviceData = deviceData
-                  this.props.handlePaymentMethod(payload)
-                }).catch((err) => {
-                  this.props.onError(err);
-                })
-              }
+              // Execute events
+              this.props.handlePaymentMethod(payload);
             }
           })
-        } else {
-          this.props.onError(new Error('No dropinInstance'))
+        } 
+        // Throw custom error
+        else {
+          this.props.onError?.(new Error('No dropinInstance'));
         }
       })
     }

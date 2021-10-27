@@ -8,6 +8,8 @@ import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
 export type SubmitButtonStyleEnum = "default" | "primary" | "success" | "info" | "inverse" | "warning" | "danger";
 
+export type SubmitProgressEnum = "none" | "nonBlocking" | "blocking";
+
 export interface BraintreeDropInContainerProps {
     name: string;
     class: string;
@@ -21,6 +23,8 @@ export interface BraintreeDropInContainerProps {
     submitButtonClass: string;
     submitButtonText: string;
     onFormSubmit?: ActionValue;
+    submitProgress: SubmitProgressEnum;
+    submitProgressMessage: string;
     onCreate?: ActionValue;
     onDestroyStart?: ActionValue;
     onDestroyEnd?: ActionValue;
@@ -38,6 +42,8 @@ export interface BraintreeDropInPreviewProps {
     submitButtonClass: string;
     submitButtonText: string;
     onFormSubmit: {} | null;
+    submitProgress: SubmitProgressEnum;
+    submitProgressMessage: string;
     onCreate: {} | null;
     onDestroyStart: {} | null;
     onDestroyEnd: {} | null;

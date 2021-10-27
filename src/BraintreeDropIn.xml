@@ -58,26 +58,43 @@
       </property>
     </propertyGroup>
     <propertyGroup caption="Events">
-      <property key="onFormSubmit" type="action" required="false">
-        <caption>On form submit action</caption>
-        <description>Action to trigger when submit button is clicked and form is successfully processed</description>
-      </property>
-      <property key="onCreate" type="action" required="false">
-        <caption>On form create</caption>
-        <description>Action to trigger when form is created</description>
-      </property>
-      <property key="onDestroyStart" type="action" required="false">
-        <caption>On form destroy start</caption>
-        <description>Action to trigger when form starts destruction</description>
-      </property>
-      <property key="onDestroyEnd" type="action" required="false">
-        <caption>On form destroy end</caption>
-        <description>Action to trigger when form ends destruction</description>
-      </property>
-      <property key="onError" type="action" required="false">
-        <caption>On form error</caption>
-        <description>Action to trigger when form errors</description>
-      </property>
+      <propertyGroup caption="Form submit">
+        <property key="onFormSubmit" type="action" required="false">
+          <caption>On form submit action</caption>
+          <description>Action to trigger when submit button is clicked and form is successfully processed</description>
+        </property>
+        <property key="submitProgress" type="enumeration" defaultValue="none">
+          <caption>Show progress bar</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="none">None</enumerationValue>
+            <enumerationValue key="nonBlocking">Non-blocking</enumerationValue>
+            <enumerationValue key="blocking">Blocking</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="submitProgressMessage" type="string" required="false">
+          <caption>Progress message</caption>
+          <description></description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Other events">
+        <property key="onCreate" type="action" required="false">
+          <caption>On form create</caption>
+          <description>Action to trigger when form is created</description>
+        </property>
+        <property key="onDestroyStart" type="action" required="false">
+          <caption>On form destroy start</caption>
+          <description>Action to trigger when form starts destruction</description>
+        </property>
+        <property key="onDestroyEnd" type="action" required="false">
+          <caption>On form destroy end</caption>
+          <description>Action to trigger when form ends destruction</description>
+        </property>
+        <property key="onError" type="action" required="false">
+          <caption>On form error</caption>
+          <description>Action to trigger when form errors</description>
+        </property>
+      </propertyGroup>
     </propertyGroup>
   </properties>
 </widget>

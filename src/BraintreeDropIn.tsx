@@ -38,7 +38,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     // ...
     // Execute microflow
     if (this.props.onDestroyEnd?.canExecute) this.props.onDestroyEnd?.execute();
-    if (this.progressBar !== undefined) mx.ui.hideProgress(this.progressBar);
+    this.hideProgress();
   }
 
   onError = (error) => {
@@ -46,6 +46,15 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     // ...
     // Execute microflow
     if (this.props.onError?.canExecute) this.props.onError?.execute();
+  }
+
+  showProgress = () => {
+    if (this.progressBar === undefined) this.progressBar = this.props.submitProgress !== 'none' ? mx.ui.showProgress(this.props.submitProgressMessage, this.props.submitProgress === 'blocking' ? true : false) : undefined;
+  }
+
+  hideProgress = () => {
+    if (this.progressBar !== undefined) mx.ui.hideProgress(this.progressBar);
+    this.progressBar = undefined;
   }
 
   renderSubmitButton = (props: SubmitButtonProps) => {
@@ -62,11 +71,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     // Check if submit status has changed?
     if (this.props.onFormSubmit?.isExecuting !== prevProps.onFormSubmit?.isExecuting) {
       // ... if so, show or hide the progress bar
-      if (this.props.onFormSubmit?.isExecuting && this.progressBar === undefined) {
-        this.progressBar = mx.ui.showProgress();
+      if (this.props.onFormSubmit?.isExecuting) {
+        this.showProgress();
       } else {
-        mx.ui.hideProgress(this.progressBar);
-        this.progressBar = undefined;
+        this.hideProgress();
       }
     }
   }
@@ -85,6 +93,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         <DropIn
           options={options}
           handlePaymentMethod={this.handlePaymentMethod}
+          onSubmit={this.showProgress}
           onCreate={this.onCreate}
           onDestroyEnd={this.onDestroyEnd}
           onDestroyStart={this.onDestroyStart}
