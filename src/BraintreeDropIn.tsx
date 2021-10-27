@@ -46,6 +46,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     // ...
     // Execute microflow
     if (this.props.onError?.canExecute) this.props.onError?.execute();
+    this.hideProgress();
   }
 
   showProgress = () => {
