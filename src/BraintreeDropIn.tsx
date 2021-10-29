@@ -1,5 +1,6 @@
 /// <reference types="../typings/MendixHelper" />
 
+import { ValueStatus } from "mendix";
 import { Component, ReactNode, createElement } from "react";
 
 import * as braintree from "braintree-web-drop-in";
@@ -81,28 +82,33 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   }
 
   render(): ReactNode {
-    // Grab client token
-    const authorization: string | undefined = this.props.clientToken.value;
-    // If client token exists
-    if (authorization) {
-      const options: braintree.Options = {
-        authorization,
-        container: ''
+    // Make sure the translatable JSON is available
+    if (this.props.clientOptions.status === ValueStatus.Available) {
+      // Grab client token
+      const authorization: string | undefined = this.props.clientToken.value;
+      // If client token exists
+      if (authorization) {
+        const options: braintree.Options = {
+          authorization,
+          container: ''
+        }
+        if (this.props.clientOptions.value) Object.assign(options, JSON.parse(this.props.clientOptions.value?.toString()))
+        return (
+          <DropIn
+            options={options}
+            handlePaymentMethod={this.handlePaymentMethod}
+            onSubmit={this.showProgress}
+            onCreate={this.onCreate}
+            onDestroyEnd={this.onDestroyEnd}
+            onDestroyStart={this.onDestroyStart}
+            onError={this.onError}
+            className={this.props.class}
+            renderSubmitButton={this.renderSubmitButton}
+          ></DropIn>
+        );
+      } else {
+        return (<p className="alert alert-danger">No 'Client token' found</p>);
       }
-      if (this.props.clientOptions.value) Object.assign(options, JSON.parse(this.props.clientOptions.value?.toString()))
-      return (
-        <DropIn
-          options={options}
-          handlePaymentMethod={this.handlePaymentMethod}
-          onSubmit={this.showProgress}
-          onCreate={this.onCreate}
-          onDestroyEnd={this.onDestroyEnd}
-          onDestroyStart={this.onDestroyStart}
-          onError={this.onError}
-          className={this.props.class}
-          renderSubmitButton={this.renderSubmitButton}
-        ></DropIn>
-      );
     } else {
       return null;
     }
