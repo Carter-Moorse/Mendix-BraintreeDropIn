@@ -7,63 +7,684 @@
   <icon>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
   </icon>
   <properties>
-    <propertyGroup caption="General">
-      <property key="clientToken" type="attribute" required="true">
-        <caption>Client token</caption>
-        <description>INPUT: Token used to authorise the client</description>
-        <attributeTypes>
-          <attributeType name="String"/>
-        </attributeTypes>
-      </property>
-      <property key="clientOptions" type="textTemplate" multiline="true">
-        <caption>Options</caption>
-        <description>INPUT: Braintree create options JSON (https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#.create)</description>
-      </property>
+    <!-- General properties -->
+    <propertyGroup caption="Output">
       <property key="nonce" type="attribute" required="true">
         <caption>Client nonce</caption>
-        <description>OUTPUT: Nonce gathered from the client after a successful purchase</description>
+        <description>Nonce from the client after form submit.</description>
         <attributeTypes>
           <attributeType name="String"/>
         </attributeTypes>
       </property>
       <property key="deviceData" type="attribute" required="true">
         <caption>Device data</caption>
-        <description>OUTPUT: Device data captured from the client for fraudulent detection</description>
+        <description>Device data captured from the client after form submit.</description>
         <attributeTypes>
           <attributeType name="String"/>
         </attributeTypes>
       </property>
     </propertyGroup>
-    <propertyGroup caption="Style">
-      <property key="submitButtonStyle" type="enumeration" defaultValue="default">
-        <caption>Submit button style</caption>
-        <description></description>
-        <enumerationValues>
-          <enumerationValue key="default">Default</enumerationValue>
-          <enumerationValue key="primary">Primary</enumerationValue>
-          <enumerationValue key="success">Success</enumerationValue>
-          <enumerationValue key="info">Info</enumerationValue>
-          <enumerationValue key="inverse">Inverse</enumerationValue>
-          <enumerationValue key="warning">Warning</enumerationValue>
-          <enumerationValue key="danger">Danger</enumerationValue>
-        </enumerationValues>
-      </property>
-      <property key="submitButtonClass" type="string" required="false">
-        <caption>Submit button class</caption>
-        <description></description>
-      </property>
-      <property key="submitButtonText" type="string" required="false">
-        <caption>Submit button text</caption>
-        <description></description>
-      </property>
+    <!-- Options - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#.create -->
+    <propertyGroup caption="Options">
+      <propertyGroup caption="General">
+        <property key="options_authorization" type="attribute" required="true">
+          <caption>Authorization</caption>
+          <description>A tokenization key or a client token. If authorization is a client token created with a customer ID, Drop-in will render saved payment methods and automatically store any newly-added payment methods in their Vault record.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="options_locale" type="enumeration" defaultValue="en_US">
+          <caption>Locale</caption>
+          <description>Use this option to change the language, links, and terminology used throughout Drop-in.</description>
+          <enumerationValues>
+            <enumerationValue key="ar_EG">ar_EG</enumerationValue>
+            <enumerationValue key="cs_CZ">cs_CZ</enumerationValue>
+            <enumerationValue key="da_DK">da_DK</enumerationValue>
+            <enumerationValue key="de_DE">de_DE</enumerationValue>
+            <enumerationValue key="el_GR">el_GR</enumerationValue>
+            <enumerationValue key="en_AU">en_AU</enumerationValue>
+            <enumerationValue key="en_GB">en_GB</enumerationValue>
+            <enumerationValue key="en_IN">en_IN</enumerationValue>
+            <enumerationValue key="en_US">en_US</enumerationValue>
+            <enumerationValue key="es_ES">es_ES</enumerationValue>
+            <enumerationValue key="es_XC">es_XC</enumerationValue>
+            <enumerationValue key="fi_FI">fi_FI</enumerationValue>
+            <enumerationValue key="fr_CA">fr_CA</enumerationValue>
+            <enumerationValue key="fr_FR">fr_FR</enumerationValue>
+            <enumerationValue key="fr_XC">fr_XC</enumerationValue>
+            <enumerationValue key="he_IL">he_IL</enumerationValue>
+            <enumerationValue key="hu_HU">hu_HU</enumerationValue>
+            <enumerationValue key="id_ID">id_ID</enumerationValue>
+            <enumerationValue key="it_IT">it_IT</enumerationValue>
+            <enumerationValue key="ja_JP">ja_JP</enumerationValue>
+            <enumerationValue key="ko_KR">ko_KR</enumerationValue>
+            <enumerationValue key="nl_NL">nl_NL</enumerationValue>
+            <enumerationValue key="no_NO">no_NO</enumerationValue>
+            <enumerationValue key="pl_PL">pl_PL</enumerationValue>
+            <enumerationValue key="pt_BR">pt_BR</enumerationValue>
+            <enumerationValue key="pt_PT">pt_PT</enumerationValue>
+            <enumerationValue key="ru_RU">ru_RU</enumerationValue>
+            <enumerationValue key="sk_SK">sk_SK</enumerationValue>
+            <enumerationValue key="sv_SE">sv_SE</enumerationValue>
+            <enumerationValue key="th_TH">th_TH</enumerationValue>
+            <enumerationValue key="zh_CN">zh_CN</enumerationValue>
+            <enumerationValue key="zh_HK">zh_HK</enumerationValue>
+            <enumerationValue key="zh_TW">zh_TW</enumerationValue>
+            <enumerationValue key="zh_XC">zh_XC</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="options_paymentOptionPriority" type="string" required="false" defaultValue="card, paypal, paypalCredit, venmo, applePay, googlePay">
+          <caption>Payment option priority</caption>
+          <description>Use this option to indicate the order in which enabled payment options should appear when multiple payment options are enabled. By default, payment options will appear in this order: card, paypal, paypalCredit, venmo, applePay, googlePay. Payment options omitted from this array will not be offered to the customer.</description>
+        </property>
+        <property key="options_venmo" type="boolean" required="true" defaultValue="false">
+          <caption>Venmo</caption>
+          <description>The configuration options for Pay with Venmo. To include a Venmo option in your Drop-in integration, include the venmo parameter and follow the documentation for setting up Venmo in the Braintree control panel. If a user's browser does not support Venmo, the Venmo option will not be rendered.
+
+See Venmo create options tab for venmo options.</description>
+        </property>
+        <property key="options_dataCollector" type="boolean" required="true" defaultValue="false">
+          <caption>Data collector</caption>
+          <description>If true is passed, Drop-in will be configured to collect data for use with Advanced Fraud Protection. If collecting data via Kount, pass a dataCollectorOptions object with kount: true instead. If Data Collector is configured and fails to load, Drop-in creation will fail.</description>
+        </property>
+        <property key="options_vaultManager" type="boolean" required="true" defaultValue="false">
+          <caption>Vault manager</caption>
+          <description>Whether or not to allow a customer to delete saved payment methods when used with a client token with a customer id. Note: Deleting a payment method from Drop-in will permanently delete the payment method, so this option is not recommended for merchants using Braintree's recurring billing system. This feature is not supported in Internet Explorer 9.</description>
+        </property>
+        <property key="options_preselectVaultedPaymentMethod" type="boolean" required="true" defaultValue="false">
+          <caption>Preselect vaulted payment method</caption>
+          <description>Whether or not to initialize Drop-in with a vaulted payment method pre-selected. Only applicable when using a client token with a customer id and a customer with saved payment methods.</description>
+        </property>
+      </propertyGroup>
     </propertyGroup>
+    <!-- Card - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~cardCreateOptions -->
+    <propertyGroup caption="Card">
+      <propertyGroup caption="General">
+        <property key="options_card" type="boolean" required="true" defaultValue="true">
+          <caption>Card</caption>
+          <description>The configuration options for cards. See Card create options tab for all card options. If this option is omitted, cards will still appear as a payment option. To remove cards, pass false for the value.</description>
+        </property>
+        <property key="card_clearFieldsAfterTokenization" type="boolean" required="true" defaultValue="true">
+          <caption>Clear fields after tokenization</caption>
+          <description>When false, the card form will not clear the card data when the customer returns to the card view after a successful tokenization.</description>
+        </property>
+        <property key="card_vault_allowVaultCardOverride" type="boolean" required="true" defaultValue="false">
+          <caption>Allow vault card override</caption>
+          <description>When true, the card form will include an option to let the customer decide not to vault the credit card they enter.</description>
+        </property>
+        <property key="card_vault_vaultCard" type="boolean" required="true" defaultValue="true">
+          <caption>Vault card</caption>
+          <description>Whether or not to vault the card upon tokenization. When set to false with Allow vault card override set to false, then cards will not be vaulted.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Cardholder">
+        <property key="card_cardholderName" type="boolean" required="true" defaultValue="false">
+          <caption>Cardholder name</caption>
+          <description>Will enable a cardholder name field above the card number field. If set to an object, you can specify whether or not the field is required. If set to true, it will default the field to being present, but not required.</description>
+        </property>
+        <property key="card_cardholderName_required" type="boolean" required="true" defaultValue="false">
+          <caption>Cardholder name required</caption>
+          <description>When true, the cardholder name field will be required to request the payment method nonce.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Overrides">
+        <property key="card_overrides_fields" type="object" required="false" isList="true">
+          <caption>Overrides fields</caption>
+          <description>The Hosted Fields fields options. Only number, cvv, expirationDate and postalCode can be configured. Each is a Hosted Fields field object. selector cannot be modified.</description>
+          <properties>
+            <propertyGroup caption="Field">
+              <property key="fieldOptions" type="enumeration" defaultValue="number">
+                <caption>Field option</caption>
+                <description>Select the field options you want to customise.</description>
+                <enumerationValues>
+                  <enumerationValue key="number">number (card number)</enumerationValue>
+                  <enumerationValue key="expirationDate">expirationDate</enumerationValue>
+                  <!-- <enumerationValue key="expirationMonth">expirationMonth</enumerationValue> -->
+                  <!-- <enumerationValue key="expirationYear">expirationYear</enumerationValue> -->
+                  <enumerationValue key="cvv">cvv</enumerationValue>
+                  <enumerationValue key="postalCode">postalCode</enumerationValue>
+                  <enumerationValue key="cardholderName">cardholderName</enumerationValue>
+                </enumerationValues>
+              </property>
+            </propertyGroup>
+            <propertyGroup caption="Options">
+              <property key="placeholder" type="string" required="false">
+                <caption>Placeholder</caption>
+                <description>Will be used as the placeholder attribute of the input. If placeholder is not natively supported by the browser, it will be polyfilled.</description>
+              </property>
+              <property key="type" type="string" required="false" defaultValue="text">
+                <caption>Type</caption>
+                <description>Will be used as the type attribute of the input. To mask cvv input, for instance, type: "password" can be used.</description>
+              </property>
+              <property key="iframeTitle" type="string" required="false">
+                <caption>iframe title</caption>
+                <description>The title used for the iframe containing the credit card input. By default, this will be Secure Credit Card Frame - &lt;the name of the specific field&gt;.</description>
+              </property>
+              <property key="internalLabel" type="string" required="false">
+                <caption>Internal label</caption>
+                <description>Each Hosted Field iframe has a hidden label that is used by screen readers to identify the input. The internalLabel property can be used to customize the field for localization purposes.</description>
+              </property>
+              <property key="prefill" type="textTemplate" required="false">
+                <caption>Prefill</caption>
+                <description>A value to prefill the field with. For example, when creating an update card form, you can prefill the expiration date fields with the old expiration date data.</description>
+              </property>
+            </propertyGroup>
+            <propertyGroup caption="Other options">
+              <property key="formatInput" type="boolean" defaultValue="true">
+                <caption>Format input</caption>
+                <description>Enable or disable automatic formatting on this field.</description>
+              </property>
+              <property key="maskInput" type="boolean" defaultValue="false">
+                <caption>Mask input</caption>
+                <description>Enable or disable input masking when input is not focused. If set to true instead of an object, the defaults for the maskInput parameters will be used.</description>
+              </property>
+              <property key="maskInput_character" type="string" defaultValue="•" required="false">
+                <caption>Mask input character</caption>
+                <description>The character to use when masking the input. The default character ('•') uses a unicode symbol, so the webpage must support UTF-8 characters when using the default.</description>
+              </property>
+              <property key="maskInput_showLastFour" type="boolean" defaultValue="false">
+                <caption>Mask input show last four</caption>
+                <description>Only applicable for the credit card field. Whether or not to show the last 4 digits of the card when masking.</description>
+              </property>
+              <property key="select" type="boolean" defaultValue="false">
+                <caption>Select</caption>
+                <description>If true, this field becomes a &lt;select&gt; dropdown list. This can only be used for expirationMonth and expirationYear fields. If you do not use a placeholder property for the field, the current month/year will be the default selected value.</description>
+              </property>
+              <property key="maxCardLength" type="integer" defaultValue="0" required="true">
+                <caption>Max card length</caption>
+                <description>This option applies only to the number field. Allows a limit to the length of the card number, even if the card brand may support numbers of a greater length. If the value passed is greater than the max length for a card brand, the smaller number of the 2 values will be used. For example, is maxCardLength is set to 16, but an American Express card is entered (which has a max card length of 15), a max card length of 15 will be used.</description>
+              </property>
+              <property key="maxlength" type="integer" defaultValue="0" required="true">
+                <caption>Max length</caption>
+                <description>This option applies only to the CVV and postal code fields. Will be used as the maxlength attribute of the input. The primary use cases for the maxlength option are: limiting the length of the CVV input for CVV-only verifications when the card type is known and setting the length of the postal code input when cards are coming from a known region. The default maxlength for the postal code input is 10.</description>
+              </property>
+              <property key="minlength" type="integer" defaultValue="0" required="true">
+                <caption>Min length</caption>
+                <description>This option applies only to the cvv and postal code fields. Will be used as the minlength attribute of the input. For postal code fields, the default value is 3, representing the Icelandic postal code length. This option's primary use case is to increase the minlength, e.g. for US customers, the postal code minlength can be set to 5. For cvv fields, the default value is 3. The minlength attribute only applies to integrations capturing a cvv without a number field.</description>
+              </property>
+              <!-- supportedCardBrands -->
+            </propertyGroup>
+          </properties>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- PayPal - https://braintree.github.io/braintree-web/3.83.0/PayPalCheckout.html#createPayment -->
+    <propertyGroup caption="PayPal">
+      <propertyGroup caption="General">
+        <property key="options_payPal" type="boolean" required="true" defaultValue="false">
+          <caption>PayPal</caption>
+          <description>Set to to enable PayPal configuration.</description>
+        </property>
+        <property key="payPal_flow" type="enumeration" defaultValue="checkout">
+          <caption>Flow</caption>
+          <description>Set to 'checkout' for one-time payment flow, or 'vault' for Vault flow. If 'vault' is used with a client token generated with a customer ID, the PayPal account will be added to that customer as a saved payment method.</description>
+          <enumerationValues>
+            <enumerationValue key="checkout">checkout</enumerationValue>
+            <enumerationValue key="vault">vault</enumerationValue>
+          </enumerationValues>
+        </property>
+        <!-- <property key="payPal_intent" type="enumeration" defaultValue="authorize">
+          <caption>Intent</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="authorize">authorize - Submits the transaction for authorization but not settlement.</enumerationValue>
+            <enumerationValue key="order">order - Validates the transaction without an authorization (i.e. without holding funds). Useful for authorizing and capturing funds up to 90 days after the order has been placed. Only available for Checkout flow.</enumerationValue>
+            <enumerationValue key="capture">capture - Payment will be immediately submitted for settlement upon creating a transaction. sale can be used as an alias for this value.</enumerationValue>
+          </enumerationValues>
+        </property> -->
+        <property key="payPal_amount" type="attribute" required="false">
+          <caption>Amount</caption>
+          <description>The amount of the transaction. Required when using the Checkout flow.</description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_currency" type="string" required="false" defaultValue="USD">
+          <caption>Currency</caption>
+          <description>The currency code of the amount, such as 'USD'. Required when using the Checkout flow.</description>
+        </property>
+        <property key="payPal_commit" type="boolean" required="true" defaultValue="false">
+          <caption>Commit</caption>
+          <description>The user action to show on the PayPal review page. If true, a Pay Now button will be shown. If false, a Continue button will be shown.</description>
+        </property>
+        <!-- <property key="payPal_displayName" type="string" required="false">
+          <caption>Display name</caption>
+          <description>The merchant name displayed inside of the PayPal lightbox; defaults to the company name on your Braintree account.</description>
+        </property> -->
+        <!-- <property key="payPal_requestBillingAgreement" type="boolean" defaultValue="false">
+          <caption>Request billing agreement</caption>
+          <description>If true and flow = checkout, the customer will be prompted to consent to a billing agreement during the checkout flow. This value is ignored when flow = vault.</description>
+        </property> -->
+        <!-- <property key="payPal_billingAgreementDetails_description" type="string" required="false">
+          <caption>Billing agreement details description</caption>
+          <description>Description of the billing agreement to display to the customer (When requestBillingAgreement = true).</description>
+        </property> -->
+        <!-- <property key="payPal_enableShippingAddress" type="boolean" defaultValue="false">
+          <caption>Enable shipping address</caption>
+          <description>Returns a shipping address object in PayPal#tokenize.</description>
+        </property> -->
+        <!-- <property key="payPal_shippingAddressEditable" type="boolean" defaultValue="true">
+          <caption>Shipping address editable</caption>
+          <description>Set to false to disable user editing of the shipping address.</description>
+        </property> -->
+        <!-- <property key="payPal_billingAgreementDescription" type="string" required="false">
+          <caption>Billing agreement description</caption>
+          <description>Use this option to set the description of the preapproved payment agreement visible to customers in their PayPal profile during Vault flows. Max 255 characters.</description>
+        </property> -->
+        <!-- <property key="payPal_landingPageType" type="enumeration" defaultValue="login">
+          <caption>Landing page type</caption>
+          <description>Use this option to specify the PayPal page to display when a user lands on the PayPal site to complete the payment.</description>
+          <enumerationValues>
+            <enumerationValue key="login">login - A PayPal account login page is used.</enumerationValue>
+            <enumerationValue key="billing">billing - A non-PayPal account landing page is used.</enumerationValue>
+          </enumerationValues>
+        </property> -->
+        <!-- lineItems -->
+      </propertyGroup>
+      <propertyGroup caption="Button style">
+        <property key="payPal_buttonStyle_color" type="enumeration" defaultValue="gold">
+          <caption>Colour</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="gold">gold (recommended)</enumerationValue>
+            <enumerationValue key="blue">blue (first alternate)</enumerationValue>
+            <enumerationValue key="silver">silver (second alternate)</enumerationValue>
+            <enumerationValue key="black">black (third alternate)</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="payPal_buttonStyle_shape" type="enumeration" defaultValue="pill">
+          <caption>Shape</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="pill">pill (recommended)</enumerationValue>
+            <enumerationValue key="rect">rect</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="payPal_buttonStyle_size" type="enumeration" defaultValue="small">
+          <caption>Size</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="small">small - 150 pixels by 25 pixels. (recommended)</enumerationValue>
+            <enumerationValue key="medium">medium - 250 pixels by 35 pixels.</enumerationValue>
+            <enumerationValue key="large">large - 350 pixels by 40 pixels.</enumerationValue>
+            <enumerationValue key="responsive">responsive - Matches the width of the container element, height is decided dynamically based on width.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="payPal_buttonStyle_label" type="enumeration" defaultValue="checkout">
+          <caption>Label</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="checkout">checkout - The PayPal Checkout button. The default button.</enumerationValue>
+            <enumerationValue key="credit">credit - The PayPal Credit button. Initializes the credit flow. Cannot be used with any custom color option.</enumerationValue>
+            <enumerationValue key="pay">pay - The Pay With PayPal button. Initializes the checkout flow.</enumerationValue>
+            <enumerationValue key="buynow">buynow - The Buy Now button. Initializes the checkout flow. The default Buy Now button is unbranded.</enumerationValue>
+            <enumerationValue key="paypal">paypal - The generic PayPal button. Initializes the checkout flow. This button contains only the PayPal brand logo.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="payPal_buttonStyle_tagline" type="boolean" required="true" defaultValue="false">
+          <caption>Tagline</caption>
+          <description>To disable the tagline/text beneath the button, set to false.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Vault">
+        <property key="payPal_vault_vaultPayPal" type="boolean" required="true" defaultValue="true">
+          <caption>Vault PayPal</caption>
+          <description>Whether or not to vault the PayPal account upon tokenization. (Only applies when using a client token with a customer id)</description>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- Apple Pay - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~applePayCreateOptions -->
+    <propertyGroup caption="Apple Pay">
+      <propertyGroup caption="General">
+        <property key="options_applePay" type="boolean" required="true" defaultValue="false">
+          <caption>Apple Pay</caption>
+          <description>Set to to enable Apple Pay configuration.</description>
+        </property>
+        <property key="applePay_buttonStyle" type="enumeration" defaultValue="black">
+          <caption>Button style</caption>
+          <description>Configures the Apple Pay button style.</description>
+          <enumerationValues>
+            <enumerationValue key="black">black</enumerationValue>
+            <enumerationValue key="white">white</enumerationValue>
+            <enumerationValue key="white_outline">white-outline</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="applePay_displayName" type="string" required="false">
+          <caption>Display name</caption>
+          <description>The canonical name for your store. Use a non-localized name. This parameter should be a utf-8 string that is a maximum of 128 characters. The system may display this name to the user.</description>
+        </property>
+        <property key="applePay_applePaySessionVersion" type="integer" required="true" defaultValue="2">
+          <caption>Apple Pay session version</caption>
+          <description>The version of the ApplePaySession to use. It's recommended to use the lowest version that contains all the features you need for your checkout to maximize compatibility.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Payment request">
+        <property key="applePay_paymentRequest_currencyCode" type="string" required="false" defaultValue="USD">
+          <caption>Currency code</caption>
+          <description></description>
+        </property>
+        <!-- shippingType -->
+        <!-- shippingMethods -->
+        <property key="applePay_paymentRequest_merchantCapabilities" type="string" required="false" defaultValue="support3DS, supportsDebit">
+          <caption>Merchant capabilities</caption>
+          <description>"supports3DS" - (Required) This value must be supplied. "supportsEMV" - Include this value only if you support China Union Pay transactions. "supportsCredit" - (Optional) If present, only transactions that are categorized as credit cards are allowed. "supportsDebit" - (Optional) If present, only transactions that are categorized as debit cards are allowed.</description>
+        </property>
+        <property key="applePay_paymentRequest_supportedNetworks" type="string" required="false" defaultValue="masterCard, visa">
+          <caption>Supported networks</caption>
+          <description></description>
+        </property>
+        <property key="applePay_paymentRequest_countryCode" type="string" required="false" defaultValue="GB">
+          <caption>Country code</caption>
+          <description></description>
+        </property>
+        <property key="applePay_paymentRequest_requiredBillingContactFields" type="string" required="false" defaultValue="email, name, phone, postalAddress">
+          <caption>Required Billing Contact Fields</caption>
+          <description></description>
+        </property>
+        <!-- billingContact -->
+        <!-- requiredShippingContactFields -->
+        <!-- shippingContact -->
+        <!-- applicationData -->
+        <!-- supportedCountries -->
+        <!-- supportsCouponCode -->
+        <!-- couponCode -->
+        <!-- shippingContactEditingMode -->
+        <property key="applePay_paymentRequest_type" type="enumeration" defaultValue="final">
+          <caption>Type</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="final">final - A line item representing the known, final cost.</enumerationValue>
+            <enumerationValue key="pending">pending - A line item representing an estimated or unknown cost.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="applePay_paymentRequest_label" type="string" required="false">
+          <caption>Label</caption>
+          <description></description>
+        </property>
+        <property key="applePay_paymentRequest_amount" type="attribute" required="false">
+          <caption>Total amount</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_paymentTiming" type="enumeration" defaultValue="immediate">
+          <caption>Payment timing</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="immediate">immediate - A value that specifies that the payment occurs when the transaction is complete.</enumerationValue>
+            <enumerationValue key="recurring">recurring - A value that specifies that the payment occurs on a regular basis.</enumerationValue>
+            <enumerationValue key="deferred">deferred - A value that specifies that the payment occurs in the future.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="applePay_paymentRequest_recurringPaymentStartDate" type="attribute" required="false">
+          <caption>Recurring start date</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="DateTime"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_recurringPaymentIntervalUnit" type="enumeration" defaultValue="month">
+          <caption>Recurring interval unit</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="year">year</enumerationValue>
+            <enumerationValue key="month">month</enumerationValue>
+            <enumerationValue key="day">day</enumerationValue>
+            <enumerationValue key="hour">hour</enumerationValue>
+            <enumerationValue key="minute">minute</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="applePay_paymentRequest_recurringPaymentIntervalCount" type="attribute" required="false">
+          <caption>Recurring interval count</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Integer"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_recurringPaymentEndDate" type="attribute" required="false">
+          <caption>Recurring end date</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="DateTime"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_deferredPaymentDate" type="attribute" required="false">
+          <caption>Deferred payment date</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="DateTime"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- Google Pay - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~googlePayCreateOptions -->
+    <propertyGroup caption="Google Pay">
+      <propertyGroup caption="General">
+        <property key="options_googlePay" type="boolean" required="true" defaultValue="false">
+          <caption>Google Pay</caption>
+          <description>Set to to enable Google Pay configuration.</description>
+        </property>
+        <property key="googlePay_merchantId" type="string" required="false">
+          <caption>Merchant ID</caption>
+          <description>The ID provided by Google for processing transactions in production. Not necessary for testing in sandbox.</description>
+        </property>
+        <property key="googlePay_googlePayVersion" type="integer" required="true" defaultValue="1">
+          <caption>Google Pay version</caption>
+          <description>The version of the Google Pay API to use. Defaults to 1, but 2 can be passed in.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Transaction info">
+        <property key="googlePay_transactionInfo_currencyCode" type="string" required="true" defaultValue="USD">
+          <caption>Currency code</caption>
+          <description>The ISO 4217 alphabetic currency code.</description>
+        </property>
+        <property key="googlePay_transactionInfo_countryCode" type="string" required="false" defaultValue="US">
+          <caption>Country code</caption>
+          <description>The ISO 3166-1 alpha-2 country code where the transaction is processed.</description>
+        </property>
+        <!-- transactionId -->
+        <property key="googlePay_transactionInfo_totalPriceStatus" type="enumeration" defaultValue="FINAL">
+          <caption>Total price status</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="NOT_CURRENTLY_KNOWN">NOT_CURRENTLY_KNOWN - Use this property for a capability check.</enumerationValue>
+            <enumerationValue key="ESTIMATED">ESTIMATED - Total price might adjust based on the details of the response, such as sales tax collected that's based on a billing address.</enumerationValue>
+            <enumerationValue key="FINAL">FINAL - Total price doesn't change from the amount presented to the shopper.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="googlePay_transactionInfo_totalPrice" type="attribute" required="false">
+          <caption>Total price</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <!-- displayItems -->
+        <property key="googlePay_transactionInfo_totalPriceLabel" type="string" required="false">
+          <caption>Total price label</caption>
+          <description>Custom label for the total price within the display items.</description>
+        </property>
+        <property key="googlePay_transactionInfo_checkoutOption" type="enumeration" defaultValue="DEFAULT">
+          <caption>Total price status</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="DEFAULT">DEFAULT - Standard text applies for the given Total price status</enumerationValue>
+            <enumerationValue key="COMPLETE_IMMEDIATE_PURCHASE">COMPLETE_IMMEDIATE_PURCHASE -  The selected payment method is charged immediately after the payer confirms their selections. This option is only available when totalPriceStatus is set to FINAL.</enumerationValue>
+          </enumerationValues>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Button">
+        <property key="googlePay_button_buttonColor" type="enumeration" defaultValue="default">
+          <caption>Button colour</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="default">default - A Google-selected default value. Currently black but it may change over time</enumerationValue>
+            <enumerationValue key="black">black - A black button suitable for use on white or light backgrounds.</enumerationValue>
+            <enumerationValue key="white">white - A white button suitable for use on colorful backgrounds.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="googlePay_button_buttonType" type="enumeration" defaultValue="buy">
+          <caption>Button type</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="book">book - The "Book with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="buy">buy - The "Buy with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="checkout">checkout - The "Checkout with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="donate">donate - The "Donate with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="order">order - The "Order with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="pay">pay - The "Pay with Google Pay" payment button.</enumerationValue>
+            <enumerationValue key="plain">plain - The Google Pay payment button without the additional text.</enumerationValue>
+            <enumerationValue key="subscribe">subscribe - The "Subscribe with Google Pay" payment button.</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="googlePay_button_buttonSizeMode" type="enumeration" defaultValue="static">
+          <caption>Button size mode</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="static">static - Button has a static width and height.</enumerationValue>
+            <enumerationValue key="fill">fill - Button size changes to fill the size of its container.</enumerationValue>
+          </enumerationValues>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- 3D Secure -->
+    <propertyGroup caption="3D secure">
+      <propertyGroup caption="General">
+        <property key="options_threeDSecure" type="boolean" required="true" defaultValue="true">
+          <caption>3D Secure</caption>
+          <description>When true is passed, the 3D Secure module will be created with a default configuration. See below options for additional create options. If 3D Secure is configured and fails to load, Drop-in creation will fail.</description>
+        </property>
+        <property key="threeDS_amount" type="attribute" required="false">
+          <caption>Amount</caption>
+          <description>The amount of the transaction. Required when 3D Secure is enabled.</description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_email" type="attribute" required="false">
+          <caption>Email</caption>
+          <description>The email used for verification. (maximum length 255)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_mobilePhoneNumber" type="attribute" required="false">
+          <caption>Mobile phone number</caption>
+          <description>The mobile phone number used for verification. Only numbers; remove dashes, parenthesis and other characters. (maximum length 25)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Billing address">
+        <property key="threeDS_billing_givenName" type="attribute" required="false">
+          <caption>Given name</caption>
+          <description>The first name associated with the billing address. (maximum length 50)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_surname" type="attribute" required="false">
+          <caption>Surname</caption>
+          <description>The last name associated with the billing address. (maximum length 50)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_phoneNumber" type="attribute" required="false">
+          <caption>Phone number</caption>
+          <description>The phone number associated with the billing address. Only numbers; remove dashes, parenthesis and other characters.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_streetAddress" type="attribute" required="false">
+          <caption>Street address</caption>
+          <description>Line 1 of the billing address (eg. number, street, etc). (maximum length 50)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_extendedAddress" type="attribute" required="false">
+          <caption>Extended address</caption>
+          <description>Line 2 of the billing address (eg. suite, apt #, etc.). (maximum length 50)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_lineThree" type="attribute" required="false">
+          <caption>Line 3</caption>
+          <description>Line 3 of the billing address if needed (eg. suite, apt #, etc). (maximum length 50)</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_locality" type="attribute" required="false">
+          <caption>Locality</caption>
+          <description>The locality (city) name associated with the billing address.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_region" type="attribute" required="false">
+          <caption>Region</caption>
+          <description>The 2 letter code for US states or an ISO-3166-2 country subdivision code of up to three letters.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_postalCode" type="attribute" required="false">
+          <caption>Postal code</caption>
+          <description>The zip code or equivalent for countries that have them.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="threeDS_billing_countryCodeAlpha2" type="attribute" required="false">
+          <caption>Country code alpha 2</caption>
+          <description>The 2 character country code.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- Style -->
+    <propertyGroup caption="Style">
+      <propertyGroup caption="Submit button">
+        <property key="style_submitButton_style" type="enumeration" defaultValue="default">
+          <caption>Submit button style</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="default">Default</enumerationValue>
+            <enumerationValue key="primary">Primary</enumerationValue>
+            <enumerationValue key="success">Success</enumerationValue>
+            <enumerationValue key="info">Info</enumerationValue>
+            <enumerationValue key="inverse">Inverse</enumerationValue>
+            <enumerationValue key="warning">Warning</enumerationValue>
+            <enumerationValue key="danger">Danger</enumerationValue>
+          </enumerationValues>
+        </property>
+        <property key="style_submitButton_class" type="string" required="false">
+          <caption>Submit button class</caption>
+          <description></description>
+        </property>
+        <property key="style_submitButton_text" type="string" required="false" defaultValue="Pay">
+          <caption>Submit button text</caption>
+          <description></description>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- Events -->
     <propertyGroup caption="Events">
       <propertyGroup caption="Form submit">
-        <property key="onFormSubmit" type="action" required="false">
+        <property key="event_onSubmit" type="action" required="false">
           <caption>On form submit action</caption>
           <description>Action to trigger when submit button is clicked and form is successfully processed</description>
         </property>
-        <property key="submitProgress" type="enumeration" defaultValue="none">
+        <property key="event_onSubmit_progress" type="enumeration" defaultValue="none">
           <caption>Show progress bar</caption>
           <description></description>
           <enumerationValues>
@@ -72,25 +693,25 @@
             <enumerationValue key="blocking">Blocking</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="submitProgressMessage" type="string" required="false">
+        <property key="event_onSubmit_progressMessage" type="string" required="false">
           <caption>Progress message</caption>
           <description></description>
         </property>
       </propertyGroup>
       <propertyGroup caption="Other events">
-        <property key="onCreate" type="action" required="false">
+        <property key="event_onCreate" type="action" required="false">
           <caption>On form create</caption>
           <description>Action to trigger when form is created</description>
         </property>
-        <property key="onDestroyStart" type="action" required="false">
+        <property key="event_onDestroyStart" type="action" required="false">
           <caption>On form destroy start</caption>
           <description>Action to trigger when form starts destruction</description>
         </property>
-        <property key="onDestroyEnd" type="action" required="false">
+        <property key="event_onDestroyEnd" type="action" required="false">
           <caption>On form destroy end</caption>
           <description>Action to trigger when form ends destruction</description>
         </property>
-        <property key="onError" type="action" required="false">
+        <property key="event_onError" type="action" required="false">
           <caption>On form error</caption>
           <description>Action to trigger when form errors</description>
         </property>

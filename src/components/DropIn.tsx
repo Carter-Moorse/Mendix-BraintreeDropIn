@@ -12,6 +12,7 @@ const renderSubmitButton = (props: SubmitButtonProps) => <button onClick={props.
 
 export interface DropInProps {
   options: braintreeDropIn.Options,
+  paymentMethodOptions?: braintreeDropIn.PaymentMethodOptions,
   handlePaymentMethod: (payload: braintreeDropIn.PaymentMethodPayload) => void,
   onSubmit?: () => void,
   onCreate?: (instance: braintreeDropIn.Dropin | undefined) => void,
@@ -89,7 +90,6 @@ export class DropIn extends Component<DropInProps, DropInState> {
   setup = () => {
     const options: braintreeDropIn.Options = this.props.options;
     options.container = '.braintree-dropin-react-form';
-    options.dataCollector = true;
     braintreeDropIn.create(options, (err, dropinInstance) => {
       // Execute events
       if (err) {
@@ -159,23 +159,31 @@ export class DropIn extends Component<DropInProps, DropInState> {
           // Execute events
           this.props.onSubmit?.();
           // Request payment method
-          this.state.dropInInstance.requestPaymentMethod((err, payload) => {
-            this.setState({
-              isSubmitButtonDisabled: false
-            })
-            if (err) {
-              this.props.onError?.(err);
-            } else {
-              // Execute events
-              this.props.handlePaymentMethod(payload);
-            }
-          })
+          if (this.props.paymentMethodOptions) {
+            this.state.dropInInstance.requestPaymentMethod(this.props.paymentMethodOptions, this.requestPaymentMethod);
+          }
+          else {
+            this.state.dropInInstance.requestPaymentMethod(this.requestPaymentMethod);
+          }
         } 
         // Throw custom error
         else {
           this.props.onError?.(new Error('No dropinInstance'));
         }
       })
+    }
+  }
+
+  requestPaymentMethod = (err, payload) => {
+    this.setState({
+      isSubmitButtonDisabled: false
+    });
+
+    if (err) {
+      this.props.onError?.(err);
+    } else {
+      // Execute events
+      this.props.handlePaymentMethod(payload);
     }
   }
 
