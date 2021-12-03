@@ -27,11 +27,10 @@
     "@types/braintree-web": "^3.69.3",
     "@types/braintree-web-drop-in": "^1.22.4",
     "@types/classnames": "^2.2.4",
-    "@types/react": "~16.9.0",
-    "@types/react-dom": "~16.9.0"
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0"
   },
   "dependencies": {
-    "braintree-web": "^3.74.0",
     "braintree-web-drop-in": "^1.32.1",
     "classnames": "^2.2.6"
   }

@@ -89,11 +89,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Check Apple Pay fields
       (
         this.props.options_applePay ?
-        (!this.props.applePay_paymentRequest_amount || this.props.applePay_paymentRequest_amount?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_recurringPaymentStartDate || this.props.applePay_paymentRequest_recurringPaymentStartDate?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_recurringPaymentIntervalCount || this.props.applePay_paymentRequest_recurringPaymentIntervalCount?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_recurringPaymentEndDate || this.props.applePay_paymentRequest_recurringPaymentEndDate?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_deferredPaymentDate || this.props.applePay_paymentRequest_deferredPaymentDate?.status === ValueStatus.Available)
+        (!this.props.applePay_paymentRequest_total_amount || this.props.applePay_paymentRequest_total_amount?.status === ValueStatus.Available) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentStartDate || this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.status === ValueStatus.Available) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount || this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.status === ValueStatus.Available) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentEndDate || this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.status === ValueStatus.Available) &&
+        (!this.props.applePay_paymentRequest_total_deferredPaymentDate || this.props.applePay_paymentRequest_total_deferredPaymentDate?.status === ValueStatus.Available)
         : true
       ) &&
       // Check Google Pay fields
@@ -113,6 +113,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         (!this.props.threeDS_billing_locality || this.props.threeDS_billing_locality?.status === ValueStatus.Available) &&
         (!this.props.threeDS_billing_phoneNumber || this.props.threeDS_billing_phoneNumber?.status === ValueStatus.Available) &&
         (!this.props.threeDS_billing_postalCode || this.props.threeDS_billing_postalCode?.status === ValueStatus.Available) &&
+        (!this.props.threeDS_billing_region || this.props.threeDS_billing_region?.status === ValueStatus.Available) &&
         (!this.props.threeDS_billing_streetAddress || this.props.threeDS_billing_streetAddress?.status === ValueStatus.Available) &&
         (!this.props.threeDS_billing_surname || this.props.threeDS_billing_surname?.status === ValueStatus.Available) &&
         (!this.props.threeDS_email || this.props.threeDS_email?.status === ValueStatus.Available) &&
@@ -147,7 +148,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   /** 
    * Generates the JSON structure for the "braintree-web-drop-in" ``create`` options.
    */
-  getOptionsJSON = (): braintree.Options => {
+  getOptionsJSON = () => {
     if (this.props.options_authorization?.value) {
       let options = {
         "authorization": this.props.options_authorization?.value,
@@ -194,7 +195,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
               "maxCardLength": fieldOverride.maxCardLength,
               "maxlength": fieldOverride.maxlength,
               "minlength": fieldOverride.minlength,
-              "prefill": fieldOverride.prefill?.value,
+              "prefill": this.checkValue(fieldOverride.prefill?.value),
               // "supportedCardBrands": ?
             }
           }
@@ -206,7 +207,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // PayPal options
       if (this.props.options_payPal) {
         options["paypal"] = {
-          "amount": String(this.props.payPal_amount),
+          "amount": String(this.props.payPal_amount?.value),
           "buttonStyle": {
             "color": this.props.payPal_buttonStyle_color,
             "label": this.props.payPal_buttonStyle_label,
@@ -216,7 +217,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           },
           "commit": this.props.payPal_commit,
           "currency": this.checkValue(this.props.payPal_currency),
-          "flow": this.props.payPal_flow
+          "flow": this.props.payPal_flow,
+          "vault": { 
+            "vaultPayPal": this.props.payPal_vault_vaultPayPal
+          }
         }
       }
       // Apple Pay
@@ -288,8 +292,15 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             // "shippingType": "shipping" |"delivery" | "storePickup" | "servicePickup",
             "supportedNetworks": this.splitString(this.props.applePay_paymentRequest_supportedNetworks),
             "total": {
-              "amount": String(this.props.applePay_paymentRequest_amount),
-              "label": this.checkValue(this.props.applePay_paymentRequest_label)
+              "amount": String(this.props.applePay_paymentRequest_total_amount?.value),
+              "deferredPaymentDate": this.props.applePay_paymentRequest_total_deferredPaymentDate?.value,
+              "label": this.checkValue(this.props.applePay_paymentRequest_total_label),
+              "paymentTiming": this.props.applePay_paymentRequest_total_paymentTiming,
+              "recurringPaymentStartDate": this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.value,
+              "recurringPaymentIntervalUnit": this.props.applePay_paymentRequest_total_recurringPaymentIntervalUnit,
+              "recurringPaymentIntervalCount": this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.value,
+              "recurringPaymentEndDate": this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.value,
+              "type": this.props.applePay_paymentRequest_total_type
             }
           }
         }
@@ -303,14 +314,14 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "buttonSizeMode": this.props.googlePay_button_buttonSizeMode,
             "buttonType": this.props.googlePay_button_buttonType
           },
-          "googlePayVersion": String(this.props.googlePay_googlePayVersion),
+          "googlePayVersion": this.props.googlePay_googlePayVersion,
           "merchantId": this.checkValue(this.props.googlePay_merchantId),
           "transactionInfo": {
             "checkoutOption": this.props.googlePay_transactionInfo_checkoutOption,
             "countryCode": this.checkValue(this.props.googlePay_transactionInfo_countryCode),
             "currencyCode": this.checkValue(this.props.googlePay_transactionInfo_currencyCode),
             // "displayItems": ?,
-            "totalPrice": String(this.props.googlePay_transactionInfo_totalPrice),
+            "totalPrice": String(this.props.googlePay_transactionInfo_totalPrice?.value),
             "totalPriceLabel": this.checkValue(this.props.googlePay_transactionInfo_totalPriceLabel),
             "totalPriceStatus": this.props.googlePay_transactionInfo_totalPriceStatus,
             // "transactionId": ?,
@@ -341,6 +352,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "extendedAddress": this.checkValue(this.props.threeDS_billing_extendedAddress?.value),
             "line3": this.checkValue(this.props.threeDS_billing_lineThree?.value),
             "locality": this.checkValue(this.props.threeDS_billing_locality?.value),
+            "region": this.checkValue(this.props.threeDS_billing_region?.value),
             "postalCode": this.checkValue(this.props.threeDS_billing_postalCode?.value),
             "countryCodeAlpha2": this.checkValue(this.props.threeDS_billing_countryCodeAlpha2?.value)
           }
@@ -349,11 +361,6 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       return paymentMethodOptions;
     }
     return undefined;
-  }
-
-
-  getSnapshotBeforeUpdate(prevProps) {
-
   }
 
   // React handles

@@ -39,11 +39,11 @@ export type PayPal_buttonStyle_labelEnum = "checkout" | "credit" | "pay" | "buyn
 
 export type ApplePay_buttonStyleEnum = "black" | "white" | "white_outline";
 
-export type ApplePay_paymentRequest_typeEnum = "final" | "pending";
+export type ApplePay_paymentRequest_total_typeEnum = "final" | "pending";
 
-export type ApplePay_paymentRequest_paymentTimingEnum = "immediate" | "recurring" | "deferred";
+export type ApplePay_paymentRequest_total_paymentTimingEnum = "immediate" | "recurring" | "deferred";
 
-export type ApplePay_paymentRequest_recurringPaymentIntervalUnitEnum = "year" | "month" | "day" | "hour" | "minute";
+export type ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum = "year" | "month" | "day" | "hour" | "minute";
 
 export type GooglePay_transactionInfo_totalPriceStatusEnum = "NOT_CURRENTLY_KNOWN" | "ESTIMATED" | "FINAL";
 
@@ -117,15 +117,15 @@ export interface BraintreeDropInContainerProps {
     applePay_paymentRequest_supportedNetworks: string;
     applePay_paymentRequest_countryCode: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
-    applePay_paymentRequest_type: ApplePay_paymentRequest_typeEnum;
-    applePay_paymentRequest_label: string;
-    applePay_paymentRequest_amount?: EditableValue<BigJs.Big>;
-    applePay_paymentRequest_paymentTiming: ApplePay_paymentRequest_paymentTimingEnum;
-    applePay_paymentRequest_recurringPaymentStartDate?: EditableValue<Date>;
-    applePay_paymentRequest_recurringPaymentIntervalUnit: ApplePay_paymentRequest_recurringPaymentIntervalUnitEnum;
-    applePay_paymentRequest_recurringPaymentIntervalCount?: EditableValue<BigJs.Big>;
-    applePay_paymentRequest_recurringPaymentEndDate?: EditableValue<Date>;
-    applePay_paymentRequest_deferredPaymentDate?: EditableValue<Date>;
+    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
+    applePay_paymentRequest_total_label: string;
+    applePay_paymentRequest_total_amount?: EditableValue<BigJs.Big>;
+    applePay_paymentRequest_total_paymentTiming: ApplePay_paymentRequest_total_paymentTimingEnum;
+    applePay_paymentRequest_total_recurringPaymentStartDate?: EditableValue<Date>;
+    applePay_paymentRequest_total_recurringPaymentIntervalUnit: ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum;
+    applePay_paymentRequest_total_recurringPaymentIntervalCount?: EditableValue<BigJs.Big>;
+    applePay_paymentRequest_total_recurringPaymentEndDate?: EditableValue<Date>;
+    applePay_paymentRequest_total_deferredPaymentDate?: EditableValue<Date>;
     options_googlePay: boolean;
     googlePay_merchantId: string;
     googlePay_googlePayVersion: number;
@@ -203,15 +203,15 @@ export interface BraintreeDropInPreviewProps {
     applePay_paymentRequest_supportedNetworks: string;
     applePay_paymentRequest_countryCode: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
-    applePay_paymentRequest_type: ApplePay_paymentRequest_typeEnum;
-    applePay_paymentRequest_label: string;
-    applePay_paymentRequest_amount: string;
-    applePay_paymentRequest_paymentTiming: ApplePay_paymentRequest_paymentTimingEnum;
-    applePay_paymentRequest_recurringPaymentStartDate: string;
-    applePay_paymentRequest_recurringPaymentIntervalUnit: ApplePay_paymentRequest_recurringPaymentIntervalUnitEnum;
-    applePay_paymentRequest_recurringPaymentIntervalCount: string;
-    applePay_paymentRequest_recurringPaymentEndDate: string;
-    applePay_paymentRequest_deferredPaymentDate: string;
+    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
+    applePay_paymentRequest_total_label: string;
+    applePay_paymentRequest_total_amount: string;
+    applePay_paymentRequest_total_paymentTiming: ApplePay_paymentRequest_total_paymentTimingEnum;
+    applePay_paymentRequest_total_recurringPaymentStartDate: string;
+    applePay_paymentRequest_total_recurringPaymentIntervalUnit: ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum;
+    applePay_paymentRequest_total_recurringPaymentIntervalCount: string;
+    applePay_paymentRequest_total_recurringPaymentEndDate: string;
+    applePay_paymentRequest_total_deferredPaymentDate: string;
     options_googlePay: boolean;
     googlePay_merchantId: string;
     googlePay_googlePayVersion: number | null;

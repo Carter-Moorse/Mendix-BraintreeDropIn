@@ -390,7 +390,9 @@ See Venmo create options tab for venmo options.</description>
         <!-- supportsCouponCode -->
         <!-- couponCode -->
         <!-- shippingContactEditingMode -->
-        <property key="applePay_paymentRequest_type" type="enumeration" defaultValue="final">
+      </propertyGroup>
+      <propertyGroup caption="Total">
+        <property key="applePay_paymentRequest_total_type" type="enumeration" defaultValue="final">
           <caption>Type</caption>
           <description></description>
           <enumerationValues>
@@ -398,18 +400,18 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="pending">pending - A line item representing an estimated or unknown cost.</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_paymentRequest_label" type="string" required="false">
+        <property key="applePay_paymentRequest_total_label" type="string" required="false">
           <caption>Label</caption>
           <description></description>
         </property>
-        <property key="applePay_paymentRequest_amount" type="attribute" required="false">
+        <property key="applePay_paymentRequest_total_amount" type="attribute" required="false">
           <caption>Total amount</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_paymentTiming" type="enumeration" defaultValue="immediate">
+        <property key="applePay_paymentRequest_total_paymentTiming" type="enumeration" defaultValue="immediate">
           <caption>Payment timing</caption>
           <description></description>
           <enumerationValues>
@@ -418,14 +420,14 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="deferred">deferred - A value that specifies that the payment occurs in the future.</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_paymentRequest_recurringPaymentStartDate" type="attribute" required="false">
+        <property key="applePay_paymentRequest_total_recurringPaymentStartDate" type="attribute" required="false">
           <caption>Recurring start date</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="DateTime"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_recurringPaymentIntervalUnit" type="enumeration" defaultValue="month">
+        <property key="applePay_paymentRequest_total_recurringPaymentIntervalUnit" type="enumeration" defaultValue="month">
           <caption>Recurring interval unit</caption>
           <description></description>
           <enumerationValues>
@@ -436,21 +438,21 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="minute">minute</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_paymentRequest_recurringPaymentIntervalCount" type="attribute" required="false">
+        <property key="applePay_paymentRequest_total_recurringPaymentIntervalCount" type="attribute" required="false">
           <caption>Recurring interval count</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="Integer"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_recurringPaymentEndDate" type="attribute" required="false">
+        <property key="applePay_paymentRequest_total_recurringPaymentEndDate" type="attribute" required="false">
           <caption>Recurring end date</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="DateTime"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_deferredPaymentDate" type="attribute" required="false">
+        <property key="applePay_paymentRequest_total_deferredPaymentDate" type="attribute" required="false">
           <caption>Deferred payment date</caption>
           <description></description>
           <attributeTypes>

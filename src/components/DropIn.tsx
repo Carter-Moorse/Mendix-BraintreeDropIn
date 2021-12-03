@@ -1,7 +1,7 @@
 import { Component, createElement } from "react";
 
 import * as braintreeDropIn from "braintree-web-drop-in";
-import * as braintreeWeb from "braintree-web";
+// import * as braintreeWeb from "braintree-web";
 
 export interface SubmitButtonProps {
   onClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined,
@@ -71,21 +71,21 @@ export class DropIn extends Component<DropInProps, DropInState> {
   }
 
   // ?
-  getDeviceData = () => {
-    return new Promise<string>((resolve, reject) => {
-      braintreeWeb.client.create({
-        authorization: this.props.options.authorization
-      }).then((clientInstance) => {
-        braintreeWeb.dataCollector.create({
-          client: clientInstance
-        }).then((dataCollectorInstance) => {
-          resolve(dataCollectorInstance.deviceData);
-        });
-      }).catch(function (err) {
-        reject(err);
-      });
-    })
-  }
+  // getDeviceData = () => {
+  //   return new Promise<string>((resolve, reject) => {
+  //     braintreeWeb.client.create({
+  //       authorization: this.props.options.authorization
+  //     }).then((clientInstance) => {
+  //       braintreeWeb.dataCollector.create({
+  //         client: clientInstance
+  //       }).then((dataCollectorInstance) => {
+  //         resolve(dataCollectorInstance.deviceData);
+  //       });
+  //     }).catch(function (err) {
+  //       reject(err);
+  //     });
+  //   })
+  // }
 
   setup = () => {
     const options: braintreeDropIn.Options = this.props.options;
