@@ -127,7 +127,7 @@ export interface BraintreeDropInContainerProps {
     applePay_paymentRequest_total_recurringPaymentEndDate?: EditableValue<Date>;
     applePay_paymentRequest_total_deferredPaymentDate?: EditableValue<Date>;
     options_googlePay: boolean;
-    googlePay_merchantId: string;
+    googlePay_merchantId?: DynamicValue<string>;
     googlePay_googlePayVersion: number;
     googlePay_transactionInfo_currencyCode: string;
     googlePay_transactionInfo_countryCode: string;

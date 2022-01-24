@@ -83,48 +83,49 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Check PayPal fields
       (
         this.props.options_payPal ? 
-        (!this.props.payPal_amount || this.props.payPal_amount?.status === ValueStatus.Available)
+        (!this.props.payPal_amount || this.props.payPal_amount?.status !== ValueStatus.Loading)
         : true
       ) &&
       // Check Apple Pay fields
       (
         this.props.options_applePay ?
-        (!this.props.applePay_paymentRequest_total_amount || this.props.applePay_paymentRequest_total_amount?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentStartDate || this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount || this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentEndDate || this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.status === ValueStatus.Available) &&
-        (!this.props.applePay_paymentRequest_total_deferredPaymentDate || this.props.applePay_paymentRequest_total_deferredPaymentDate?.status === ValueStatus.Available)
+        (!this.props.applePay_paymentRequest_total_amount || this.props.applePay_paymentRequest_total_amount?.status !== ValueStatus.Loading) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentStartDate || this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.status !== ValueStatus.Loading) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount || this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.status !== ValueStatus.Loading) &&
+        (!this.props.applePay_paymentRequest_total_recurringPaymentEndDate || this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.status !== ValueStatus.Loading) &&
+        (!this.props.applePay_paymentRequest_total_deferredPaymentDate || this.props.applePay_paymentRequest_total_deferredPaymentDate?.status !== ValueStatus.Loading)
         : true
       ) &&
       // Check Google Pay fields
       (
         this.props.options_googlePay ?
-        (!this.props.googlePay_transactionInfo_totalPrice || this.props.googlePay_transactionInfo_totalPrice?.status === ValueStatus.Available)
+        (!this.props.googlePay_transactionInfo_totalPrice || this.props.googlePay_transactionInfo_totalPrice?.status !== ValueStatus.Loading) &&
+        (!this.props.googlePay_merchantId || this.props.googlePay_merchantId?.status !== ValueStatus.Loading)
         : true
       ) &&
       // Check 3DS fields
       (
         this.props.options_threeDSecure ? 
-        (!this.props.threeDS_amount || this.props.threeDS_amount?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_countryCodeAlpha2 || this.props.threeDS_billing_countryCodeAlpha2?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_extendedAddress || this.props.threeDS_billing_extendedAddress?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_givenName || this.props.threeDS_billing_givenName?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_lineThree || this.props.threeDS_billing_lineThree?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_locality || this.props.threeDS_billing_locality?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_phoneNumber || this.props.threeDS_billing_phoneNumber?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_postalCode || this.props.threeDS_billing_postalCode?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_region || this.props.threeDS_billing_region?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_streetAddress || this.props.threeDS_billing_streetAddress?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_billing_surname || this.props.threeDS_billing_surname?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_email || this.props.threeDS_email?.status === ValueStatus.Available) &&
-        (!this.props.threeDS_mobilePhoneNumber || this.props.threeDS_mobilePhoneNumber?.status === ValueStatus.Available)
+        (!this.props.threeDS_amount || this.props.threeDS_amount?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_countryCodeAlpha2 || this.props.threeDS_billing_countryCodeAlpha2?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_extendedAddress || this.props.threeDS_billing_extendedAddress?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_givenName || this.props.threeDS_billing_givenName?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_lineThree || this.props.threeDS_billing_lineThree?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_locality || this.props.threeDS_billing_locality?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_phoneNumber || this.props.threeDS_billing_phoneNumber?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_postalCode || this.props.threeDS_billing_postalCode?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_region || this.props.threeDS_billing_region?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_streetAddress || this.props.threeDS_billing_streetAddress?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_billing_surname || this.props.threeDS_billing_surname?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_email || this.props.threeDS_email?.status !== ValueStatus.Loading) &&
+        (!this.props.threeDS_mobilePhoneNumber || this.props.threeDS_mobilePhoneNumber?.status !== ValueStatus.Loading)
         : true
       )
     );
     // Check the status of Mendix object attributes
     if (status && this.props.card_overrides_fields.length) {
       for (var fieldOverride of this.props.card_overrides_fields) {
-        status = status && (!fieldOverride.prefill || fieldOverride.prefill?.status === ValueStatus.Available);
+        status = status && (!fieldOverride.prefill || fieldOverride.prefill?.status !== ValueStatus.Loading);
       }
     }
 
@@ -315,7 +316,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "buttonType": this.props.googlePay_button_buttonType
           },
           "googlePayVersion": this.props.googlePay_googlePayVersion,
-          "merchantId": this.checkValue(this.props.googlePay_merchantId),
+          "merchantId": this.checkValue(this.props.googlePay_merchantId?.value),
           "transactionInfo": {
             "checkoutOption": this.props.googlePay_transactionInfo_checkoutOption,
             "countryCode": this.checkValue(this.props.googlePay_transactionInfo_countryCode),
@@ -343,11 +344,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         threeDSecure: {
           "amount": String(this.props.threeDS_amount?.value),
           "email": this.checkValue(this.props.threeDS_email?.value),
-          "mobilePhoneNumber": this.checkValue(this.props.threeDS_mobilePhoneNumber?.value?.replace(/[0-9]/gm, '')), // Replace all non-numeric
+          "mobilePhoneNumber": this.checkValue(this.props.threeDS_mobilePhoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
           "billingAddress": {
             "givenName": this.checkValue(this.props.threeDS_billing_givenName?.value),
             "surname": this.checkValue(this.props.threeDS_billing_surname?.value),
-            "phoneNumber": this.checkValue(this.props.threeDS_billing_phoneNumber?.value?.replace(/[0-9]/gm, '')), // Replace all non-numeric
+            "phoneNumber": this.checkValue(this.props.threeDS_billing_phoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
             "streetAddress": this.checkValue(this.props.threeDS_billing_streetAddress?.value),
             "extendedAddress": this.checkValue(this.props.threeDS_billing_extendedAddress?.value),
             "line3": this.checkValue(this.props.threeDS_billing_lineThree?.value),

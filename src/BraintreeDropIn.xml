@@ -468,9 +468,10 @@ See Venmo create options tab for venmo options.</description>
           <caption>Google Pay</caption>
           <description>Set to to enable Google Pay configuration.</description>
         </property>
-        <property key="googlePay_merchantId" type="string" required="false">
+        <property key="googlePay_merchantId" type="expression" required="false">
           <caption>Merchant ID</caption>
           <description>The ID provided by Google for processing transactions in production. Not necessary for testing in sandbox.</description>
+          <returnType type="String" />
         </property>
         <property key="googlePay_googlePayVersion" type="integer" required="true" defaultValue="1">
           <caption>Google Pay version</caption>
