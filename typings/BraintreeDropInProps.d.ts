@@ -86,6 +86,7 @@ export interface BraintreeDropInContainerProps {
     options_dataCollector: boolean;
     options_vaultManager: boolean;
     options_preselectVaultedPaymentMethod: boolean;
+    configurationSingleton?: ListValue;
     options_card: boolean;
     card_clearFieldsAfterTokenization: boolean;
     card_vault_allowVaultCardOverride: boolean;
@@ -115,7 +116,7 @@ export interface BraintreeDropInContainerProps {
     payPal_vault_vaultPayPal: boolean;
     options_applePay: boolean;
     applePay_buttonStyle: ApplePay_buttonStyleEnum;
-    applePay_displayName: string;
+    applePay_displayName?: ListAttributeValue<string>;
     applePay_applePaySessionVersion: number;
     applePay_paymentRequest_currencyCode?: EditableValue<string>;
     applePay_paymentRequest_countryCode?: EditableValue<string>;
@@ -127,7 +128,7 @@ export interface BraintreeDropInContainerProps {
     applePay_paymentRequest_lineItem_label?: ListAttributeValue<string>;
     applePay_paymentRequest_lineItem_amount?: ListAttributeValue<BigJs.Big>;
     applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
-    applePay_paymentRequest_total_label: string;
+    applePay_paymentRequest_total_label?: ListAttributeValue<string>;
     applePay_paymentRequest_total_amount?: EditableValue<BigJs.Big>;
     options_googlePay: boolean;
     googlePay_merchantId?: DynamicValue<string>;
@@ -136,7 +137,7 @@ export interface BraintreeDropInContainerProps {
     googlePay_transactionInfo_countryCode?: EditableValue<string>;
     googlePay_transactionInfo_totalPriceStatus: GooglePay_transactionInfo_totalPriceStatusEnum;
     googlePay_transactionInfo_totalPrice?: EditableValue<BigJs.Big>;
-    googlePay_transactionInfo_totalPriceLabel: string;
+    googlePay_transactionInfo_totalPriceLabel?: ListAttributeValue<string>;
     googlePay_transactionInfo_checkoutOption: GooglePay_transactionInfo_checkoutOptionEnum;
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
@@ -184,6 +185,7 @@ export interface BraintreeDropInPreviewProps {
     options_dataCollector: boolean;
     options_vaultManager: boolean;
     options_preselectVaultedPaymentMethod: boolean;
+    configurationSingleton: {} | null;
     options_card: boolean;
     card_clearFieldsAfterTokenization: boolean;
     card_vault_allowVaultCardOverride: boolean;

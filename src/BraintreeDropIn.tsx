@@ -76,11 +76,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
    * Checks the status of all ``EditableValue`` fields to make sure they have a ``ValueStatus`` of ``Available``.
    */
   checkFields = (): boolean => {
+    // Check the status of the enabled props
     let checkField = (field: DynamicValue<any> | EditableValue<any> | ListValue | undefined): boolean => {
       return !field || field?.status !== ValueStatus.Loading
     }
 
-    // Check the status of all the enabled props
     let status = (
       // Check option fields
       this.props.options_authorization?.status === ValueStatus.Available &&
@@ -104,11 +104,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Check Google Pay fields
       (
         this.props.options_googlePay ?
-        checkField(this.props.googlePay_transactionInfo_totalPrice) &&
         checkField(this.props.googlePay_merchantId) &&
-        checkField(this.props.googlePay_transactionInfo_displayItems_data) &&
+        checkField(this.props.googlePay_transactionInfo_totalPrice) &&
         checkField(this.props.googlePay_transactionInfo_countryCode) &&
-        checkField(this.props.googlePay_transactionInfo_currencyCode)
+        checkField(this.props.googlePay_transactionInfo_currencyCode) &&
+        checkField(this.props.googlePay_transactionInfo_displayItems_data)
         : true
       ) &&
       // Check 3DS fields
@@ -128,7 +128,9 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         checkField(this.props.threeDS_email) &&
         checkField(this.props.threeDS_mobilePhoneNumber)
         : true
-      )
+      ) &&
+      // Check configuration singleton
+      checkField(this.props.configurationSingleton)
     );
     // Check the status of Mendix object attributes
     if (status && this.props.card_overrides_fields.length) {
@@ -165,7 +167,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
    */
   getOptionsJSON = () => {
     // Split functions
-    // Card -> Field overrides
+    // Options -> Card -> Field overrides
     let getCardFields = () => {
       let fields = {};
       if (this.props.card_overrides_fields && this.props.card_overrides_fields.length) {
@@ -191,7 +193,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       return fields;
     }
 
-    // Apple pay -> Line items
+    // Options -> Apple Pay -> Line items
     let getApplePayLineItems = () => {
       let lineItems: Array<any> = [];
       if (
@@ -212,7 +214,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       return lineItems;
     }
 
-    // PayPal -> Line items
+    // Options -> PayPal -> Line items
     let getPayPalLineItems = () => {
       let lineItems: Array<any> = [];
       if (
@@ -238,7 +240,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       return lineItems;
     }
 
-    // Google pay -> Display items
+    // Options -> Google Pay -> Display items
     let getGooglePayDisplayItems = () => {
       let lineItems: Array<any> = [];
       if (
@@ -258,6 +260,8 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       }
       return lineItems;
     }
+    // Get confirguration singleton
+    const configurationSingleton = this.props.configurationSingleton?.items ? this.props.configurationSingleton?.items[0] : undefined;
 
     if (this.props.options_authorization?.value) {
       // Options
@@ -315,7 +319,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         options["applePay"] = {
           "applePaySessionVersion": this.props.applePay_applePaySessionVersion,
           "buttonStyle": this.props.applePay_buttonStyle.replace('_', '-'),
-          "displayName": this.trimValue(this.props.applePay_displayName),
+          "displayName": this.trimValue(this.props.applePay_displayName && configurationSingleton ? this.props.applePay_displayName(configurationSingleton).value : undefined),
           "paymentRequest": { 
             // TODO -- "billingContact": {
               // "phoneNumber": ?,
@@ -380,7 +384,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "supportedNetworks": this.splitString(this.props.applePay_paymentRequest_supportedNetworks),
             "total": {
               "amount": this.props.applePay_paymentRequest_total_amount?.value?.toString(),
-              "label": this.trimValue(this.props.applePay_paymentRequest_total_label),
+              "label": this.trimValue(this.props.applePay_paymentRequest_total_label && configurationSingleton ? this.props.applePay_paymentRequest_total_label(configurationSingleton).value : undefined),
               "type": this.props.applePay_paymentRequest_total_type
             },
             "lineItems": getApplePayLineItems()
@@ -404,7 +408,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "currencyCode": this.trimValue(this.props.googlePay_transactionInfo_currencyCode?.value),
             "displayItems": getGooglePayDisplayItems(),
             "totalPrice": this.props.googlePay_transactionInfo_totalPrice?.value?.toString(),
-            "totalPriceLabel": this.trimValue(this.props.googlePay_transactionInfo_totalPriceLabel),
+            "totalPriceLabel": this.trimValue(this.props.googlePay_transactionInfo_totalPriceLabel && configurationSingleton ? this.props.googlePay_transactionInfo_totalPriceLabel(configurationSingleton).value : undefined),
             "totalPriceStatus": this.props.googlePay_transactionInfo_totalPriceStatus,
             // TODO -- "transactionId": ?,
             // TODO -- "transactionNote": ?

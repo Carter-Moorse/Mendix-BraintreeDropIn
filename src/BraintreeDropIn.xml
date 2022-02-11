@@ -97,6 +97,12 @@ See Venmo create options tab for venmo options.</description>
           <description>Whether or not to initialize Drop-in with a vaulted payment method pre-selected. Only applicable when using a client token with a customer id and a customer with saved payment methods.</description>
         </property>
       </propertyGroup>
+      <propertyGroup caption="Configuration singleton">
+        <property key="configurationSingleton" type="datasource" isList="true" required="false">
+          <caption>Data source</caption>
+          <description>This will be used to configure options throughout the widget. Select data source that returns 1 object.</description>
+        </property>
+      </propertyGroup>
     </propertyGroup>
     <!-- Card - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~cardCreateOptions -->
     <propertyGroup caption="Card">
@@ -418,9 +424,12 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="white_outline">white-outline</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_displayName" type="string" required="false">
+        <property key="applePay_displayName" type="attribute" required="false" dataSource="configurationSingleton">
           <caption>Display name</caption>
           <description>The canonical name for your store. Use a non-localized name. This parameter should be a utf-8 string that is a maximum of 128 characters. The system may display this name to the user.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
         </property>
         <property key="applePay_applePaySessionVersion" type="integer" required="true" defaultValue="2">
           <caption>Apple Pay session version</caption>
@@ -503,9 +512,12 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="pending">pending - A line item representing an estimated or unknown cost.</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_paymentRequest_total_label" type="string" required="false">
+        <property key="applePay_paymentRequest_total_label" type="attribute" required="false" dataSource="configurationSingleton">
           <caption>Label</caption>
           <description>Provide a business name for the label field. Use the same business name people will see when they look for the charge on their bank or credit card statement. Must be non-empty to pass validation.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
         </property>
         <property key="applePay_paymentRequest_total_amount" type="attribute" required="false">
           <caption>Total amount</caption>
@@ -567,9 +579,12 @@ See Venmo create options tab for venmo options.</description>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="googlePay_transactionInfo_totalPriceLabel" type="string" required="false">
+        <property key="googlePay_transactionInfo_totalPriceLabel" type="attribute" required="false" dataSource="configurationSingleton">
           <caption>Total price label</caption>
           <description>Custom label for the total price within the display items.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
         </property>
         <property key="googlePay_transactionInfo_checkoutOption" type="enumeration" defaultValue="DEFAULT">
           <caption>Total price status</caption>
