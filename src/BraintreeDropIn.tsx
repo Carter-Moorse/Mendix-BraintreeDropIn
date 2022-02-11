@@ -1,6 +1,6 @@
 /// <reference types="../typings/MendixHelper" />
 
-import { ValueStatus } from "mendix";
+import { ValueStatus, EditableValue, ListValue, DynamicValue } from "mendix";
 import { Component, ReactNode, createElement } from "react";
 
 import * as braintree from "braintree-web-drop-in";
@@ -76,6 +76,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
    * Checks the status of all ``EditableValue`` fields to make sure they have a ``ValueStatus`` of ``Available``.
    */
   checkFields = (): boolean => {
+    let checkField = (field: DynamicValue<any> | EditableValue<any> | ListValue | undefined): boolean => {
+      return !field || field?.status !== ValueStatus.Loading
+    }
+
     // Check the status of all the enabled props
     let status = (
       // Check option fields
@@ -83,66 +87,76 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Check PayPal fields
       (
         this.props.options_payPal ? 
-        (!this.props.payPal_amount || this.props.payPal_amount?.status !== ValueStatus.Loading)
+        checkField(this.props.payPal_amount) &&
+        checkField(this.props.payPal_lineItems_data) &&
+        checkField(this.props.payPal_currency)
         : true
       ) &&
       // Check Apple Pay fields
       (
         this.props.options_applePay ?
-        (!this.props.applePay_paymentRequest_total_amount || this.props.applePay_paymentRequest_total_amount?.status !== ValueStatus.Loading) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentStartDate || this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.status !== ValueStatus.Loading) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount || this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.status !== ValueStatus.Loading) &&
-        (!this.props.applePay_paymentRequest_total_recurringPaymentEndDate || this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.status !== ValueStatus.Loading) &&
-        (!this.props.applePay_paymentRequest_total_deferredPaymentDate || this.props.applePay_paymentRequest_total_deferredPaymentDate?.status !== ValueStatus.Loading)
+        checkField(this.props.applePay_paymentRequest_total_amount) &&
+        checkField(this.props.applePay_paymentRequest_lineItem_data) &&
+        checkField(this.props.applePay_paymentRequest_countryCode) &&
+        checkField(this.props.applePay_paymentRequest_currencyCode)
         : true
       ) &&
       // Check Google Pay fields
       (
         this.props.options_googlePay ?
-        (!this.props.googlePay_transactionInfo_totalPrice || this.props.googlePay_transactionInfo_totalPrice?.status !== ValueStatus.Loading) &&
-        (!this.props.googlePay_merchantId || this.props.googlePay_merchantId?.status !== ValueStatus.Loading)
+        checkField(this.props.googlePay_transactionInfo_totalPrice) &&
+        checkField(this.props.googlePay_merchantId) &&
+        checkField(this.props.googlePay_transactionInfo_displayItems_data) &&
+        checkField(this.props.googlePay_transactionInfo_countryCode) &&
+        checkField(this.props.googlePay_transactionInfo_currencyCode)
         : true
       ) &&
       // Check 3DS fields
       (
         this.props.options_threeDSecure ? 
-        (!this.props.threeDS_amount || this.props.threeDS_amount?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_countryCodeAlpha2 || this.props.threeDS_billing_countryCodeAlpha2?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_extendedAddress || this.props.threeDS_billing_extendedAddress?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_givenName || this.props.threeDS_billing_givenName?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_lineThree || this.props.threeDS_billing_lineThree?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_locality || this.props.threeDS_billing_locality?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_phoneNumber || this.props.threeDS_billing_phoneNumber?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_postalCode || this.props.threeDS_billing_postalCode?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_region || this.props.threeDS_billing_region?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_streetAddress || this.props.threeDS_billing_streetAddress?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_billing_surname || this.props.threeDS_billing_surname?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_email || this.props.threeDS_email?.status !== ValueStatus.Loading) &&
-        (!this.props.threeDS_mobilePhoneNumber || this.props.threeDS_mobilePhoneNumber?.status !== ValueStatus.Loading)
+        checkField(this.props.threeDS_amount) &&
+        checkField(this.props.threeDS_billing_countryCodeAlpha2) &&
+        checkField(this.props.threeDS_billing_extendedAddress) &&
+        checkField(this.props.threeDS_billing_givenName) &&
+        checkField(this.props.threeDS_billing_lineThree) &&
+        checkField(this.props.threeDS_billing_locality) &&
+        checkField(this.props.threeDS_billing_phoneNumber) &&
+        checkField(this.props.threeDS_billing_postalCode) &&
+        checkField(this.props.threeDS_billing_region) &&
+        checkField(this.props.threeDS_billing_streetAddress) &&
+        checkField(this.props.threeDS_billing_surname) &&
+        checkField(this.props.threeDS_email) &&
+        checkField(this.props.threeDS_mobilePhoneNumber)
         : true
       )
     );
     // Check the status of Mendix object attributes
     if (status && this.props.card_overrides_fields.length) {
       for (var fieldOverride of this.props.card_overrides_fields) {
-        status = status && (!fieldOverride.prefill || fieldOverride.prefill?.status !== ValueStatus.Loading);
+        status = status && checkField(fieldOverride.prefill);
       }
     }
 
     return status;
   }
 
-  checkValue = (value: any): any | undefined => {
-    if (typeof value === 'string') {
-      if (value.trim() !== '') return value;
+  trimValue = (value: any): typeof value | undefined => {
+    if (typeof value === "string") {
+      if (value.trim() !== "") return value;
       else return undefined;
     }
     return value;
   }
 
+  trimEnum = (value: any): typeof value | undefined => {
+    let newValue = this.trimValue(value);
+    if (typeof newValue === "string") return newValue.replace(/[_-]*$|^[_-]*/gm, "");
+    return newValue;
+  }
+
   splitString = (value: String): Array<any> | undefined => {
-    let newValue = this.checkValue(value);
-    if (newValue !== undefined) return newValue.split(/\ *,\ */gm);
+    let newValue = this.trimValue(value);
+    if (newValue !== undefined) return newValue.replace(/\ *,\ *$|^\ *,\ */gm, "").split(/\ *,\ */gm);
     return undefined
   }
 
@@ -150,8 +164,104 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
    * Generates the JSON structure for the "braintree-web-drop-in" ``create`` options.
    */
   getOptionsJSON = () => {
+    // Split functions
+    // Card -> Field overrides
+    let getCardFields = () => {
+      let fields = {};
+      if (this.props.card_overrides_fields && this.props.card_overrides_fields.length) {
+        for (var fieldOverride of this.props.card_overrides_fields) {
+          fields[fieldOverride.fieldOptions] = {
+            // "selector": ?,
+            // "container": ?,
+            "iframeTitle": this.trimValue(fieldOverride.iframeTitle),
+            "internalLabel": this.trimValue(fieldOverride.internalLabel),
+            "placeholder": this.trimValue(fieldOverride.placeholder),
+            "type": this.trimValue(fieldOverride.type),
+            "formatInput": fieldOverride.formatInput,
+            "maskInput": fieldOverride.maskInput ? { "character": this.trimValue(fieldOverride.maskInput_character), "showLastFour": fieldOverride.maskInput_showLastFour } : false,
+            "select": fieldOverride.select,
+            "maxCardLength": fieldOverride.maxCardLength,
+            "maxlength": fieldOverride.maxlength,
+            "minlength": fieldOverride.minlength,
+            "prefill": this.trimValue(fieldOverride.prefill?.value),
+            // "supportedCardBrands": ?
+          }
+        }
+      }
+      return fields;
+    }
+
+    // Apple pay -> Line items
+    let getApplePayLineItems = () => {
+      let lineItems: Array<any> = [];
+      if (
+        this.props.applePay_paymentRequest_lineItem_data?.items?.length &&
+        this.props.applePay_paymentRequest_lineItem_amount &&
+        this.props.applePay_paymentRequest_lineItem_label &&
+        this.props.applePay_paymentRequest_lineItem_type
+        ) {
+        for (var mendixData of this.props.applePay_paymentRequest_lineItem_data.items) {
+          let lineItem = {
+            "type": this.trimEnum(this.props.applePay_paymentRequest_lineItem_type(mendixData).value),
+            "label": this.trimValue(this.props.applePay_paymentRequest_lineItem_label(mendixData).value),
+            "amount": this.props.applePay_paymentRequest_lineItem_amount(mendixData).value?.toString()
+          }
+          lineItems.push(lineItem)
+        }
+      }
+      return lineItems;
+    }
+
+    // PayPal -> Line items
+    let getPayPalLineItems = () => {
+      let lineItems: Array<any> = [];
+      if (
+        this.props.payPal_lineItems_data?.items?.length &&
+        this.props.payPal_lineItems_unitAmount &&
+        this.props.payPal_lineItems_name
+      ) {
+        for (var mendixData of this.props.payPal_lineItems_data?.items) {
+          let unitTaxAmount = this.props.payPal_lineItems_unitTaxAmount ? this.props.payPal_lineItems_unitTaxAmount(mendixData).value : undefined;
+          let lineItem = {
+            "quantity": this.props.payPal_lineItems_quantity ? this.props.payPal_lineItems_quantity(mendixData).value?.toString() : "1",
+            "unitAmount": this.props.payPal_lineItems_unitAmount(mendixData).value?.toString(),
+            "name": this.trimValue(this.props.payPal_lineItems_name(mendixData).value),
+            "kind": this.props.payPal_lineItems_kind ? this.trimEnum(this.props.payPal_lineItems_kind(mendixData).value) : "debit",
+            "unitTaxAmount": unitTaxAmount?.gt(0) ? unitTaxAmount.toString() : undefined,
+            "description": this.props.payPal_lineItems_description ? this.trimValue(this.props.payPal_lineItems_description(mendixData).value) : undefined,
+            "productCode": this.props.payPal_lineItems_productCode ? this.trimValue(this.props.payPal_lineItems_productCode(mendixData).value) : undefined,
+            "url": this.props.payPal_lineItems_url ? this.trimValue(this.props.payPal_lineItems_url(mendixData).value) : undefined
+          }
+          lineItems.push(lineItem)
+        }
+      }
+      return lineItems;
+    }
+
+    // Google pay -> Display items
+    let getGooglePayDisplayItems = () => {
+      let lineItems: Array<any> = [];
+      if (
+        this.props.googlePay_transactionInfo_displayItems_data?.items?.length &&
+        this.props.googlePay_transactionInfo_displayItems_label &&
+        this.props.googlePay_transactionInfo_displayItems_price
+      ) {
+        for (var mendixData of this.props.googlePay_transactionInfo_displayItems_data?.items) {
+          let lineItem = {
+            "label": this.trimValue(this.props.googlePay_transactionInfo_displayItems_label(mendixData).value),
+            "type": this.props.googlePay_transactionInfo_displayItems_type ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_type(mendixData).value) : "LINE_ITEM",
+            "price": this.props.googlePay_transactionInfo_displayItems_price(mendixData).value?.toString(),
+            "status": this.props.googlePay_transactionInfo_displayItems_status ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_status(mendixData).value) : "FINAL"
+          }
+          lineItems.push(lineItem)
+        }
+      }
+      return lineItems;
+    }
+
     if (this.props.options_authorization?.value) {
-      let options = {
+      // Options
+      let options = { 
         "authorization": this.props.options_authorization?.value,
         "container": "",
         "dataCollector": this.props.options_dataCollector,
@@ -162,53 +272,28 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         "venmo": this.props.options_venmo,
         "vaultManager": this.props.options_vaultManager,
       }
-      // Card options
-      if (this.props.options_card) {
+      // Options -> Card
+      if (this.props.options_card) {       
         options["card"] = {
           "cardholderName": this.props.card_cardholderName_required ? { "required": true } : this.props.card_cardholderName,
           "clearFieldsAfterTokenization": this.props.card_clearFieldsAfterTokenization,
           "overrides": {
-            "fields": {}, // Added below
-            // "styles": {}
+            "fields": getCardFields(),
+            // TODO -- "styles": {}
           },
           "vault" : {
             "allowVaultCardOverride": this.props.card_vault_allowVaultCardOverride,
             "vaultCard": this.props.card_vault_vaultCard
           }
         }
-        // Field overrides
-        if (this.props.card_overrides_fields.length) {
-          // Ensure attributes
-          if (!options["card"]["overrides"]) options["card"]["overrides"] = {};
-          if (!options["card"]["overrides"]["fields"]) options["card"]["overrides"]["fields"] = {};
-          // Loop through Mendix objects
-          for (var fieldOverride of this.props.card_overrides_fields) {
-            options["card"]["overrides"]["fields"][fieldOverride.fieldOptions] = {
-              // "selector": ?,
-              // "container": ?,
-              "iframeTitle": this.checkValue(fieldOverride.iframeTitle),
-              "internalLabel": this.checkValue(fieldOverride.internalLabel),
-              "placeholder": this.checkValue(fieldOverride.placeholder),
-              "type": this.checkValue(fieldOverride.type),
-              "formatInput": fieldOverride.formatInput,
-              "maskInput": fieldOverride.maskInput ? { "character": this.checkValue(fieldOverride.maskInput_character), "showLastFour": fieldOverride.maskInput_showLastFour } : false,
-              "select": fieldOverride.select,
-              "maxCardLength": fieldOverride.maxCardLength,
-              "maxlength": fieldOverride.maxlength,
-              "minlength": fieldOverride.minlength,
-              "prefill": this.checkValue(fieldOverride.prefill?.value),
-              // "supportedCardBrands": ?
-            }
-          }
-        }
       }
       else {
         options["card"] = this.props.options_card;
       }
-      // PayPal options
+      // Options -> PayPal
       if (this.props.options_payPal) {
         options["paypal"] = {
-          "amount": String(this.props.payPal_amount?.value),
+          "amount": this.props.payPal_amount?.value?.toString(),
           "buttonStyle": {
             "color": this.props.payPal_buttonStyle_color,
             "label": this.props.payPal_buttonStyle_label,
@@ -217,21 +302,22 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "tagline": this.props.payPal_buttonStyle_tagline
           },
           "commit": this.props.payPal_commit,
-          "currency": this.checkValue(this.props.payPal_currency),
+          "currency": this.trimValue(this.props.payPal_currency?.value),
           "flow": this.props.payPal_flow,
           "vault": { 
             "vaultPayPal": this.props.payPal_vault_vaultPayPal
-          }
+          },
+          "lineItems": getPayPalLineItems()
         }
       }
-      // Apple Pay
+      // Options -> Apple Pay
       if (this.props.options_applePay) {
         options["applePay"] = {
           "applePaySessionVersion": this.props.applePay_applePaySessionVersion,
           "buttonStyle": this.props.applePay_buttonStyle.replace('_', '-'),
-          "displayName": this.checkValue(this.props.applePay_displayName),
+          "displayName": this.trimValue(this.props.applePay_displayName),
           "paymentRequest": { 
-            // "billingContact": {
+            // TODO -- "billingContact": {
               // "phoneNumber": ?,
               // "emailAddress": ?,
               // "givenName": ?,
@@ -247,12 +333,12 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
               // "country": ?,
               // "countryCode": ?
             // },
-            "countryCode": this.checkValue(this.props.applePay_paymentRequest_countryCode),
-            "currencyCode": this.checkValue(this.props.applePay_paymentRequest_currencyCode),
-            "merchantCapabilities": this.splitString(this.props.applePay_paymentRequest_merchantCapabilities),
+            "countryCode": this.trimValue(this.props.applePay_paymentRequest_countryCode?.value),
+            "currencyCode": this.trimValue(this.props.applePay_paymentRequest_currencyCode?.value),
+            "merchantCapabilities": this.splitString(`supports3DS, ${this.props.applePay_paymentRequest_merchantCapabilities}`),
             "requiredBillingContactFields": this.splitString(this.props.applePay_paymentRequest_requiredBillingContactFields),
-            // "requiredShippingContactFields": ["email", "name", "phone", "postalAddress"],
-            // "shippingContact": {
+            // TODO -- "requiredShippingContactFields": ["email", "name", "phone", "postalAddress"],
+            // TODO -- "shippingContact": {
               // "phoneNumber": ?,
               // "emailAddress": ?,
               // "givenName": ?,
@@ -268,7 +354,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
               // "country": ?,
               // "countryCode": ?
             // },
-            // "shippingMethods": [
+            // TODO -- "shippingMethods": [
             //   {
             //     "label": "Free Shipping",
             //     "detail": "Arrives in 5 to 7 days",
@@ -290,46 +376,42 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             //     }
             //   }
             // ],
-            // "shippingType": "shipping" |"delivery" | "storePickup" | "servicePickup",
+            // TODO -- "shippingType": "shipping" |"delivery" | "storePickup" | "servicePickup",
             "supportedNetworks": this.splitString(this.props.applePay_paymentRequest_supportedNetworks),
             "total": {
-              "amount": String(this.props.applePay_paymentRequest_total_amount?.value),
-              "deferredPaymentDate": this.props.applePay_paymentRequest_total_deferredPaymentDate?.value,
-              "label": this.checkValue(this.props.applePay_paymentRequest_total_label),
-              "paymentTiming": this.props.applePay_paymentRequest_total_paymentTiming,
-              "recurringPaymentStartDate": this.props.applePay_paymentRequest_total_recurringPaymentStartDate?.value,
-              "recurringPaymentIntervalUnit": this.props.applePay_paymentRequest_total_recurringPaymentIntervalUnit,
-              "recurringPaymentIntervalCount": this.props.applePay_paymentRequest_total_recurringPaymentIntervalCount?.value,
-              "recurringPaymentEndDate": this.props.applePay_paymentRequest_total_recurringPaymentEndDate?.value,
+              "amount": this.props.applePay_paymentRequest_total_amount?.value?.toString(),
+              "label": this.trimValue(this.props.applePay_paymentRequest_total_label),
               "type": this.props.applePay_paymentRequest_total_type
-            }
+            },
+            "lineItems": getApplePayLineItems()
           }
         }
       }
-      // Google Pay
+      // Options -> Google Pay
       if (this.props.options_googlePay) {
         options["googlePay"] = {
           "button": {
             "buttonColor": this.props.googlePay_button_buttonColor,
-            // "buttonLocale": ?,
+            // TODO -- "buttonLocale": ?,
             "buttonSizeMode": this.props.googlePay_button_buttonSizeMode,
             "buttonType": this.props.googlePay_button_buttonType
           },
           "googlePayVersion": this.props.googlePay_googlePayVersion,
-          "merchantId": this.checkValue(this.props.googlePay_merchantId?.value),
+          "merchantId": this.trimValue(this.props.googlePay_merchantId?.value),
           "transactionInfo": {
             "checkoutOption": this.props.googlePay_transactionInfo_checkoutOption,
-            "countryCode": this.checkValue(this.props.googlePay_transactionInfo_countryCode),
-            "currencyCode": this.checkValue(this.props.googlePay_transactionInfo_currencyCode),
-            // "displayItems": ?,
-            "totalPrice": String(this.props.googlePay_transactionInfo_totalPrice?.value),
-            "totalPriceLabel": this.checkValue(this.props.googlePay_transactionInfo_totalPriceLabel),
+            "countryCode": this.trimValue(this.props.googlePay_transactionInfo_countryCode?.value),
+            "currencyCode": this.trimValue(this.props.googlePay_transactionInfo_currencyCode?.value),
+            "displayItems": getGooglePayDisplayItems(),
+            "totalPrice": this.props.googlePay_transactionInfo_totalPrice?.value?.toString(),
+            "totalPriceLabel": this.trimValue(this.props.googlePay_transactionInfo_totalPriceLabel),
             "totalPriceStatus": this.props.googlePay_transactionInfo_totalPriceStatus,
-            // "transactionId": ?,
-            // "transactionNote": ?
+            // TODO -- "transactionId": ?,
+            // TODO -- "transactionNote": ?
           }
         }
       }
+      // Options result
       return options;
     }
     throw Error('Authorization missing');
@@ -342,20 +424,20 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     if (this.props.options_threeDSecure) {
       let paymentMethodOptions: braintree.PaymentMethodOptions = {
         threeDSecure: {
-          "amount": String(this.props.threeDS_amount?.value),
-          "email": this.checkValue(this.props.threeDS_email?.value),
-          "mobilePhoneNumber": this.checkValue(this.props.threeDS_mobilePhoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
+          "amount": this.props.threeDS_amount?.value?.toString() || "0",
+          "email": this.trimValue(this.props.threeDS_email?.value),
+          "mobilePhoneNumber": this.trimValue(this.props.threeDS_mobilePhoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
           "billingAddress": {
-            "givenName": this.checkValue(this.props.threeDS_billing_givenName?.value),
-            "surname": this.checkValue(this.props.threeDS_billing_surname?.value),
-            "phoneNumber": this.checkValue(this.props.threeDS_billing_phoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
-            "streetAddress": this.checkValue(this.props.threeDS_billing_streetAddress?.value),
-            "extendedAddress": this.checkValue(this.props.threeDS_billing_extendedAddress?.value),
-            "line3": this.checkValue(this.props.threeDS_billing_lineThree?.value),
-            "locality": this.checkValue(this.props.threeDS_billing_locality?.value),
-            "region": this.checkValue(this.props.threeDS_billing_region?.value),
-            "postalCode": this.checkValue(this.props.threeDS_billing_postalCode?.value),
-            "countryCodeAlpha2": this.checkValue(this.props.threeDS_billing_countryCodeAlpha2?.value)
+            "givenName": this.trimValue(this.props.threeDS_billing_givenName?.value),
+            "surname": this.trimValue(this.props.threeDS_billing_surname?.value),
+            "phoneNumber": this.trimValue(this.props.threeDS_billing_phoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
+            "streetAddress": this.trimValue(this.props.threeDS_billing_streetAddress?.value),
+            "extendedAddress": this.trimValue(this.props.threeDS_billing_extendedAddress?.value),
+            "line3": this.trimValue(this.props.threeDS_billing_lineThree?.value),
+            "locality": this.trimValue(this.props.threeDS_billing_locality?.value),
+            "region": this.trimValue(this.props.threeDS_billing_region?.value),
+            "postalCode": this.trimValue(this.props.threeDS_billing_postalCode?.value),
+            "countryCodeAlpha2": this.trimValue(this.props.threeDS_billing_countryCodeAlpha2?.value)
           }
         }
       }

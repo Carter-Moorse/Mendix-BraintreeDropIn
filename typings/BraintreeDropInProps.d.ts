@@ -4,7 +4,7 @@
  * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
-import { ActionValue, DynamicValue, EditableValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, ListValue, ListAttributeValue } from "mendix";
 
 export type Options_localeEnum = "ar_EG" | "cs_CZ" | "da_DK" | "de_DE" | "el_GR" | "en_AU" | "en_GB" | "en_IN" | "en_US" | "es_ES" | "es_XC" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_XC" | "he_IL" | "hu_HU" | "id_ID" | "it_IT" | "ja_JP" | "ko_KR" | "nl_NL" | "no_NO" | "pl_PL" | "pt_BR" | "pt_PT" | "ru_RU" | "sk_SK" | "sv_SE" | "th_TH" | "zh_CN" | "zh_HK" | "zh_TW" | "zh_XC";
 
@@ -40,10 +40,6 @@ export type PayPal_buttonStyle_labelEnum = "checkout" | "credit" | "pay" | "buyn
 export type ApplePay_buttonStyleEnum = "black" | "white" | "white_outline";
 
 export type ApplePay_paymentRequest_total_typeEnum = "final" | "pending";
-
-export type ApplePay_paymentRequest_total_paymentTimingEnum = "immediate" | "recurring" | "deferred";
-
-export type ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum = "year" | "month" | "day" | "hour" | "minute";
 
 export type GooglePay_transactionInfo_totalPriceStatusEnum = "NOT_CURRENTLY_KNOWN" | "ESTIMATED" | "FINAL";
 
@@ -100,37 +96,44 @@ export interface BraintreeDropInContainerProps {
     options_payPal: boolean;
     payPal_flow: PayPal_flowEnum;
     payPal_amount?: EditableValue<BigJs.Big>;
-    payPal_currency: string;
+    payPal_currency?: EditableValue<string>;
     payPal_commit: boolean;
     payPal_buttonStyle_color: PayPal_buttonStyle_colorEnum;
     payPal_buttonStyle_shape: PayPal_buttonStyle_shapeEnum;
     payPal_buttonStyle_size: PayPal_buttonStyle_sizeEnum;
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
+    payPal_lineItems_data?: ListValue;
+    payPal_lineItems_quantity?: ListAttributeValue<BigJs.Big>;
+    payPal_lineItems_unitAmount?: ListAttributeValue<BigJs.Big>;
+    payPal_lineItems_name?: ListAttributeValue<string>;
+    payPal_lineItems_kind?: ListAttributeValue<string>;
+    payPal_lineItems_unitTaxAmount?: ListAttributeValue<BigJs.Big>;
+    payPal_lineItems_description?: ListAttributeValue<string>;
+    payPal_lineItems_productCode?: ListAttributeValue<string>;
+    payPal_lineItems_url?: ListAttributeValue<string>;
     payPal_vault_vaultPayPal: boolean;
     options_applePay: boolean;
     applePay_buttonStyle: ApplePay_buttonStyleEnum;
     applePay_displayName: string;
     applePay_applePaySessionVersion: number;
-    applePay_paymentRequest_currencyCode: string;
+    applePay_paymentRequest_currencyCode?: EditableValue<string>;
+    applePay_paymentRequest_countryCode?: EditableValue<string>;
     applePay_paymentRequest_merchantCapabilities: string;
     applePay_paymentRequest_supportedNetworks: string;
-    applePay_paymentRequest_countryCode: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
+    applePay_paymentRequest_lineItem_data?: ListValue;
+    applePay_paymentRequest_lineItem_type?: ListAttributeValue<string>;
+    applePay_paymentRequest_lineItem_label?: ListAttributeValue<string>;
+    applePay_paymentRequest_lineItem_amount?: ListAttributeValue<BigJs.Big>;
     applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
     applePay_paymentRequest_total_label: string;
     applePay_paymentRequest_total_amount?: EditableValue<BigJs.Big>;
-    applePay_paymentRequest_total_paymentTiming: ApplePay_paymentRequest_total_paymentTimingEnum;
-    applePay_paymentRequest_total_recurringPaymentStartDate?: EditableValue<Date>;
-    applePay_paymentRequest_total_recurringPaymentIntervalUnit: ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum;
-    applePay_paymentRequest_total_recurringPaymentIntervalCount?: EditableValue<BigJs.Big>;
-    applePay_paymentRequest_total_recurringPaymentEndDate?: EditableValue<Date>;
-    applePay_paymentRequest_total_deferredPaymentDate?: EditableValue<Date>;
     options_googlePay: boolean;
     googlePay_merchantId?: DynamicValue<string>;
     googlePay_googlePayVersion: number;
-    googlePay_transactionInfo_currencyCode: string;
-    googlePay_transactionInfo_countryCode: string;
+    googlePay_transactionInfo_currencyCode?: EditableValue<string>;
+    googlePay_transactionInfo_countryCode?: EditableValue<string>;
     googlePay_transactionInfo_totalPriceStatus: GooglePay_transactionInfo_totalPriceStatusEnum;
     googlePay_transactionInfo_totalPrice?: EditableValue<BigJs.Big>;
     googlePay_transactionInfo_totalPriceLabel: string;
@@ -138,6 +141,11 @@ export interface BraintreeDropInContainerProps {
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
     googlePay_button_buttonSizeMode: GooglePay_button_buttonSizeModeEnum;
+    googlePay_transactionInfo_displayItems_data?: ListValue;
+    googlePay_transactionInfo_displayItems_label?: ListAttributeValue<string>;
+    googlePay_transactionInfo_displayItems_type?: ListAttributeValue<string>;
+    googlePay_transactionInfo_displayItems_price?: ListAttributeValue<BigJs.Big>;
+    googlePay_transactionInfo_displayItems_status?: ListAttributeValue<string>;
     options_threeDSecure: boolean;
     threeDS_amount?: EditableValue<BigJs.Big>;
     threeDS_email?: EditableValue<string>;
@@ -193,25 +201,32 @@ export interface BraintreeDropInPreviewProps {
     payPal_buttonStyle_size: PayPal_buttonStyle_sizeEnum;
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
+    payPal_lineItems_data: {} | null;
+    payPal_lineItems_quantity: string;
+    payPal_lineItems_unitAmount: string;
+    payPal_lineItems_name: string;
+    payPal_lineItems_kind: string;
+    payPal_lineItems_unitTaxAmount: string;
+    payPal_lineItems_description: string;
+    payPal_lineItems_productCode: string;
+    payPal_lineItems_url: string;
     payPal_vault_vaultPayPal: boolean;
     options_applePay: boolean;
     applePay_buttonStyle: ApplePay_buttonStyleEnum;
     applePay_displayName: string;
     applePay_applePaySessionVersion: number | null;
     applePay_paymentRequest_currencyCode: string;
+    applePay_paymentRequest_countryCode: string;
     applePay_paymentRequest_merchantCapabilities: string;
     applePay_paymentRequest_supportedNetworks: string;
-    applePay_paymentRequest_countryCode: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
+    applePay_paymentRequest_lineItem_data: {} | null;
+    applePay_paymentRequest_lineItem_type: string;
+    applePay_paymentRequest_lineItem_label: string;
+    applePay_paymentRequest_lineItem_amount: string;
     applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
     applePay_paymentRequest_total_label: string;
     applePay_paymentRequest_total_amount: string;
-    applePay_paymentRequest_total_paymentTiming: ApplePay_paymentRequest_total_paymentTimingEnum;
-    applePay_paymentRequest_total_recurringPaymentStartDate: string;
-    applePay_paymentRequest_total_recurringPaymentIntervalUnit: ApplePay_paymentRequest_total_recurringPaymentIntervalUnitEnum;
-    applePay_paymentRequest_total_recurringPaymentIntervalCount: string;
-    applePay_paymentRequest_total_recurringPaymentEndDate: string;
-    applePay_paymentRequest_total_deferredPaymentDate: string;
     options_googlePay: boolean;
     googlePay_merchantId: string;
     googlePay_googlePayVersion: number | null;
@@ -224,6 +239,11 @@ export interface BraintreeDropInPreviewProps {
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
     googlePay_button_buttonSizeMode: GooglePay_button_buttonSizeModeEnum;
+    googlePay_transactionInfo_displayItems_data: {} | null;
+    googlePay_transactionInfo_displayItems_label: string;
+    googlePay_transactionInfo_displayItems_type: string;
+    googlePay_transactionInfo_displayItems_price: string;
+    googlePay_transactionInfo_displayItems_status: string;
     options_threeDSecure: boolean;
     threeDS_amount: string;
     threeDS_email: string;

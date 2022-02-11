@@ -240,9 +240,13 @@ See Venmo create options tab for venmo options.</description>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="payPal_currency" type="string" required="false" defaultValue="USD">
+        <property key="payPal_currency" type="attribute" required="false">
           <caption>Currency</caption>
           <description>The currency code of the amount, such as 'USD'. Required when using the Checkout flow.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
         </property>
         <property key="payPal_commit" type="boolean" required="true" defaultValue="false">
           <caption>Commit</caption>
@@ -327,6 +331,70 @@ See Venmo create options tab for venmo options.</description>
           <description>To disable the tagline/text beneath the button, set to false.</description>
         </property>
       </propertyGroup>
+    </propertyGroup>
+    <propertyGroup caption="PayPal 2">
+      <propertyGroup caption="Line item">
+        <property key="payPal_lineItems_data" type="datasource" isList="true" required="false">
+          <caption>Data source</caption>
+          <description>The line items for this transaction. It can include up to 249 line items.</description>
+        </property>
+        <property key="payPal_lineItems_quantity" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Quantity</caption>
+          <description>Number of units of the item purchased. This value must be a whole number and can't be negative or zero. DEFAULTS TO '1'.</description>
+          <attributeTypes>
+            <attributeType name="Integer"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_unitAmount" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Unit amount*</caption>
+          <description>Per-unit price of the item. Can include up to 2 decimal places. This value can't be negative or zero.</description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_name" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Name*</caption>
+          <description>Item name. Maximum 127 characters.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_kind" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Kind</caption>
+          <description>Indicates whether the line item is a debit (sale) or credit (refund) to the customer. Accepted values: debit and credit. DEFAULTS TO 'debit'.</description>
+          <attributeTypes>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_unitTaxAmount" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Unit tax amount</caption>
+          <description>Per-unit tax price of the item. Can include up to 2 decimal places. This value can't be negative or zero.</description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_description" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Description</caption>
+          <description>Item description. Maximum 127 characters.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_productCode" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>Product code</caption>
+          <description>Product or UPC code for the item. Maximum 127 characters.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="payPal_lineItems_url" type="attribute" dataSource="payPal_lineItems_data" required="false">
+          <caption>URL</caption>
+          <description>The URL to product information.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
       <propertyGroup caption="Vault">
         <property key="payPal_vault_vaultPayPal" type="boolean" required="true" defaultValue="true">
           <caption>Vault PayPal</caption>
@@ -360,22 +428,30 @@ See Venmo create options tab for venmo options.</description>
         </property>
       </propertyGroup>
       <propertyGroup caption="Payment request">
-        <property key="applePay_paymentRequest_currencyCode" type="string" required="false" defaultValue="USD">
+        <property key="applePay_paymentRequest_currencyCode" type="attribute" required="false">
           <caption>Currency code</caption>
           <description></description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_countryCode" type="attribute" required="false">
+          <caption>Country code</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
         </property>
         <!-- shippingType -->
         <!-- shippingMethods -->
-        <property key="applePay_paymentRequest_merchantCapabilities" type="string" required="false" defaultValue="support3DS, supportsDebit">
+        <property key="applePay_paymentRequest_merchantCapabilities" type="string" required="false" defaultValue="supportsDebit">
           <caption>Merchant capabilities</caption>
-          <description>"supports3DS" - (Required) This value must be supplied. "supportsEMV" - Include this value only if you support China Union Pay transactions. "supportsCredit" - (Optional) If present, only transactions that are categorized as credit cards are allowed. "supportsDebit" - (Optional) If present, only transactions that are categorized as debit cards are allowed.</description>
+          <description>"supports3DS" - (Required) This value is always pre-supplied for you. "supportsEMV" - Include this value only if you support China Union Pay transactions. "supportsCredit" - (Optional) If present, only transactions that are categorized as credit cards are allowed. "supportsDebit" - (Optional) If present, only transactions that are categorized as debit cards are allowed.</description>
         </property>
         <property key="applePay_paymentRequest_supportedNetworks" type="string" required="false" defaultValue="masterCard, visa">
           <caption>Supported networks</caption>
-          <description></description>
-        </property>
-        <property key="applePay_paymentRequest_countryCode" type="string" required="false" defaultValue="GB">
-          <caption>Country code</caption>
           <description></description>
         </property>
         <property key="applePay_paymentRequest_requiredBillingContactFields" type="string" required="false" defaultValue="email, name, phone, postalAddress">
@@ -391,6 +467,33 @@ See Venmo create options tab for venmo options.</description>
         <!-- couponCode -->
         <!-- shippingContactEditingMode -->
       </propertyGroup>
+      <propertyGroup caption="Line item">
+        <property key="applePay_paymentRequest_lineItem_data" type="datasource" isList="true" required="false">
+          <caption>Data source</caption>
+          <description>Use lineItems to explain additional charges, discounts, and pending costs. Provide the total separately, in the total property.</description>
+        </property>
+        <property key="applePay_paymentRequest_lineItem_type" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+          <caption>Type*</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_lineItem_label" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+          <caption>Label*</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_paymentRequest_lineItem_amount" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+          <caption>Amount*</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
       <propertyGroup caption="Total">
         <property key="applePay_paymentRequest_total_type" type="enumeration" defaultValue="final">
           <caption>Type</caption>
@@ -402,61 +505,13 @@ See Venmo create options tab for venmo options.</description>
         </property>
         <property key="applePay_paymentRequest_total_label" type="string" required="false">
           <caption>Label</caption>
-          <description></description>
+          <description>Provide a business name for the label field. Use the same business name people will see when they look for the charge on their bank or credit card statement. Must be non-empty to pass validation.</description>
         </property>
         <property key="applePay_paymentRequest_total_amount" type="attribute" required="false">
           <caption>Total amount</caption>
-          <description></description>
+          <description>The amount of the total must be greater than or equal to zero. Must be non-empty to pass validation.</description>
           <attributeTypes>
             <attributeType name="Decimal"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_total_paymentTiming" type="enumeration" defaultValue="immediate">
-          <caption>Payment timing</caption>
-          <description></description>
-          <enumerationValues>
-            <enumerationValue key="immediate">immediate - A value that specifies that the payment occurs when the transaction is complete.</enumerationValue>
-            <enumerationValue key="recurring">recurring - A value that specifies that the payment occurs on a regular basis.</enumerationValue>
-            <enumerationValue key="deferred">deferred - A value that specifies that the payment occurs in the future.</enumerationValue>
-          </enumerationValues>
-        </property>
-        <property key="applePay_paymentRequest_total_recurringPaymentStartDate" type="attribute" required="false">
-          <caption>Recurring start date</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="DateTime"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_total_recurringPaymentIntervalUnit" type="enumeration" defaultValue="month">
-          <caption>Recurring interval unit</caption>
-          <description></description>
-          <enumerationValues>
-            <enumerationValue key="year">year</enumerationValue>
-            <enumerationValue key="month">month</enumerationValue>
-            <enumerationValue key="day">day</enumerationValue>
-            <enumerationValue key="hour">hour</enumerationValue>
-            <enumerationValue key="minute">minute</enumerationValue>
-          </enumerationValues>
-        </property>
-        <property key="applePay_paymentRequest_total_recurringPaymentIntervalCount" type="attribute" required="false">
-          <caption>Recurring interval count</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="Integer"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_total_recurringPaymentEndDate" type="attribute" required="false">
-          <caption>Recurring end date</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="DateTime"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_total_deferredPaymentDate" type="attribute" required="false">
-          <caption>Deferred payment date</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="DateTime"/>
           </attributeTypes>
         </property>
       </propertyGroup>
@@ -479,13 +534,21 @@ See Venmo create options tab for venmo options.</description>
         </property>
       </propertyGroup>
       <propertyGroup caption="Transaction info">
-        <property key="googlePay_transactionInfo_currencyCode" type="string" required="true" defaultValue="USD">
+        <property key="googlePay_transactionInfo_currencyCode" type="attribute" required="false">
           <caption>Currency code</caption>
           <description>The ISO 4217 alphabetic currency code.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
         </property>
-        <property key="googlePay_transactionInfo_countryCode" type="string" required="false" defaultValue="US">
+        <property key="googlePay_transactionInfo_countryCode" type="attribute" required="false">
           <caption>Country code</caption>
           <description>The ISO 3166-1 alpha-2 country code where the transaction is processed.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
         </property>
         <!-- transactionId -->
         <property key="googlePay_transactionInfo_totalPriceStatus" type="enumeration" defaultValue="FINAL">
@@ -504,7 +567,6 @@ See Venmo create options tab for venmo options.</description>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <!-- displayItems -->
         <property key="googlePay_transactionInfo_totalPriceLabel" type="string" required="false">
           <caption>Total price label</caption>
           <description>Custom label for the total price within the display items.</description>
@@ -549,6 +611,42 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="static">static - Button has a static width and height.</enumerationValue>
             <enumerationValue key="fill">fill - Button size changes to fill the size of its container.</enumerationValue>
           </enumerationValues>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <propertyGroup caption="Google Pay 2">
+      <propertyGroup caption="Display items">
+        <property key="googlePay_transactionInfo_displayItems_data" type="datasource" isList="true" required="false">
+          <caption>Data source</caption>
+          <description>All of the available charges for the current payment request.</description>
+        </property>
+        <property key="googlePay_transactionInfo_displayItems_label" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+          <caption>Label*</caption>
+          <description>The label to be displayed for the given option.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="googlePay_transactionInfo_displayItems_type" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+          <caption>Type</caption>
+          <description>Type of displayed line item: LINE_ITEM, SUBTOTAL. DEFAULTS TO 'LINE_ITEM'.</description>
+          <attributeTypes>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+        <property key="googlePay_transactionInfo_displayItems_price" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+          <caption>Price*</caption>
+          <description>The monetary value of the cart item with an optional decimal precision of two decimal places. Negative values are allowed.</description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="googlePay_transactionInfo_displayItems_status" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+          <caption>Status</caption>
+          <description>The following variables define price variance: FINAL, PENDING. DEFAULTS TO 'FINAL'.</description>
+          <attributeTypes>
+            <attributeType name="Enum"/>
+          </attributeTypes>
         </property>
       </propertyGroup>
     </propertyGroup>
