@@ -5,6 +5,7 @@
  */
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue, ListValue, ListAttributeValue } from "mendix";
+import { Big } from "big.js";
 
 export type Options_localeEnum = "ar_EG" | "cs_CZ" | "da_DK" | "de_DE" | "el_GR" | "en_AU" | "en_GB" | "en_IN" | "en_US" | "es_ES" | "es_XC" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_XC" | "he_IL" | "hu_HU" | "id_ID" | "it_IT" | "ja_JP" | "ko_KR" | "nl_NL" | "no_NO" | "pl_PL" | "pt_BR" | "pt_PT" | "ru_RU" | "sk_SK" | "sv_SE" | "th_TH" | "zh_CN" | "zh_HK" | "zh_TW" | "zh_XC";
 
@@ -96,7 +97,7 @@ export interface BraintreeDropInContainerProps {
     card_overrides_fields: Card_overrides_fieldsType[];
     options_payPal: boolean;
     payPal_flow: PayPal_flowEnum;
-    payPal_amount?: EditableValue<BigJs.Big>;
+    payPal_amount?: EditableValue<Big>;
     payPal_currency?: EditableValue<string>;
     payPal_commit: boolean;
     payPal_buttonStyle_color: PayPal_buttonStyle_colorEnum;
@@ -105,11 +106,11 @@ export interface BraintreeDropInContainerProps {
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
     payPal_lineItems_data?: ListValue;
-    payPal_lineItems_quantity?: ListAttributeValue<BigJs.Big>;
-    payPal_lineItems_unitAmount?: ListAttributeValue<BigJs.Big>;
+    payPal_lineItems_quantity?: ListAttributeValue<Big>;
+    payPal_lineItems_unitAmount?: ListAttributeValue<Big>;
     payPal_lineItems_name?: ListAttributeValue<string>;
     payPal_lineItems_kind?: ListAttributeValue<string>;
-    payPal_lineItems_unitTaxAmount?: ListAttributeValue<BigJs.Big>;
+    payPal_lineItems_unitTaxAmount?: ListAttributeValue<Big>;
     payPal_lineItems_description?: ListAttributeValue<string>;
     payPal_lineItems_productCode?: ListAttributeValue<string>;
     payPal_lineItems_url?: ListAttributeValue<string>;
@@ -126,17 +127,17 @@ export interface BraintreeDropInContainerProps {
     applePay_paymentRequest_lineItem_data?: ListValue;
     applePay_paymentRequest_lineItem_type?: ListAttributeValue<string>;
     applePay_paymentRequest_lineItem_label?: ListAttributeValue<string>;
-    applePay_paymentRequest_lineItem_amount?: ListAttributeValue<BigJs.Big>;
+    applePay_paymentRequest_lineItem_amount?: ListAttributeValue<Big>;
     applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
     applePay_paymentRequest_total_label?: ListAttributeValue<string>;
-    applePay_paymentRequest_total_amount?: EditableValue<BigJs.Big>;
+    applePay_paymentRequest_total_amount?: EditableValue<Big>;
     options_googlePay: boolean;
     googlePay_merchantId?: DynamicValue<string>;
     googlePay_googlePayVersion: number;
     googlePay_transactionInfo_currencyCode?: EditableValue<string>;
     googlePay_transactionInfo_countryCode?: EditableValue<string>;
     googlePay_transactionInfo_totalPriceStatus: GooglePay_transactionInfo_totalPriceStatusEnum;
-    googlePay_transactionInfo_totalPrice?: EditableValue<BigJs.Big>;
+    googlePay_transactionInfo_totalPrice?: EditableValue<Big>;
     googlePay_transactionInfo_totalPriceLabel?: ListAttributeValue<string>;
     googlePay_transactionInfo_checkoutOption: GooglePay_transactionInfo_checkoutOptionEnum;
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
@@ -145,10 +146,10 @@ export interface BraintreeDropInContainerProps {
     googlePay_transactionInfo_displayItems_data?: ListValue;
     googlePay_transactionInfo_displayItems_label?: ListAttributeValue<string>;
     googlePay_transactionInfo_displayItems_type?: ListAttributeValue<string>;
-    googlePay_transactionInfo_displayItems_price?: ListAttributeValue<BigJs.Big>;
+    googlePay_transactionInfo_displayItems_price?: ListAttributeValue<Big>;
     googlePay_transactionInfo_displayItems_status?: ListAttributeValue<string>;
     options_threeDSecure: boolean;
-    threeDS_amount?: EditableValue<BigJs.Big>;
+    threeDS_amount?: EditableValue<Big>;
     threeDS_email?: EditableValue<string>;
     threeDS_mobilePhoneNumber?: EditableValue<string>;
     threeDS_billing_givenName?: EditableValue<string>;
@@ -174,8 +175,10 @@ export interface BraintreeDropInContainerProps {
 }
 
 export interface BraintreeDropInPreviewProps {
-    class: string;
+    className: string;
     style: string;
+    styleObject?: CSSProperties;
+    readOnly: boolean;
     nonce: string;
     deviceData: string;
     options_authorization: string;
@@ -185,7 +188,7 @@ export interface BraintreeDropInPreviewProps {
     options_dataCollector: boolean;
     options_vaultManager: boolean;
     options_preselectVaultedPaymentMethod: boolean;
-    configurationSingleton: {} | null;
+    configurationSingleton: {} | { type: string } | null;
     options_card: boolean;
     card_clearFieldsAfterTokenization: boolean;
     card_vault_allowVaultCardOverride: boolean;
@@ -203,7 +206,7 @@ export interface BraintreeDropInPreviewProps {
     payPal_buttonStyle_size: PayPal_buttonStyle_sizeEnum;
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
-    payPal_lineItems_data: {} | null;
+    payPal_lineItems_data: {} | { type: string } | null;
     payPal_lineItems_quantity: string;
     payPal_lineItems_unitAmount: string;
     payPal_lineItems_name: string;
@@ -222,7 +225,7 @@ export interface BraintreeDropInPreviewProps {
     applePay_paymentRequest_merchantCapabilities: string;
     applePay_paymentRequest_supportedNetworks: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
-    applePay_paymentRequest_lineItem_data: {} | null;
+    applePay_paymentRequest_lineItem_data: {} | { type: string } | null;
     applePay_paymentRequest_lineItem_type: string;
     applePay_paymentRequest_lineItem_label: string;
     applePay_paymentRequest_lineItem_amount: string;
@@ -241,7 +244,7 @@ export interface BraintreeDropInPreviewProps {
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
     googlePay_button_buttonSizeMode: GooglePay_button_buttonSizeModeEnum;
-    googlePay_transactionInfo_displayItems_data: {} | null;
+    googlePay_transactionInfo_displayItems_data: {} | { type: string } | null;
     googlePay_transactionInfo_displayItems_label: string;
     googlePay_transactionInfo_displayItems_type: string;
     googlePay_transactionInfo_displayItems_price: string;

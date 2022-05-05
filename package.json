@@ -22,7 +22,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.14.0",
+    "@mendix/pluggable-widgets-tools": "^9.11.1",
     "@types/big.js": "^4.0.5",
     "@types/braintree-web": "^3.69.3",
     "@types/braintree-web-drop-in": "^1.22.4",
@@ -31,7 +31,7 @@
     "@types/react-dom": "^16.9.0"
   },
   "dependencies": {
-    "braintree-web-drop-in": "^1.32.1",
+    "braintree-web-drop-in": "^1.33.1",
     "classnames": "^2.2.6"
   }
 }
