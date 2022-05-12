@@ -14,6 +14,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
 
   // Braintree handles
   handlePaymentMethod = (payload) => {
+    // console.log(`mx-name-${this.props.name}.handlePaymentMethod`, payload)
     // ...
     this.props.deviceData.setValue(payload.deviceData);
     this.props.nonce.setValue(payload.nonce);
@@ -22,21 +23,21 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   }
 
   onCreate = (instance) => {
-    // console.log('onCreate', instance)
+    // console.log(`mx-name-${this.props.name}.onCreate`, instance)
     // ...
     // Execute microflow
     if (this.props.event_onCreate?.canExecute) this.props.event_onCreate?.execute();
   }
 
   onDestroyStart = () => {
-    // console.log('onDestroyStart')
+    // console.log(`mx-name-${this.props.name}.onDestroyStart`)
     // ...
     // Execute microflow
     if (this.props.event_onDestroyStart?.canExecute) this.props.event_onDestroyStart?.execute();
   }
 
   onDestroyEnd = () => {
-    // console.log('onDestroyEnd')
+    // console.log(`mx-name-${this.props.name}.onDestroyEnd`)
     // ...
     // Execute microflow
     if (this.props.event_onDestroyEnd?.canExecute) this.props.event_onDestroyEnd?.execute();
@@ -44,7 +45,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   }
 
   onError = (error) => {
-    // console.log('onError', error)
+    console.error(`mx-name-${this.props.name}.onError`, error);
     // ...
     // Execute microflow
     if (this.props.event_onError?.canExecute) this.props.event_onError?.execute();
