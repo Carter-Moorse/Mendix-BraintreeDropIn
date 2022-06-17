@@ -679,6 +679,14 @@ See Venmo create options tab for venmo options.</description>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
+        <property key="threeDS_challengeRequested" type="boolean" required="true" defaultValue="false">
+          <caption>Challenge requested</caption>
+          <description>If set to true, an authentication challenge will be forced if possible.</description>
+        </property>
+        <property key="threeDS_exemptionRequested" type="boolean" required="true" defaultValue="false">
+          <caption>Exemption requested</caption>
+          <description>If set to true, an exemption to the authentication challenge will be requested.</description>
+        </property>
         <property key="threeDS_email" type="attribute" required="false">
           <caption>Email</caption>
           <description>The email used for verification. (maximum length 255)</description>

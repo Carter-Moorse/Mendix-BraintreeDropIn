@@ -150,6 +150,8 @@ export interface BraintreeDropInContainerProps {
     googlePay_transactionInfo_displayItems_status?: ListAttributeValue<string>;
     options_threeDSecure: boolean;
     threeDS_amount?: EditableValue<Big>;
+    threeDS_challengeRequested: boolean;
+    threeDS_exemptionRequested: boolean;
     threeDS_email?: EditableValue<string>;
     threeDS_mobilePhoneNumber?: EditableValue<string>;
     threeDS_billing_givenName?: EditableValue<string>;
@@ -251,6 +253,8 @@ export interface BraintreeDropInPreviewProps {
     googlePay_transactionInfo_displayItems_status: string;
     options_threeDSecure: boolean;
     threeDS_amount: string;
+    threeDS_challengeRequested: boolean;
+    threeDS_exemptionRequested: boolean;
     threeDS_email: string;
     threeDS_mobilePhoneNumber: string;
     threeDS_billing_givenName: string;
