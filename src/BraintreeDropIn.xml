@@ -7,25 +7,24 @@
   <icon>iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA1ZSURBVHhe7d07iCRlFwbg9k8EQU28BJp4AUXRQBMVTRQUDAxWFBGMFAQjzRQRAwMNDARBEAyMDBRFzDQwWTNZA3UEAw28gawIGq3R/n16q3dqer++THfNTr+zzwOHre6uruqq+uqt++xFo9Ho9LgAtt7/un8Btp7AAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsACYggsIIbAAmIILCCGwAJiCCwghsA6gn777bfR6dOnzylIJ7CIc9ttt50N5fq3XnPhqE3voHX8+PHTp06dGren9Y0b4ukTJ06cfv7555vjUPOr5l1Lq9/E2tnZ6abojHrd6k8dyWq+uXa9/vrrXTMaTq2Ax44da45PnVtHPbBmp++ff/5p9qeOXkUcEl5zzTWjDz74YDTe2+reYZFrr712dNFFF51TR8Wll17adZ1x2WWXdV1cCJpJtkkNcUjYUsO0p6VaWv2pI1nNNwer1iFi7dK3+p1WhdKHH3442dWftey76uhXS6s/dfRqKw8JP/nkk9Hjjz8+uvfee0f//vtv9+4ZdXjo0BAuTFt9Duu7774bff75592rXY8++mjXBVxItv6k+08//dR1re748eOjU6dOnb1hslXjQ8uu713jw9fRzs7OaHwoera/Gv97773X9bGa2gMcH9KOTpw4MRnPyZMn94y7qt6rYVd/695HVN+r3zs77HlV82UdNT2taZjWVE3L7Pyrqu/WvFhnz7i+U/OwP7yW/ueLqub5st9x2O1nqr43bUP9cVfVe/VZjXMo1Z6my3B2edf8qHHWvDl27Fj3jcOx5xhx6FrnHFa/xgut+9auOqnf6reqNb6W/m8YN+BzLpXPqs/HC3TPuPpVn40X9FoXG+o7i6ZpXtV39mOdcVQtmze1jFrnG1vGK/DC+Thbqw53P+o3tMZVdVjtp1/zzt/OU/3Wd1rDWqXqd1Xb2E/brempedUa3gFX883BatPAajWEIQNrPyv9eKszt9GND127vtZXgdca9rzalsDar0Xzcba2PbCGaj9VdbGp+llXfbfCszXseVXTu85Gdmq/G6ABqvnmYLVJYNUK3LJsoVQjWrYQauGusyLW3fetcQ4RWGXe8FtVDWXePGpZN7Bqfm+yIrWs2gZW2XvZj1rBtrH91G/aJDimahjLpm9atVc2hJoX5zG0mm8OVvsNrNrK1Mo/b8u6akPv16pbzVLDr0Oc+l5rgc4bfy2wWhmmqr9qnDWMGv/sAq33+v33DbHwW9O8bmD1q6ZrngrPmnf93z+9RaW1Mq57GNPS6m+oOuj2syis6v1aH2o+9vtfFKq17ixrQ63fNlUBVJ/3h1HzYNHGcdFe68DVfHOw2s/CXmY/W49+rfIbatitFahCp2+Ilb5frdBad0Xu1/kMrHqvv0K1qpbbrHUbeUurv6HqoNvPvI1zzZ9FwVOfzdvzXbSnXstqnmVtZFG4ToP6gKv55mA1ZGAtWgiLatlvqIW+aIWbblnq32Vbrv3WQQXL+QysVn+tml25quG3+ltWLa3+hqqDbD/zTiXUMPv9zatFoTXvN83bs191/ZoXWhW8rf6HrKg/L3PHHXdMLhOPF1L3zua++eab0ZVXXjm5WXWeW2+9dfIsXv1b94axnv/++6/rOuPiiy/uunJt2n7uuuuurmtXzadnn322e7VYDW9ev6+99lrXtWscYqPrr7++e7Xrr7/+Gt15553dq8Xeeuut0Weffda92lXPdI73MrtXByMqsErN7C+//HLj0KpG8dFHH628kPZrvHt89h6a8dbo7P0s0xpvjSafPfPMM903SDJE+6nwaD24/fXXXy8MwFnV7w8//NC92nXLLbd0XbueeOKJrmuvaq/7UU+izD6FUu65556u62AcSmD9/vvve/6KwGzdfvvtozfeeGOyEGa3yuWKK64Yvf/++92r9dQWpWb60MaHXZOAevrppyd7hPUoUWtPohpqfVbTQp4h2s/DDz/cde313HPPdV2re+WVV7quvcaHs13XGTfccEPXtaum5aWXXuperW58ONt17ao2fZC2cg+rdnNrBtYu9JNPPjmZobMqDGoLtS3qt5w8eXLy/ONRONTh4N10001d117ffvvtOXvky+rjjz/uvr1XrSd9V199dde1qzaarWEuq8cee6wbwl7Pr/FEw6q2/pCwdnfvv//+5u7nCy+80HUdrlpA9fe67C2xbS655JKu6/xpheJQIs5h1R5XnS+Ydd1113Vdh6fOpb388svNvaoK2S+++GISrP1D3np4uw5567Off/6565sLzY8//th1nT9//vln15Up5qT7tp6cfuedd5p7Vl999dXo8ssvHz300EOTqyp9tddYh7z12UFfVWF7ff/9913X+dM6vZIkJrCGvJVhSDfffHPXtavC6r777uteQVttyGZPddRFprro1N8j36Rm2+G7777bde1adhFsv7XOCfxVxQTWm2++2XXt2obd29be1apXeepE/VNPPdW9YlW1gh0VdYK9r04tfPrpp92r4dXe/ez8qyt7rSt+22irA6v2quqy7M7OzujBBx/s3t1V54AOW+u2iwceeKDraqvpqtsf6kT9QV8GvlCsesW4DsHram5d5ar74A7yitYqauM2u5dV9xoOfYN0X2vjX+tXtckEzVvgN6l6BGTe80ZDaT2HNl7Ak3EPpR41WPZ81PSxi76a9nqubLwSne2vHmeo9+Y9FjFPPXZR3+2Pc+jpnKrHbjYZV+v79XreoyNTNb/qEZX+9xZVzcdZtazq/fq9/X7rsZp6v5ZTq03229FhtJ+qeY/+1O+t313D6LeladW8nU5f/e6alv68rtez82Na86azfnM9olPDbX233q+q5VXDqGVe3yn1e9d9fG4f1Xxz7Zo384dUC2XezDwIs+PpVzWk1oqwqlbgzapG0R/nQc7jTcc1+/16var+9xZVLfvpSrKpfmAdRvuZViuEh7BoQ7BK21vH7EZryIo5h1Xq8KtOaNezW9vyTF+dE3jxxRebh4aLVP91u0PrmSwWq2X/6quv7nuez6orZm+//Xb36nDVXfN1q8um0zTr119/7brOVTdmD31apX7/L7/80r06GM0k26RqV3GTvY6+2pLWVrC1uz9b9flh7NJX1VZl1b2J2rJNp2XZVt0h4fxaZdizalzT9jQ7vMNsP9Oa/oZN1p/pNFbbao1jtuooYdO9rZrWGkbr0HXIqv8OuDoYyLiRjB555JHRVVddtecKYl2ZGS/QyWXl2itjOONQGN19992T+95mL2LUfB+vTJMT7PWXFQ7ykvuQxsE1eT6w9oJa01VqD7H2aKr++OOPyY2odW/X7H1/qxqHzeQvP9x4442TZ11bV8CnVxhrnv7999+TI579Pqy9CYEFxIg6hwVc2AQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBDYAExBBYQQ2ABMQQWEENgATEEFhBiNPo/IJGNHqgt/0gAAAAASUVORK5CYII=</icon>
   <properties>
     <!-- General properties -->
-    <propertyGroup caption="Output">
-      <property key="nonce" type="attribute" required="true">
-        <caption>Client nonce</caption>
-        <description>Nonce from the client after form submit.</description>
-        <attributeTypes>
-          <attributeType name="String"/>
-        </attributeTypes>
-      </property>
-      <property key="deviceData" type="attribute" required="true">
-        <caption>Device data</caption>
-        <description>Device data captured from the client after form submit.</description>
-        <attributeTypes>
-          <attributeType name="String"/>
-        </attributeTypes>
-      </property>
-    </propertyGroup>
-    <!-- Options - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#.create -->
-    <propertyGroup caption="Options">
-      <propertyGroup caption="General">
+    <propertyGroup caption="Data">
+      <propertyGroup caption="Output (after form submit)">
+        <property key="nonce" type="attribute" required="true">
+          <caption>Client nonce</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="deviceData" type="attribute" required="true">
+          <caption>Device data</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Transaction">
         <property key="options_authorization" type="attribute" required="true">
           <caption>Authorization</caption>
           <description>A tokenization key or a client token. If authorization is a client token created with a customer ID, Drop-in will render saved payment methods and automatically store any newly-added payment methods in their Vault record.</description>
@@ -33,6 +32,75 @@
             <attributeType name="String"/>
           </attributeTypes>
         </property>
+        <property key="totalAmount" type="attribute" required="true">
+          <caption>Total amount</caption>
+          <description></description>
+          <attributeTypes>
+            <attributeType name="Decimal"/>
+          </attributeTypes>
+        </property>
+        <property key="currencyCode" type="attribute" required="true">
+          <caption>Currency code</caption>
+          <description>The currency code (ISO 4217) of the amount. Example: 'USD'.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+        <property key="countryCode" type="attribute" required="true">
+          <caption>Country code</caption>
+          <description>The country code (ISO 3166-1 alpha-2) where the transaction is processed. Example: 'US'</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+            <attributeType name="Enum"/>
+          </attributeTypes>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="Line items">
+        <property key="lineItems_data" type="datasource" isList="true" required="false">
+          <caption>Data source</caption>
+          <description>Line items explain additional charges, discounts, and pending costs. It can include up to 249 line items.</description>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <propertyGroup caption="Payment">
+      <propertyGroup caption="Available methods">
+        <property key="options_card" type="boolean" required="true" defaultValue="true">
+          <caption>Card</caption>
+          <description></description>
+        </property>
+        <property key="options_payPal" type="boolean" required="true" defaultValue="false">
+          <caption>PayPal</caption>
+          <description></description>
+        </property>
+        <property key="options_venmo" type="boolean" required="true" defaultValue="false">
+          <caption>Venmo</caption>
+          <description></description>
+        </property>
+        <property key="options_applePay" type="boolean" required="true" defaultValue="false">
+          <caption>Apple Pay</caption>
+          <description></description>
+        </property>
+        <property key="options_googlePay" type="boolean" required="true" defaultValue="false">
+          <caption>Google Pay</caption>
+          <description></description>
+        </property>
+        <property key="options_paymentOptionPriority" type="string" required="false" defaultValue="card, paypal, paypalCredit, venmo, applePay, googlePay">
+          <caption>Payment method priority</caption>
+          <description>Order in which enabled payment methods should appear when multiple are enabled (default: card, paypal, paypalCredit, venmo, applePay, googlePay). Payment methods omitted from this array will not be offered to the customer.</description>
+        </property>
+      </propertyGroup>
+      <propertyGroup caption="3D Secure">
+        <property key="options_threeDSecure" type="boolean" required="true" defaultValue="true">
+          <caption>3D Secure</caption>
+          <description></description>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+    <!-- Options - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#.create -->
+    <propertyGroup caption="Options">
+      <propertyGroup caption="General">
+        
         <property key="options_locale" type="enumeration" defaultValue="en_US">
           <caption>Locale</caption>
           <description>Use this option to change the language, links, and terminology used throughout Drop-in.</description>
@@ -73,16 +141,6 @@
             <enumerationValue key="zh_XC">zh_XC</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="options_paymentOptionPriority" type="string" required="false" defaultValue="card, paypal, paypalCredit, venmo, applePay, googlePay">
-          <caption>Payment option priority</caption>
-          <description>Use this option to indicate the order in which enabled payment options should appear when multiple payment options are enabled. By default, payment options will appear in this order: card, paypal, paypalCredit, venmo, applePay, googlePay. Payment options omitted from this array will not be offered to the customer.</description>
-        </property>
-        <property key="options_venmo" type="boolean" required="true" defaultValue="false">
-          <caption>Venmo</caption>
-          <description>The configuration options for Pay with Venmo. To include a Venmo option in your Drop-in integration, include the venmo parameter and follow the documentation for setting up Venmo in the Braintree control panel. If a user's browser does not support Venmo, the Venmo option will not be rendered.
-
-See Venmo create options tab for venmo options.</description>
-        </property>
         <property key="options_dataCollector" type="boolean" required="true" defaultValue="false">
           <caption>Data collector</caption>
           <description>If true is passed, Drop-in will be configured to collect data for use with Advanced Fraud Protection. If collecting data via Kount, pass a dataCollectorOptions object with kount: true instead. If Data Collector is configured and fails to load, Drop-in creation will fail.</description>
@@ -96,20 +154,10 @@ See Venmo create options tab for venmo options.</description>
           <description>Whether or not to initialize Drop-in with a vaulted payment method pre-selected. Only applicable when using a client token with a customer id and a customer with saved payment methods.</description>
         </property>
       </propertyGroup>
-      <propertyGroup caption="Configuration singleton">
-        <property key="configurationSingleton" type="datasource" isList="true" required="false">
-          <caption>Data source</caption>
-          <description>This will be used to configure options throughout the widget. Select data source that returns 1 object.</description>
-        </property>
-      </propertyGroup>
     </propertyGroup>
     <!-- Card - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~cardCreateOptions -->
     <propertyGroup caption="Card">
       <propertyGroup caption="General">
-        <property key="options_card" type="boolean" required="true" defaultValue="true">
-          <caption>Card</caption>
-          <description>The configuration options for cards. See Card create options tab for all card options. If this option is omitted, cards will still appear as a payment option. To remove cards, pass false for the value.</description>
-        </property>
         <property key="card_clearFieldsAfterTokenization" type="boolean" required="true" defaultValue="true">
           <caption>Clear fields after tokenization</caption>
           <description>When false, the card form will not clear the card data when the customer returns to the card view after a successful tokenization.</description>
@@ -217,10 +265,6 @@ See Venmo create options tab for venmo options.</description>
     <!-- PayPal - https://braintree.github.io/braintree-web/3.83.0/PayPalCheckout.html#createPayment -->
     <propertyGroup caption="PayPal">
       <propertyGroup caption="General">
-        <property key="options_payPal" type="boolean" required="true" defaultValue="false">
-          <caption>PayPal</caption>
-          <description>Set to to enable PayPal configuration.</description>
-        </property>
         <property key="payPal_flow" type="enumeration" defaultValue="checkout">
           <caption>Flow</caption>
           <description>Set to 'checkout' for one-time payment flow, or 'vault' for Vault flow. If 'vault' is used with a client token generated with a customer ID, the PayPal account will be added to that customer as a saved payment method.</description>
@@ -238,21 +282,6 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="capture">capture - Payment will be immediately submitted for settlement upon creating a transaction. sale can be used as an alias for this value.</enumerationValue>
           </enumerationValues>
         </property> -->
-        <property key="payPal_amount" type="attribute" required="false">
-          <caption>Amount</caption>
-          <description>The amount of the transaction. Required when using the Checkout flow.</description>
-          <attributeTypes>
-            <attributeType name="Decimal"/>
-          </attributeTypes>
-        </property>
-        <property key="payPal_currency" type="attribute" required="false">
-          <caption>Currency</caption>
-          <description>The currency code of the amount, such as 'USD'. Required when using the Checkout flow.</description>
-          <attributeTypes>
-            <attributeType name="String"/>
-            <attributeType name="Enum"/>
-          </attributeTypes>
-        </property>
         <property key="payPal_commit" type="boolean" required="true" defaultValue="false">
           <caption>Commit</caption>
           <description>The user action to show on the PayPal review page. If true, a Pay Now button will be shown. If false, a Continue button will be shown.</description>
@@ -289,7 +318,10 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="billing">billing - A non-PayPal account landing page is used.</enumerationValue>
           </enumerationValues>
         </property> -->
-        <!-- lineItems -->
+        <property key="payPal_vault_vaultPayPal" type="boolean" required="true" defaultValue="true">
+          <caption>Vault PayPal</caption>
+          <description>Whether or not to vault the PayPal account upon tokenization. (Only applies when using a client token with a customer id)</description>
+        </property>
       </propertyGroup>
       <propertyGroup caption="Button style">
         <property key="payPal_buttonStyle_color" type="enumeration" defaultValue="gold">
@@ -338,61 +370,58 @@ See Venmo create options tab for venmo options.</description>
       </propertyGroup>
     </propertyGroup>
     <propertyGroup caption="PayPal 2">
+      <!-- lineItems -->
       <propertyGroup caption="Line item">
-        <property key="payPal_lineItems_data" type="datasource" isList="true" required="false">
-          <caption>Data source</caption>
-          <description>The line items for this transaction. It can include up to 249 line items.</description>
-        </property>
-        <property key="payPal_lineItems_quantity" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_quantity" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Quantity</caption>
           <description>Number of units of the item purchased. This value must be a whole number and can't be negative or zero. DEFAULTS TO '1'.</description>
           <attributeTypes>
             <attributeType name="Integer"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_unitAmount" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_unitAmount" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Unit amount*</caption>
           <description>Per-unit price of the item. Can include up to 2 decimal places. This value can't be negative or zero.</description>
           <attributeTypes>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_name" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_name" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Name*</caption>
           <description>Item name. Maximum 127 characters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_kind" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_kind" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Kind</caption>
           <description>Indicates whether the line item is a debit (sale) or credit (refund) to the customer. Accepted values: debit and credit. DEFAULTS TO 'debit'.</description>
           <attributeTypes>
             <attributeType name="Enum"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_unitTaxAmount" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_unitTaxAmount" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Unit tax amount</caption>
           <description>Per-unit tax price of the item. Can include up to 2 decimal places. This value can't be negative or zero.</description>
           <attributeTypes>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_description" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_description" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Description</caption>
           <description>Item description. Maximum 127 characters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_productCode" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_productCode" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Product code</caption>
           <description>Product or UPC code for the item. Maximum 127 characters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="payPal_lineItems_url" type="attribute" dataSource="payPal_lineItems_data" required="false">
+        <property key="payPal_lineItems_url" type="attribute" dataSource="lineItems_data" required="false">
           <caption>URL</caption>
           <description>The URL to product information.</description>
           <attributeTypes>
@@ -400,71 +429,49 @@ See Venmo create options tab for venmo options.</description>
           </attributeTypes>
         </property>
       </propertyGroup>
-      <propertyGroup caption="Vault">
-        <property key="payPal_vault_vaultPayPal" type="boolean" required="true" defaultValue="true">
-          <caption>Vault PayPal</caption>
-          <description>Whether or not to vault the PayPal account upon tokenization. (Only applies when using a client token with a customer id)</description>
-        </property>
-      </propertyGroup>
     </propertyGroup>
     <!-- Apple Pay - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~applePayCreateOptions -->
     <propertyGroup caption="Apple Pay">
       <propertyGroup caption="General">
-        <property key="options_applePay" type="boolean" required="true" defaultValue="false">
-          <caption>Apple Pay</caption>
-          <description>Set to to enable Apple Pay configuration.</description>
+        <property key="applePay_applePaySessionVersion" type="integer" required="true" defaultValue="2">
+          <caption>Apple Pay version</caption>
+          <description>The version of the ApplePaySession to use. It's recommended to use the lowest version that contains all the features you need for your checkout to maximize compatibility.</description>
         </property>
-        <property key="applePay_buttonStyle" type="enumeration" defaultValue="black">
-          <caption>Button style</caption>
-          <description>Configures the Apple Pay button style.</description>
+        <property key="applePay_paymentRequest_total_type" type="enumeration" defaultValue="final">
+          <caption>Total type</caption>
+          <description></description>
           <enumerationValues>
-            <enumerationValue key="black">black</enumerationValue>
-            <enumerationValue key="white">white</enumerationValue>
-            <enumerationValue key="white_outline">white-outline</enumerationValue>
+            <enumerationValue key="final">final - A line item representing the known, final cost.</enumerationValue>
+            <enumerationValue key="pending">pending - A line item representing an estimated or unknown cost.</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="applePay_displayName" type="attribute" required="false" dataSource="configurationSingleton">
+        <property key="applePay_paymentRequest_total_label" type="attribute" required="false">
+          <caption>Total label</caption>
+          <description>Provide a business name for the label field. Use the same business name people will see when they look for the charge on their bank or credit card statement. Must be non-empty to pass validation.</description>
+          <attributeTypes>
+            <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="applePay_displayName" type="attribute" required="false">
           <caption>Display name</caption>
           <description>The canonical name for your store. Use a non-localized name. This parameter should be a utf-8 string that is a maximum of 128 characters. The system may display this name to the user.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="applePay_applePaySessionVersion" type="integer" required="true" defaultValue="2">
-          <caption>Apple Pay session version</caption>
-          <description>The version of the ApplePaySession to use. It's recommended to use the lowest version that contains all the features you need for your checkout to maximize compatibility.</description>
-        </property>
-      </propertyGroup>
-      <propertyGroup caption="Payment request">
-        <property key="applePay_paymentRequest_currencyCode" type="attribute" required="false">
-          <caption>Currency code</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="String"/>
-            <attributeType name="Enum"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_countryCode" type="attribute" required="false">
-          <caption>Country code</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="String"/>
-            <attributeType name="Enum"/>
-          </attributeTypes>
-        </property>
         <!-- shippingType -->
         <!-- shippingMethods -->
-        <property key="applePay_paymentRequest_merchantCapabilities" type="string" required="false" defaultValue="supportsDebit">
+        <property key="applePay_paymentRequest_merchantCapabilities" type="textTemplate" required="false">
           <caption>Merchant capabilities</caption>
-          <description>"supports3DS" - (Required) This value is always pre-supplied for you. "supportsEMV" - Include this value only if you support China Union Pay transactions. "supportsCredit" - (Optional) If present, only transactions that are categorized as credit cards are allowed. "supportsDebit" - (Optional) If present, only transactions that are categorized as debit cards are allowed.</description>
+          <description>Comma-seperated Apple pay 'merchantCapabilities'.</description>
         </property>
-        <property key="applePay_paymentRequest_supportedNetworks" type="string" required="false" defaultValue="masterCard, visa">
+        <property key="applePay_paymentRequest_supportedNetworks" type="textTemplate" required="false">
           <caption>Supported networks</caption>
-          <description></description>
+          <description>Comma-seperated Apple pay 'supportedNetworks'.</description>
         </property>
-        <property key="applePay_paymentRequest_requiredBillingContactFields" type="string" required="false" defaultValue="email, name, phone, postalAddress">
-          <caption>Required Billing Contact Fields</caption>
-          <description></description>
+        <property key="applePay_paymentRequest_requiredBillingContactFields" type="textTemplate" required="false">
+          <caption>Required billing fields</caption>
+          <description>Comma-seperated Apple pay 'ApplePayContactField'.</description>
         </property>
         <!-- billingContact -->
         <!-- requiredShippingContactFields -->
@@ -475,52 +482,35 @@ See Venmo create options tab for venmo options.</description>
         <!-- couponCode -->
         <!-- shippingContactEditingMode -->
       </propertyGroup>
-      <propertyGroup caption="Line item">
-        <property key="applePay_paymentRequest_lineItem_data" type="datasource" isList="true" required="false">
-          <caption>Data source</caption>
-          <description>Use lineItems to explain additional charges, discounts, and pending costs. Provide the total separately, in the total property.</description>
+      <propertyGroup caption="Button style">
+        <property key="applePay_buttonStyle" type="enumeration" defaultValue="black">
+          <caption>Colour</caption>
+          <description></description>
+          <enumerationValues>
+            <enumerationValue key="black">black</enumerationValue>
+            <enumerationValue key="white">white</enumerationValue>
+            <enumerationValue key="white_outline">white-outline</enumerationValue>
+          </enumerationValues>
         </property>
-        <property key="applePay_paymentRequest_lineItem_type" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+      </propertyGroup>
+      <propertyGroup caption="Line item">
+        <property key="applePay_paymentRequest_lineItem_type" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Type*</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="Enum"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_lineItem_label" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+        <property key="applePay_paymentRequest_lineItem_label" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Label*</caption>
           <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="applePay_paymentRequest_lineItem_amount" type="attribute" dataSource="applePay_paymentRequest_lineItem_data" required="false">
+        <property key="applePay_paymentRequest_lineItem_amount" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Amount*</caption>
           <description></description>
-          <attributeTypes>
-            <attributeType name="Decimal"/>
-          </attributeTypes>
-        </property>
-      </propertyGroup>
-      <propertyGroup caption="Total">
-        <property key="applePay_paymentRequest_total_type" type="enumeration" defaultValue="final">
-          <caption>Type</caption>
-          <description></description>
-          <enumerationValues>
-            <enumerationValue key="final">final - A line item representing the known, final cost.</enumerationValue>
-            <enumerationValue key="pending">pending - A line item representing an estimated or unknown cost.</enumerationValue>
-          </enumerationValues>
-        </property>
-        <property key="applePay_paymentRequest_total_label" type="attribute" required="false" dataSource="configurationSingleton">
-          <caption>Label</caption>
-          <description>Provide a business name for the label field. Use the same business name people will see when they look for the charge on their bank or credit card statement. Must be non-empty to pass validation.</description>
-          <attributeTypes>
-            <attributeType name="String"/>
-          </attributeTypes>
-        </property>
-        <property key="applePay_paymentRequest_total_amount" type="attribute" required="false">
-          <caption>Total amount</caption>
-          <description>The amount of the total must be greater than or equal to zero. Must be non-empty to pass validation.</description>
           <attributeTypes>
             <attributeType name="Decimal"/>
           </attributeTypes>
@@ -530,36 +520,14 @@ See Venmo create options tab for venmo options.</description>
     <!-- Google Pay - https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html#~googlePayCreateOptions -->
     <propertyGroup caption="Google Pay">
       <propertyGroup caption="General">
-        <property key="options_googlePay" type="boolean" required="true" defaultValue="false">
-          <caption>Google Pay</caption>
-          <description>Set to to enable Google Pay configuration.</description>
+        <property key="googlePay_googlePayVersion" type="integer" required="true" defaultValue="1">
+          <caption>Google Pay version</caption>
+          <description>The version of the Google Pay API to use. Defaults to 1, but 2 can be passed in.</description>
         </property>
         <property key="googlePay_merchantId" type="expression" required="false">
           <caption>Merchant ID</caption>
           <description>The ID provided by Google for processing transactions in production. Not necessary for testing in sandbox.</description>
           <returnType type="String" />
-        </property>
-        <property key="googlePay_googlePayVersion" type="integer" required="true" defaultValue="1">
-          <caption>Google Pay version</caption>
-          <description>The version of the Google Pay API to use. Defaults to 1, but 2 can be passed in.</description>
-        </property>
-      </propertyGroup>
-      <propertyGroup caption="Transaction info">
-        <property key="googlePay_transactionInfo_currencyCode" type="attribute" required="false">
-          <caption>Currency code</caption>
-          <description>The ISO 4217 alphabetic currency code.</description>
-          <attributeTypes>
-            <attributeType name="String"/>
-            <attributeType name="Enum"/>
-          </attributeTypes>
-        </property>
-        <property key="googlePay_transactionInfo_countryCode" type="attribute" required="false">
-          <caption>Country code</caption>
-          <description>The ISO 3166-1 alpha-2 country code where the transaction is processed.</description>
-          <attributeTypes>
-            <attributeType name="String"/>
-            <attributeType name="Enum"/>
-          </attributeTypes>
         </property>
         <!-- transactionId -->
         <property key="googlePay_transactionInfo_totalPriceStatus" type="enumeration" defaultValue="FINAL">
@@ -571,14 +539,7 @@ See Venmo create options tab for venmo options.</description>
             <enumerationValue key="FINAL">FINAL - Total price doesn't change from the amount presented to the shopper.</enumerationValue>
           </enumerationValues>
         </property>
-        <property key="googlePay_transactionInfo_totalPrice" type="attribute" required="false">
-          <caption>Total price</caption>
-          <description></description>
-          <attributeTypes>
-            <attributeType name="Decimal"/>
-          </attributeTypes>
-        </property>
-        <property key="googlePay_transactionInfo_totalPriceLabel" type="attribute" required="false" dataSource="configurationSingleton">
+        <property key="googlePay_transactionInfo_totalPriceLabel" type="attribute" required="false">
           <caption>Total price label</caption>
           <description>Custom label for the total price within the display items.</description>
           <attributeTypes>
@@ -594,9 +555,9 @@ See Venmo create options tab for venmo options.</description>
           </enumerationValues>
         </property>
       </propertyGroup>
-      <propertyGroup caption="Button">
+      <propertyGroup caption="Button style">
         <property key="googlePay_button_buttonColor" type="enumeration" defaultValue="default">
-          <caption>Button colour</caption>
+          <caption>Colour</caption>
           <description></description>
           <enumerationValues>
             <enumerationValue key="default">default - A Google-selected default value. Currently black but it may change over time</enumerationValue>
@@ -605,7 +566,7 @@ See Venmo create options tab for venmo options.</description>
           </enumerationValues>
         </property>
         <property key="googlePay_button_buttonType" type="enumeration" defaultValue="buy">
-          <caption>Button type</caption>
+          <caption>Type</caption>
           <description></description>
           <enumerationValues>
             <enumerationValue key="book">book - The "Book with Google Pay" payment button.</enumerationValue>
@@ -619,7 +580,7 @@ See Venmo create options tab for venmo options.</description>
           </enumerationValues>
         </property>
         <property key="googlePay_button_buttonSizeMode" type="enumeration" defaultValue="static">
-          <caption>Button size mode</caption>
+          <caption>Size</caption>
           <description></description>
           <enumerationValues>
             <enumerationValue key="static">static - Button has a static width and height.</enumerationValue>
@@ -630,32 +591,28 @@ See Venmo create options tab for venmo options.</description>
     </propertyGroup>
     <propertyGroup caption="Google Pay 2">
       <propertyGroup caption="Display items">
-        <property key="googlePay_transactionInfo_displayItems_data" type="datasource" isList="true" required="false">
-          <caption>Data source</caption>
-          <description>All of the available charges for the current payment request.</description>
-        </property>
-        <property key="googlePay_transactionInfo_displayItems_label" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+        <property key="googlePay_transactionInfo_displayItems_label" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Label*</caption>
           <description>The label to be displayed for the given option.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
-        <property key="googlePay_transactionInfo_displayItems_type" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+        <property key="googlePay_transactionInfo_displayItems_type" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Type</caption>
           <description>Type of displayed line item: LINE_ITEM, SUBTOTAL. DEFAULTS TO 'LINE_ITEM'.</description>
           <attributeTypes>
             <attributeType name="Enum"/>
           </attributeTypes>
         </property>
-        <property key="googlePay_transactionInfo_displayItems_price" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+        <property key="googlePay_transactionInfo_displayItems_price" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Price*</caption>
           <description>The monetary value of the cart item with an optional decimal precision of two decimal places. Negative values are allowed.</description>
           <attributeTypes>
             <attributeType name="Decimal"/>
           </attributeTypes>
         </property>
-        <property key="googlePay_transactionInfo_displayItems_status" type="attribute" dataSource="googlePay_transactionInfo_displayItems_data" required="false">
+        <property key="googlePay_transactionInfo_displayItems_status" type="attribute" dataSource="lineItems_data" required="false">
           <caption>Status</caption>
           <description>The following variables define price variance: FINAL, PENDING. DEFAULTS TO 'FINAL'.</description>
           <attributeTypes>
@@ -667,17 +624,6 @@ See Venmo create options tab for venmo options.</description>
     <!-- 3D Secure -->
     <propertyGroup caption="3D secure">
       <propertyGroup caption="General">
-        <property key="options_threeDSecure" type="boolean" required="true" defaultValue="true">
-          <caption>3D Secure</caption>
-          <description>When true is passed, the 3D Secure module will be created with a default configuration. See below options for additional create options. If 3D Secure is configured and fails to load, Drop-in creation will fail.</description>
-        </property>
-        <property key="threeDS_amount" type="attribute" required="false">
-          <caption>Amount</caption>
-          <description>The amount of the transaction. Required when 3D Secure is enabled.</description>
-          <attributeTypes>
-            <attributeType name="Decimal"/>
-          </attributeTypes>
-        </property>
         <property key="threeDS_challengeRequested" type="boolean" required="true" defaultValue="false">
           <caption>Challenge requested</caption>
           <description>If set to true, an authentication challenge will be forced if possible.</description>
@@ -688,14 +634,14 @@ See Venmo create options tab for venmo options.</description>
         </property>
         <property key="threeDS_email" type="attribute" required="false">
           <caption>Email</caption>
-          <description>The email used for verification. (maximum length 255)</description>
+          <description>The email used for verification (maximum length 255).</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_mobilePhoneNumber" type="attribute" required="false">
           <caption>Mobile phone number</caption>
-          <description>The mobile phone number used for verification. Only numbers; remove dashes, parenthesis and other characters. (maximum length 25)</description>
+          <description>The mobile phone number used for verification (maximum length 25).</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
@@ -703,71 +649,71 @@ See Venmo create options tab for venmo options.</description>
       </propertyGroup>
       <propertyGroup caption="Billing address">
         <property key="threeDS_billing_givenName" type="attribute" required="false">
-          <caption>Given name</caption>
-          <description>The first name associated with the billing address. (maximum length 50)</description>
+          <caption>First name</caption>
+          <description>Both first and last names have maximum length of 50 characters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_surname" type="attribute" required="false">
-          <caption>Surname</caption>
-          <description>The last name associated with the billing address. (maximum length 50)</description>
+          <caption>Last name</caption>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_phoneNumber" type="attribute" required="false">
           <caption>Phone number</caption>
-          <description>The phone number associated with the billing address. Only numbers; remove dashes, parenthesis and other characters.</description>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_streetAddress" type="attribute" required="false">
-          <caption>Street address</caption>
-          <description>Line 1 of the billing address (eg. number, street, etc). (maximum length 50)</description>
+          <caption>Street address (Line 1)</caption>
+          <description>All address lines have maximum length of 50 characters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_extendedAddress" type="attribute" required="false">
-          <caption>Extended address</caption>
-          <description>Line 2 of the billing address (eg. suite, apt #, etc.). (maximum length 50)</description>
+          <caption>Extended address (Line 2)</caption>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_lineThree" type="attribute" required="false">
-          <caption>Line 3</caption>
-          <description>Line 3 of the billing address if needed (eg. suite, apt #, etc). (maximum length 50)</description>
+          <caption>Address line 3</caption>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_locality" type="attribute" required="false">
           <caption>Locality</caption>
-          <description>The locality (city) name associated with the billing address.</description>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_region" type="attribute" required="false">
           <caption>Region</caption>
-          <description>The 2 letter code for US states or an ISO-3166-2 country subdivision code of up to three letters.</description>
+          <description>The 2-letter code for US states, or an ISO-3166-2 country subdivision code of up to three letters.</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_postalCode" type="attribute" required="false">
-          <caption>Postal code</caption>
-          <description>The zip code or equivalent for countries that have them.</description>
+          <caption>Postal/zip code</caption>
+          <description></description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>
         </property>
         <property key="threeDS_billing_countryCodeAlpha2" type="attribute" required="false">
-          <caption>Country code alpha 2</caption>
-          <description>The 2 character country code.</description>
+          <caption>Country code</caption>
+          <description>The country code (ISO 3166-1 alpha-2).</description>
           <attributeTypes>
             <attributeType name="String"/>
           </attributeTypes>

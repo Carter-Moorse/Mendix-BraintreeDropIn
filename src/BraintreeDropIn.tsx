@@ -1,4 +1,4 @@
-/// <reference types="../typings/MendixHelper" />
+//// <reference types="../typings/MendixHelper" />
 
 import { ValueStatus, EditableValue, ListValue, DynamicValue } from "mendix";
 import { Component, ReactNode, createElement } from "react";
@@ -84,38 +84,31 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
 
     let status = (
       // Check option fields
-      this.props.options_authorization?.status === ValueStatus.Available &&
-      // Check PayPal fields
-      (
-        this.props.options_payPal ? 
-        checkField(this.props.payPal_amount) &&
-        checkField(this.props.payPal_lineItems_data) &&
-        checkField(this.props.payPal_currency)
-        : true
-      ) &&
+      checkField(this.props.options_authorization) &&
+      checkField(this.props.totalAmount) &&
+      checkField(this.props.currencyCode) &&
+      checkField(this.props.countryCode) &&
+      checkField(this.props.lineItems_data) &&
       // Check Apple Pay fields
       (
         this.props.options_applePay ?
-        checkField(this.props.applePay_paymentRequest_total_amount) &&
-        checkField(this.props.applePay_paymentRequest_lineItem_data) &&
-        checkField(this.props.applePay_paymentRequest_countryCode) &&
-        checkField(this.props.applePay_paymentRequest_currencyCode)
+        checkField(this.props.applePay_displayName) &&
+        checkField(this.props.applePay_paymentRequest_total_label) &&
+        checkField(this.props.applePay_paymentRequest_merchantCapabilities) &&
+        checkField(this.props.applePay_paymentRequest_supportedNetworks) &&
+        checkField(this.props.applePay_paymentRequest_requiredBillingContactFields)
         : true
       ) &&
       // Check Google Pay fields
       (
         this.props.options_googlePay ?
-        checkField(this.props.googlePay_merchantId) &&
-        checkField(this.props.googlePay_transactionInfo_totalPrice) &&
-        checkField(this.props.googlePay_transactionInfo_countryCode) &&
-        checkField(this.props.googlePay_transactionInfo_currencyCode) &&
-        checkField(this.props.googlePay_transactionInfo_displayItems_data)
+        checkField(this.props.googlePay_transactionInfo_totalPriceLabel) &&
+        checkField(this.props.googlePay_merchantId)
         : true
       ) &&
       // Check 3DS fields
       (
         this.props.options_threeDSecure ? 
-        checkField(this.props.threeDS_amount) &&
         checkField(this.props.threeDS_billing_countryCodeAlpha2) &&
         checkField(this.props.threeDS_billing_extendedAddress) &&
         checkField(this.props.threeDS_billing_givenName) &&
@@ -129,9 +122,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         checkField(this.props.threeDS_email) &&
         checkField(this.props.threeDS_mobilePhoneNumber)
         : true
-      ) &&
-      // Check configuration singleton
-      checkField(this.props.configurationSingleton)
+      )
     );
     // Check the status of Mendix object attributes
     if (status && this.props.card_overrides_fields.length) {
@@ -198,16 +189,16 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     let getApplePayLineItems = () => {
       let lineItems: Array<any> = [];
       if (
-        this.props.applePay_paymentRequest_lineItem_data?.items?.length &&
+        this.props.lineItems_data?.items?.length &&
         this.props.applePay_paymentRequest_lineItem_amount &&
         this.props.applePay_paymentRequest_lineItem_label &&
         this.props.applePay_paymentRequest_lineItem_type
         ) {
-        for (var mendixData of this.props.applePay_paymentRequest_lineItem_data.items) {
+        for (var mendixData of this.props.lineItems_data.items) {
           let lineItem = {
-            "type": this.trimEnum(this.props.applePay_paymentRequest_lineItem_type(mendixData).value),
-            "label": this.trimValue(this.props.applePay_paymentRequest_lineItem_label(mendixData).value),
-            "amount": this.props.applePay_paymentRequest_lineItem_amount(mendixData).value?.toString()
+            "type": this.trimEnum(this.props.applePay_paymentRequest_lineItem_type.get(mendixData).value),
+            "label": this.trimValue(this.props.applePay_paymentRequest_lineItem_label.get(mendixData).value),
+            "amount": this.props.applePay_paymentRequest_lineItem_amount.get(mendixData).value?.toString()
           }
           lineItems.push(lineItem)
         }
@@ -219,21 +210,21 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     let getPayPalLineItems = () => {
       let lineItems: Array<any> = [];
       if (
-        this.props.payPal_lineItems_data?.items?.length &&
+        this.props.lineItems_data?.items?.length &&
         this.props.payPal_lineItems_unitAmount &&
         this.props.payPal_lineItems_name
       ) {
-        for (var mendixData of this.props.payPal_lineItems_data?.items) {
-          let unitTaxAmount = this.props.payPal_lineItems_unitTaxAmount ? this.props.payPal_lineItems_unitTaxAmount(mendixData).value : undefined;
+        for (var mendixData of this.props.lineItems_data?.items) {
+          let unitTaxAmount = this.props.payPal_lineItems_unitTaxAmount ? this.props.payPal_lineItems_unitTaxAmount.get(mendixData).value : undefined;
           let lineItem = {
-            "quantity": this.props.payPal_lineItems_quantity ? this.props.payPal_lineItems_quantity(mendixData).value?.toString() : "1",
-            "unitAmount": this.props.payPal_lineItems_unitAmount(mendixData).value?.toString(),
-            "name": this.trimValue(this.props.payPal_lineItems_name(mendixData).value),
-            "kind": this.props.payPal_lineItems_kind ? this.trimEnum(this.props.payPal_lineItems_kind(mendixData).value) : "debit",
+            "quantity": this.props.payPal_lineItems_quantity ? this.props.payPal_lineItems_quantity.get(mendixData).value?.toString() : "1",
+            "unitAmount": this.props.payPal_lineItems_unitAmount.get(mendixData).value?.toString(),
+            "name": this.trimValue(this.props.payPal_lineItems_name.get(mendixData).value),
+            "kind": this.props.payPal_lineItems_kind ? this.trimEnum(this.props.payPal_lineItems_kind.get(mendixData).value) : "debit",
             "unitTaxAmount": unitTaxAmount?.gt(0) ? unitTaxAmount.toString() : undefined,
-            "description": this.props.payPal_lineItems_description ? this.trimValue(this.props.payPal_lineItems_description(mendixData).value) : undefined,
-            "productCode": this.props.payPal_lineItems_productCode ? this.trimValue(this.props.payPal_lineItems_productCode(mendixData).value) : undefined,
-            "url": this.props.payPal_lineItems_url ? this.trimValue(this.props.payPal_lineItems_url(mendixData).value) : undefined
+            "description": this.props.payPal_lineItems_description ? this.trimValue(this.props.payPal_lineItems_description.get(mendixData).value) : undefined,
+            "productCode": this.props.payPal_lineItems_productCode ? this.trimValue(this.props.payPal_lineItems_productCode.get(mendixData).value) : undefined,
+            "url": this.props.payPal_lineItems_url ? this.trimValue(this.props.payPal_lineItems_url.get(mendixData).value) : undefined
           }
           lineItems.push(lineItem)
         }
@@ -245,24 +236,22 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     let getGooglePayDisplayItems = () => {
       let lineItems: Array<any> = [];
       if (
-        this.props.googlePay_transactionInfo_displayItems_data?.items?.length &&
+        this.props.lineItems_data?.items?.length &&
         this.props.googlePay_transactionInfo_displayItems_label &&
         this.props.googlePay_transactionInfo_displayItems_price
       ) {
-        for (var mendixData of this.props.googlePay_transactionInfo_displayItems_data?.items) {
+        for (var mendixData of this.props.lineItems_data?.items) {
           let lineItem = {
-            "label": this.trimValue(this.props.googlePay_transactionInfo_displayItems_label(mendixData).value),
-            "type": this.props.googlePay_transactionInfo_displayItems_type ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_type(mendixData).value) : "LINE_ITEM",
-            "price": this.props.googlePay_transactionInfo_displayItems_price(mendixData).value?.toString(),
-            "status": this.props.googlePay_transactionInfo_displayItems_status ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_status(mendixData).value) : "FINAL"
+            "label": this.trimValue(this.props.googlePay_transactionInfo_displayItems_label.get(mendixData).value),
+            "type": this.props.googlePay_transactionInfo_displayItems_type ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_type.get(mendixData).value) : "LINE_ITEM",
+            "price": this.props.googlePay_transactionInfo_displayItems_price.get(mendixData).value?.toString(),
+            "status": this.props.googlePay_transactionInfo_displayItems_status ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_status.get(mendixData).value) : "FINAL"
           }
           lineItems.push(lineItem)
         }
       }
       return lineItems;
     }
-    // Get confirguration singleton
-    const configurationSingleton = this.props.configurationSingleton?.items ? this.props.configurationSingleton?.items[0] : undefined;
 
     if (this.props.options_authorization?.value) {
       // Options
@@ -298,7 +287,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Options -> PayPal
       if (this.props.options_payPal) {
         options["paypal"] = {
-          "amount": this.props.payPal_amount?.value?.toString(),
+          "amount": this.props.totalAmount?.value?.toString(),
           "buttonStyle": {
             "color": this.props.payPal_buttonStyle_color,
             "label": this.props.payPal_buttonStyle_label,
@@ -307,7 +296,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             "tagline": this.props.payPal_buttonStyle_tagline
           },
           "commit": this.props.payPal_commit,
-          "currency": this.trimValue(this.props.payPal_currency?.value),
+          "currency": this.trimValue(this.props.currencyCode?.value),
           "flow": this.props.payPal_flow,
           "vault": { 
             "vaultPayPal": this.props.payPal_vault_vaultPayPal
@@ -320,7 +309,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         options["applePay"] = {
           "applePaySessionVersion": this.props.applePay_applePaySessionVersion,
           "buttonStyle": this.props.applePay_buttonStyle.replace('_', '-'),
-          "displayName": this.trimValue(this.props.applePay_displayName && configurationSingleton ? this.props.applePay_displayName(configurationSingleton).value : undefined),
+          "displayName": this.trimValue(this.props.applePay_displayName?.value),
           "paymentRequest": { 
             // TODO -- "billingContact": {
               // "phoneNumber": ?,
@@ -338,10 +327,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
               // "country": ?,
               // "countryCode": ?
             // },
-            "countryCode": this.trimValue(this.props.applePay_paymentRequest_countryCode?.value),
-            "currencyCode": this.trimValue(this.props.applePay_paymentRequest_currencyCode?.value),
-            "merchantCapabilities": this.splitString(`supports3DS, ${this.props.applePay_paymentRequest_merchantCapabilities}`),
-            "requiredBillingContactFields": this.splitString(this.props.applePay_paymentRequest_requiredBillingContactFields),
+            "countryCode": this.trimValue(this.props.countryCode?.value),
+            "currencyCode": this.trimValue(this.props.currencyCode?.value),
+            "merchantCapabilities": this.splitString(`supports3DS, ${this.props.applePay_paymentRequest_merchantCapabilities?.value}`),
+            "requiredBillingContactFields": this.props.applePay_paymentRequest_requiredBillingContactFields?.value ? this.splitString(this.props.applePay_paymentRequest_requiredBillingContactFields?.value) : undefined,
             // TODO -- "requiredShippingContactFields": ["email", "name", "phone", "postalAddress"],
             // TODO -- "shippingContact": {
               // "phoneNumber": ?,
@@ -382,10 +371,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
             //   }
             // ],
             // TODO -- "shippingType": "shipping" |"delivery" | "storePickup" | "servicePickup",
-            "supportedNetworks": this.splitString(this.props.applePay_paymentRequest_supportedNetworks),
+            "supportedNetworks": this.props.applePay_paymentRequest_supportedNetworks?.value ? this.splitString(this.props.applePay_paymentRequest_supportedNetworks.value) : undefined,
             "total": {
-              "amount": this.props.applePay_paymentRequest_total_amount?.value?.toString(),
-              "label": this.trimValue(this.props.applePay_paymentRequest_total_label && configurationSingleton ? this.props.applePay_paymentRequest_total_label(configurationSingleton).value : undefined),
+              "amount": this.props.totalAmount?.value?.toString(),
+              "label": this.trimValue(this.props.applePay_paymentRequest_total_label?.value),
               "type": this.props.applePay_paymentRequest_total_type
             },
             "lineItems": getApplePayLineItems()
@@ -405,11 +394,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           "merchantId": this.trimValue(this.props.googlePay_merchantId?.value),
           "transactionInfo": {
             "checkoutOption": this.props.googlePay_transactionInfo_checkoutOption,
-            "countryCode": this.trimValue(this.props.googlePay_transactionInfo_countryCode?.value),
-            "currencyCode": this.trimValue(this.props.googlePay_transactionInfo_currencyCode?.value),
+            "countryCode": this.trimValue(this.props.countryCode?.value),
+            "currencyCode": this.trimValue(this.props.currencyCode?.value),
             "displayItems": getGooglePayDisplayItems(),
-            "totalPrice": this.props.googlePay_transactionInfo_totalPrice?.value?.toString(),
-            "totalPriceLabel": this.trimValue(this.props.googlePay_transactionInfo_totalPriceLabel && configurationSingleton ? this.props.googlePay_transactionInfo_totalPriceLabel(configurationSingleton).value : undefined),
+            "totalPrice": this.props.totalAmount?.value?.toString(),
+            "totalPriceLabel": this.trimValue(this.props.googlePay_transactionInfo_totalPriceLabel?.value),
             "totalPriceStatus": this.props.googlePay_transactionInfo_totalPriceStatus,
             // TODO -- "transactionId": ?,
             // TODO -- "transactionNote": ?
@@ -429,7 +418,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
     if (this.props.options_threeDSecure) {
       let paymentMethodOptions: braintree.PaymentMethodOptions = {
         threeDSecure: {
-          "amount": this.props.threeDS_amount?.value?.toString() || "0",
+          "amount": this.props.totalAmount?.value?.toString() || "0",
           "email": this.trimValue(this.props.threeDS_email?.value),
           "mobilePhoneNumber": this.trimValue(this.props.threeDS_mobilePhoneNumber?.value?.replace(/[^0-9]/gm, '')), // Replace all non-numeric
           // TODO -- "accountType": "debit or credit",

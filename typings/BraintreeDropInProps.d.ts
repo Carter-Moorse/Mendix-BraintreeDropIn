@@ -1,7 +1,7 @@
 /**
  * This file was generated from BraintreeDropIn.xml
  * WARNING: All changes made to this file will be overwritten
- * @author Mendix UI Content Team
+ * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue, ListValue, ListAttributeValue } from "mendix";
@@ -38,9 +38,9 @@ export type PayPal_buttonStyle_sizeEnum = "small" | "medium" | "large" | "respon
 
 export type PayPal_buttonStyle_labelEnum = "checkout" | "credit" | "pay" | "buynow" | "paypal";
 
-export type ApplePay_buttonStyleEnum = "black" | "white" | "white_outline";
-
 export type ApplePay_paymentRequest_total_typeEnum = "final" | "pending";
+
+export type ApplePay_buttonStyleEnum = "black" | "white" | "white_outline";
 
 export type GooglePay_transactionInfo_totalPriceStatusEnum = "NOT_CURRENTLY_KNOWN" | "ESTIMATED" | "FINAL";
 
@@ -81,31 +81,35 @@ export interface BraintreeDropInContainerProps {
     nonce: EditableValue<string>;
     deviceData: EditableValue<string>;
     options_authorization: EditableValue<string>;
-    options_locale: Options_localeEnum;
-    options_paymentOptionPriority: string;
+    totalAmount: EditableValue<Big>;
+    currencyCode: EditableValue<string>;
+    countryCode: EditableValue<string>;
+    lineItems_data?: ListValue;
+    options_card: boolean;
+    options_payPal: boolean;
     options_venmo: boolean;
+    options_applePay: boolean;
+    options_googlePay: boolean;
+    options_paymentOptionPriority: string;
+    options_threeDSecure: boolean;
+    options_locale: Options_localeEnum;
     options_dataCollector: boolean;
     options_vaultManager: boolean;
     options_preselectVaultedPaymentMethod: boolean;
-    configurationSingleton?: ListValue;
-    options_card: boolean;
     card_clearFieldsAfterTokenization: boolean;
     card_vault_allowVaultCardOverride: boolean;
     card_vault_vaultCard: boolean;
     card_cardholderName: boolean;
     card_cardholderName_required: boolean;
     card_overrides_fields: Card_overrides_fieldsType[];
-    options_payPal: boolean;
     payPal_flow: PayPal_flowEnum;
-    payPal_amount?: EditableValue<Big>;
-    payPal_currency?: EditableValue<string>;
     payPal_commit: boolean;
+    payPal_vault_vaultPayPal: boolean;
     payPal_buttonStyle_color: PayPal_buttonStyle_colorEnum;
     payPal_buttonStyle_shape: PayPal_buttonStyle_shapeEnum;
     payPal_buttonStyle_size: PayPal_buttonStyle_sizeEnum;
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
-    payPal_lineItems_data?: ListValue;
     payPal_lineItems_quantity?: ListAttributeValue<Big>;
     payPal_lineItems_unitAmount?: ListAttributeValue<Big>;
     payPal_lineItems_name?: ListAttributeValue<string>;
@@ -114,42 +118,29 @@ export interface BraintreeDropInContainerProps {
     payPal_lineItems_description?: ListAttributeValue<string>;
     payPal_lineItems_productCode?: ListAttributeValue<string>;
     payPal_lineItems_url?: ListAttributeValue<string>;
-    payPal_vault_vaultPayPal: boolean;
-    options_applePay: boolean;
-    applePay_buttonStyle: ApplePay_buttonStyleEnum;
-    applePay_displayName?: ListAttributeValue<string>;
     applePay_applePaySessionVersion: number;
-    applePay_paymentRequest_currencyCode?: EditableValue<string>;
-    applePay_paymentRequest_countryCode?: EditableValue<string>;
-    applePay_paymentRequest_merchantCapabilities: string;
-    applePay_paymentRequest_supportedNetworks: string;
-    applePay_paymentRequest_requiredBillingContactFields: string;
-    applePay_paymentRequest_lineItem_data?: ListValue;
+    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
+    applePay_paymentRequest_total_label?: EditableValue<string>;
+    applePay_displayName?: EditableValue<string>;
+    applePay_paymentRequest_merchantCapabilities?: DynamicValue<string>;
+    applePay_paymentRequest_supportedNetworks?: DynamicValue<string>;
+    applePay_paymentRequest_requiredBillingContactFields?: DynamicValue<string>;
+    applePay_buttonStyle: ApplePay_buttonStyleEnum;
     applePay_paymentRequest_lineItem_type?: ListAttributeValue<string>;
     applePay_paymentRequest_lineItem_label?: ListAttributeValue<string>;
     applePay_paymentRequest_lineItem_amount?: ListAttributeValue<Big>;
-    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
-    applePay_paymentRequest_total_label?: ListAttributeValue<string>;
-    applePay_paymentRequest_total_amount?: EditableValue<Big>;
-    options_googlePay: boolean;
-    googlePay_merchantId?: DynamicValue<string>;
     googlePay_googlePayVersion: number;
-    googlePay_transactionInfo_currencyCode?: EditableValue<string>;
-    googlePay_transactionInfo_countryCode?: EditableValue<string>;
+    googlePay_merchantId?: DynamicValue<string>;
     googlePay_transactionInfo_totalPriceStatus: GooglePay_transactionInfo_totalPriceStatusEnum;
-    googlePay_transactionInfo_totalPrice?: EditableValue<Big>;
-    googlePay_transactionInfo_totalPriceLabel?: ListAttributeValue<string>;
+    googlePay_transactionInfo_totalPriceLabel?: EditableValue<string>;
     googlePay_transactionInfo_checkoutOption: GooglePay_transactionInfo_checkoutOptionEnum;
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
     googlePay_button_buttonSizeMode: GooglePay_button_buttonSizeModeEnum;
-    googlePay_transactionInfo_displayItems_data?: ListValue;
     googlePay_transactionInfo_displayItems_label?: ListAttributeValue<string>;
     googlePay_transactionInfo_displayItems_type?: ListAttributeValue<string>;
     googlePay_transactionInfo_displayItems_price?: ListAttributeValue<Big>;
     googlePay_transactionInfo_displayItems_status?: ListAttributeValue<string>;
-    options_threeDSecure: boolean;
-    threeDS_amount?: EditableValue<Big>;
     threeDS_challengeRequested: boolean;
     threeDS_exemptionRequested: boolean;
     threeDS_email?: EditableValue<string>;
@@ -177,38 +168,46 @@ export interface BraintreeDropInContainerProps {
 }
 
 export interface BraintreeDropInPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
+    class: string;
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
     nonce: string;
     deviceData: string;
     options_authorization: string;
-    options_locale: Options_localeEnum;
-    options_paymentOptionPriority: string;
+    totalAmount: string;
+    currencyCode: string;
+    countryCode: string;
+    lineItems_data: {} | { type: string } | null;
+    options_card: boolean;
+    options_payPal: boolean;
     options_venmo: boolean;
+    options_applePay: boolean;
+    options_googlePay: boolean;
+    options_paymentOptionPriority: string;
+    options_threeDSecure: boolean;
+    options_locale: Options_localeEnum;
     options_dataCollector: boolean;
     options_vaultManager: boolean;
     options_preselectVaultedPaymentMethod: boolean;
-    configurationSingleton: {} | { type: string } | null;
-    options_card: boolean;
     card_clearFieldsAfterTokenization: boolean;
     card_vault_allowVaultCardOverride: boolean;
     card_vault_vaultCard: boolean;
     card_cardholderName: boolean;
     card_cardholderName_required: boolean;
     card_overrides_fields: Card_overrides_fieldsPreviewType[];
-    options_payPal: boolean;
     payPal_flow: PayPal_flowEnum;
-    payPal_amount: string;
-    payPal_currency: string;
     payPal_commit: boolean;
+    payPal_vault_vaultPayPal: boolean;
     payPal_buttonStyle_color: PayPal_buttonStyle_colorEnum;
     payPal_buttonStyle_shape: PayPal_buttonStyle_shapeEnum;
     payPal_buttonStyle_size: PayPal_buttonStyle_sizeEnum;
     payPal_buttonStyle_label: PayPal_buttonStyle_labelEnum;
     payPal_buttonStyle_tagline: boolean;
-    payPal_lineItems_data: {} | { type: string } | null;
     payPal_lineItems_quantity: string;
     payPal_lineItems_unitAmount: string;
     payPal_lineItems_name: string;
@@ -217,42 +216,29 @@ export interface BraintreeDropInPreviewProps {
     payPal_lineItems_description: string;
     payPal_lineItems_productCode: string;
     payPal_lineItems_url: string;
-    payPal_vault_vaultPayPal: boolean;
-    options_applePay: boolean;
-    applePay_buttonStyle: ApplePay_buttonStyleEnum;
-    applePay_displayName: string;
     applePay_applePaySessionVersion: number | null;
-    applePay_paymentRequest_currencyCode: string;
-    applePay_paymentRequest_countryCode: string;
+    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
+    applePay_paymentRequest_total_label: string;
+    applePay_displayName: string;
     applePay_paymentRequest_merchantCapabilities: string;
     applePay_paymentRequest_supportedNetworks: string;
     applePay_paymentRequest_requiredBillingContactFields: string;
-    applePay_paymentRequest_lineItem_data: {} | { type: string } | null;
+    applePay_buttonStyle: ApplePay_buttonStyleEnum;
     applePay_paymentRequest_lineItem_type: string;
     applePay_paymentRequest_lineItem_label: string;
     applePay_paymentRequest_lineItem_amount: string;
-    applePay_paymentRequest_total_type: ApplePay_paymentRequest_total_typeEnum;
-    applePay_paymentRequest_total_label: string;
-    applePay_paymentRequest_total_amount: string;
-    options_googlePay: boolean;
-    googlePay_merchantId: string;
     googlePay_googlePayVersion: number | null;
-    googlePay_transactionInfo_currencyCode: string;
-    googlePay_transactionInfo_countryCode: string;
+    googlePay_merchantId: string;
     googlePay_transactionInfo_totalPriceStatus: GooglePay_transactionInfo_totalPriceStatusEnum;
-    googlePay_transactionInfo_totalPrice: string;
     googlePay_transactionInfo_totalPriceLabel: string;
     googlePay_transactionInfo_checkoutOption: GooglePay_transactionInfo_checkoutOptionEnum;
     googlePay_button_buttonColor: GooglePay_button_buttonColorEnum;
     googlePay_button_buttonType: GooglePay_button_buttonTypeEnum;
     googlePay_button_buttonSizeMode: GooglePay_button_buttonSizeModeEnum;
-    googlePay_transactionInfo_displayItems_data: {} | { type: string } | null;
     googlePay_transactionInfo_displayItems_label: string;
     googlePay_transactionInfo_displayItems_type: string;
     googlePay_transactionInfo_displayItems_price: string;
     googlePay_transactionInfo_displayItems_status: string;
-    options_threeDSecure: boolean;
-    threeDS_amount: string;
     threeDS_challengeRequested: boolean;
     threeDS_exemptionRequested: boolean;
     threeDS_email: string;
