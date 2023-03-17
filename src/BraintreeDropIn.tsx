@@ -196,9 +196,9 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         ) {
         for (var mendixData of this.props.lineItems_data.items) {
           let lineItem = {
-            "type": this.trimEnum(this.props.applePay_paymentRequest_lineItem_type.get(mendixData).value),
-            "label": this.trimValue(this.props.applePay_paymentRequest_lineItem_label.get(mendixData).value),
-            "amount": this.props.applePay_paymentRequest_lineItem_amount.get(mendixData).value?.toString()
+            "type": this.trimEnum(this.props.applePay_paymentRequest_lineItem_type(mendixData).value),
+            "label": this.trimValue(this.props.applePay_paymentRequest_lineItem_label(mendixData).value),
+            "amount": this.props.applePay_paymentRequest_lineItem_amount(mendixData).value?.toString()
           }
           lineItems.push(lineItem)
         }
@@ -215,16 +215,16 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         this.props.payPal_lineItems_name
       ) {
         for (var mendixData of this.props.lineItems_data?.items) {
-          let unitTaxAmount = this.props.payPal_lineItems_unitTaxAmount ? this.props.payPal_lineItems_unitTaxAmount.get(mendixData).value : undefined;
+          let unitTaxAmount = this.props.payPal_lineItems_unitTaxAmount ? this.props.payPal_lineItems_unitTaxAmount(mendixData).value : undefined;
           let lineItem = {
-            "quantity": this.props.payPal_lineItems_quantity ? this.props.payPal_lineItems_quantity.get(mendixData).value?.toString() : "1",
-            "unitAmount": this.props.payPal_lineItems_unitAmount.get(mendixData).value?.toString(),
-            "name": this.trimValue(this.props.payPal_lineItems_name.get(mendixData).value),
-            "kind": this.props.payPal_lineItems_kind ? this.trimEnum(this.props.payPal_lineItems_kind.get(mendixData).value) : "debit",
+            "quantity": this.props.payPal_lineItems_quantity ? this.props.payPal_lineItems_quantity(mendixData).value?.toString() : "1",
+            "unitAmount": this.props.payPal_lineItems_unitAmount(mendixData).value?.toString(),
+            "name": this.trimValue(this.props.payPal_lineItems_name(mendixData).value),
+            "kind": this.props.payPal_lineItems_kind ? this.trimEnum(this.props.payPal_lineItems_kind(mendixData).value) : "debit",
             "unitTaxAmount": unitTaxAmount?.gt(0) ? unitTaxAmount.toString() : undefined,
-            "description": this.props.payPal_lineItems_description ? this.trimValue(this.props.payPal_lineItems_description.get(mendixData).value) : undefined,
-            "productCode": this.props.payPal_lineItems_productCode ? this.trimValue(this.props.payPal_lineItems_productCode.get(mendixData).value) : undefined,
-            "url": this.props.payPal_lineItems_url ? this.trimValue(this.props.payPal_lineItems_url.get(mendixData).value) : undefined
+            "description": this.props.payPal_lineItems_description ? this.trimValue(this.props.payPal_lineItems_description(mendixData).value) : undefined,
+            "productCode": this.props.payPal_lineItems_productCode ? this.trimValue(this.props.payPal_lineItems_productCode(mendixData).value) : undefined,
+            "url": this.props.payPal_lineItems_url ? this.trimValue(this.props.payPal_lineItems_url(mendixData).value) : undefined
           }
           lineItems.push(lineItem)
         }
@@ -242,10 +242,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       ) {
         for (var mendixData of this.props.lineItems_data?.items) {
           let lineItem = {
-            "label": this.trimValue(this.props.googlePay_transactionInfo_displayItems_label.get(mendixData).value),
-            "type": this.props.googlePay_transactionInfo_displayItems_type ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_type.get(mendixData).value) : "LINE_ITEM",
-            "price": this.props.googlePay_transactionInfo_displayItems_price.get(mendixData).value?.toString(),
-            "status": this.props.googlePay_transactionInfo_displayItems_status ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_status.get(mendixData).value) : "FINAL"
+            "label": this.trimValue(this.props.googlePay_transactionInfo_displayItems_label(mendixData).value),
+            "type": this.props.googlePay_transactionInfo_displayItems_type ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_type(mendixData).value) : "LINE_ITEM",
+            "price": this.props.googlePay_transactionInfo_displayItems_price(mendixData).value?.toString(),
+            "status": this.props.googlePay_transactionInfo_displayItems_status ? this.trimEnum(this.props.googlePay_transactionInfo_displayItems_status(mendixData).value) : "FINAL"
           }
           lineItems.push(lineItem)
         }
