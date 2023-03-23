@@ -31,7 +31,6 @@
     "@types/react-dom": "^16.9.0"
   },
   "dependencies": {
-    "braintree-web-drop-in": "^1.33.2",
-    "classnames": "^2.2.6"
+    "braintree-web-drop-in": "^1.36.0"
   }
 }
