@@ -91,7 +91,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       checkField(this.props.lineItems_data) &&
       // Check Apple Pay fields
       (
-        this.props.options_applePay ?
+        this.props.options_applePay.value?.valueOf() ?
         checkField(this.props.applePay_displayName) &&
         checkField(this.props.applePay_paymentRequest_total_label) &&
         checkField(this.props.applePay_paymentRequest_merchantCapabilities) &&
@@ -101,7 +101,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       ) &&
       // Check Google Pay fields
       (
-        this.props.options_googlePay ?
+        this.props.options_googlePay.value?.valueOf() ?
         checkField(this.props.googlePay_transactionInfo_totalPriceLabel) &&
         checkField(this.props.googlePay_merchantId)
         : true
@@ -263,11 +263,11 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         "paymentOptionPriority": this.splitString(this.props.options_paymentOptionPriority),
         "preselectVaultedPaymentMethod": this.props.options_preselectVaultedPaymentMethod,
         "threeDSecure": this.props.options_threeDSecure,
-        "venmo": this.props.options_venmo,
+        "venmo": this.props.options_venmo.value?.valueOf(),
         "vaultManager": this.props.options_vaultManager,
       }
       // Options -> Card
-      if (this.props.options_card) {       
+      if (this.props.options_card.value?.valueOf()) {       
         options["card"] = {
           "cardholderName": this.props.card_cardholderName_required ? { "required": true } : this.props.card_cardholderName,
           "clearFieldsAfterTokenization": this.props.card_clearFieldsAfterTokenization,
@@ -282,10 +282,10 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         }
       }
       else {
-        options["card"] = this.props.options_card;
+        options["card"] = this.props.options_card.value?.valueOf();
       }
       // Options -> PayPal
-      if (this.props.options_payPal) {
+      if (this.props.options_payPal.value?.valueOf()) {
         options["paypal"] = {
           "amount": this.props.totalAmount?.value?.toString(),
           "buttonStyle": {
@@ -305,7 +305,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         }
       }
       // Options -> Apple Pay
-      if (this.props.options_applePay) {
+      if (this.props.options_applePay.value?.valueOf()) {
         options["applePay"] = {
           "applePaySessionVersion": this.props.applePay_applePaySessionVersion,
           "buttonStyle": this.props.applePay_buttonStyle.replace('_', '-'),
@@ -382,7 +382,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
         }
       }
       // Options -> Google Pay
-      if (this.props.options_googlePay) {
+      if (this.props.options_googlePay.value?.valueOf()) {
         options["googlePay"] = {
           "button": {
             "buttonColor": this.props.googlePay_button_buttonColor,
