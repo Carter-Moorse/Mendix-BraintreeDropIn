@@ -1,7 +1,6 @@
 import { Component, createElement } from "react";
 
-import * as braintreeDropIn from "braintree-web-drop-in";
-// import * as braintreeWeb from "braintree-web";
+import dropin from "braintree-web-drop-in";
 
 export interface SubmitButtonProps {
   onClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined,
@@ -11,11 +10,11 @@ export interface SubmitButtonProps {
 const renderSubmitButton = (props: SubmitButtonProps) => <button onClick={props.onClick} disabled={props.isDisabled}>Purchase</button>
 
 export interface DropInProps {
-  options: braintreeDropIn.Options,
-  paymentMethodOptions?: braintreeDropIn.PaymentMethodOptions,
-  handlePaymentMethod: (payload: braintreeDropIn.PaymentMethodPayload) => void,
+  options: dropin.Options,
+  paymentMethodOptions?: dropin.PaymentMethodOptions,
+  handlePaymentMethod: (payload: dropin.PaymentMethodPayload) => void,
   onSubmit?: () => void,
-  onCreate?: (instance: braintreeDropIn.Dropin | undefined) => void,
+  onCreate?: (instance: dropin.Dropin | undefined) => void,
   onError?: (error: object) => void,
   onDestroyStart?: () => void,
   onDestroyEnd?: (error: object | null | undefined) => void,
@@ -24,7 +23,7 @@ export interface DropInProps {
 }
 
 export interface DropInState {
-  dropInInstance: braintreeDropIn.Dropin | undefined,
+  dropInInstance: dropin.Dropin | undefined,
   isSubmitButtonDisabled: boolean
 }
 
@@ -43,7 +42,7 @@ export class DropIn extends Component<DropInProps, DropInState> {
   }
 
   componentDidMount = () => {
-    if (!braintreeDropIn || this.state.dropInInstance) return
+    if (!dropin || this.state.dropInInstance) return
     this.setup()
   }
 
@@ -88,9 +87,9 @@ export class DropIn extends Component<DropInProps, DropInState> {
   // }
 
   setup = () => {
-    const options: braintreeDropIn.Options = this.props.options;
+    const options: dropin.Options = this.props.options;
     options.container = '.braintree-dropin-react-form';
-    braintreeDropIn.create(options, (err, dropinInstance) => {
+    dropin.create(options, (err, dropinInstance) => {
       // Execute events
       if (err) {
         this.props.onError?.(err);

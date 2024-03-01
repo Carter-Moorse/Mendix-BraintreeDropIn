@@ -22,15 +22,29 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^9.11.1",
+    "@mendix/pluggable-widgets-tools": "^9.24.1",
     "@types/big.js": "^4.0.5",
-    "@types/braintree-web": "^3.69.3",
-    "@types/braintree-web-drop-in": "^1.22.4",
-    "@types/classnames": "^2.2.4",
-    "@types/react": "^16.14.28",
-    "@types/react-dom": "^16.9.0"
+    "@types/braintree-web": "^3.96.11",
+    "@types/braintree-web-drop-in": "^1.39.3",
+    "@types/classnames": "^2.2.4"
   },
   "dependencies": {
-    "braintree-web-drop-in": "^1.36.0"
+    "braintree-web-drop-in": "^1.42.0"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.70.7",
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "@types/react-native": "0.70.0"
+  },
+  "resolutions": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.70.7",
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "@types/react-native": "0.70.0"
   }
 }

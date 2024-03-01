@@ -3,7 +3,7 @@
 import { ValueStatus, EditableValue, ListValue, DynamicValue } from "mendix";
 import { Component, ReactNode, createElement } from "react";
 
-import * as braintree from "braintree-web-drop-in";
+import { Options, PaymentMethodOptions } from "braintree-web-drop-in";
 
 import { BraintreeDropInContainerProps } from "../typings/BraintreeDropInProps";
 import { DropIn, SubmitButtonProps } from "./components/DropIn";
@@ -109,6 +109,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
       // Check 3DS fields
       (
         this.props.options_threeDSecure ? 
+        checkField(this.props.threeDS_additionalInformation_ipAddress) &&
         checkField(this.props.threeDS_billing_countryCodeAlpha2) &&
         checkField(this.props.threeDS_billing_extendedAddress) &&
         checkField(this.props.threeDS_billing_givenName) &&
@@ -414,9 +415,9 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   /** 
    * Generates the JSON structure for the "braintree-web-drop-in" ``requestPaymentMethod`` options.
    */
-  getPaymentMethodOptions = (): braintree.PaymentMethodOptions | undefined => {
+  getPaymentMethodOptions = (): PaymentMethodOptions | undefined => {
     if (this.props.options_threeDSecure) {
-      let paymentMethodOptions: braintree.PaymentMethodOptions = {
+      let paymentMethodOptions = {
         threeDSecure: {
           "amount": this.props.totalAmount?.value?.toString() || "0",
           "email": this.trimValue(this.props.threeDS_email?.value),
@@ -425,7 +426,8 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           // TODO -- "cardAddChallengeRequested": "true or false. Used for vaulted payments",
           "challengeRequested": this.props.threeDS_challengeRequested,
           "exemptionRequested": this.props.threeDS_exemptionRequested,
-          // TODO -- "additionalInformation": {
+          "collectDeviceData": this.props.threeDS_collectDeviceData,
+          "additionalInformation": {
           //   "workPhoneNumber": "",
           //   "shippingGivenName": "",
           //   "shippingSurname": "",
@@ -470,7 +472,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           //   "sdkMaxTimeout": "",
           //   "addressMatch": "",
           //   "accountId": "",
-          //   "ipAddress": "",
+          "ipAddress": this.trimValue(this.props.threeDS_additionalInformation_ipAddress?.value),
           //   "orderDescription": "",
           //   "taxAmount": "",
           //   "userAgent": "",
@@ -479,7 +481,7 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
           //   "purchaseDate": "",
           //   "recurringEnd": "",
           //   "recurringFrequency": ""
-          // },
+          },
           "billingAddress": {
             "givenName": this.trimValue(this.props.threeDS_billing_givenName?.value),
             "surname": this.trimValue(this.props.threeDS_billing_surname?.value),
@@ -515,8 +517,8 @@ export default class BraintreeDropIn extends Component<BraintreeDropInContainerP
   render(): ReactNode {
     try {
       if (this.checkFields()) {
-          const options: braintree.Options = this.getOptionsJSON();
-          const paymentMethodOptions: braintree.PaymentMethodOptions | undefined = this.getPaymentMethodOptions();
+          const options: Options = this.getOptionsJSON();
+          const paymentMethodOptions: PaymentMethodOptions | undefined = this.getPaymentMethodOptions();
           return (
             <DropIn
               options={options}

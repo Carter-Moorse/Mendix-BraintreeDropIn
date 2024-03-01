@@ -143,8 +143,10 @@ export interface BraintreeDropInContainerProps {
     googlePay_transactionInfo_displayItems_status?: ListAttributeValue<string>;
     threeDS_challengeRequested: boolean;
     threeDS_exemptionRequested: boolean;
+    threeDS_collectDeviceData: boolean;
     threeDS_email?: EditableValue<string>;
     threeDS_mobilePhoneNumber?: EditableValue<string>;
+    threeDS_additionalInformation_ipAddress?: EditableValue<string>;
     threeDS_billing_givenName?: EditableValue<string>;
     threeDS_billing_surname?: EditableValue<string>;
     threeDS_billing_phoneNumber?: EditableValue<string>;
@@ -182,7 +184,7 @@ export interface BraintreeDropInPreviewProps {
     totalAmount: string;
     currencyCode: string;
     countryCode: string;
-    lineItems_data: {} | { type: string } | null;
+    lineItems_data: {} | { caption: string } | { type: string } | null;
     options_card: string;
     options_payPal: string;
     options_venmo: string;
@@ -241,8 +243,10 @@ export interface BraintreeDropInPreviewProps {
     googlePay_transactionInfo_displayItems_status: string;
     threeDS_challengeRequested: boolean;
     threeDS_exemptionRequested: boolean;
+    threeDS_collectDeviceData: boolean;
     threeDS_email: string;
     threeDS_mobilePhoneNumber: string;
+    threeDS_additionalInformation_ipAddress: string;
     threeDS_billing_givenName: string;
     threeDS_billing_surname: string;
     threeDS_billing_phoneNumber: string;

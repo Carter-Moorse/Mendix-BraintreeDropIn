@@ -684,6 +684,11 @@
           <caption>Exemption requested</caption>
           <description>If set to true, an exemption to the authentication challenge will be requested.</description>
         </property>
+        <property key="threeDS_collectDeviceData" type="boolean" required="true"
+          defaultValue="true">
+          <caption>Collect device data</caption>
+          <description>If set to true, device data such as browser screen dimensions, language and time zone is submitted with lookup data.</description>
+        </property>
         <property key="threeDS_email" type="attribute" required="false">
           <caption>Email</caption>
           <description>The email used for verification (maximum length 255).</description>
@@ -694,6 +699,13 @@
         <property key="threeDS_mobilePhoneNumber" type="attribute" required="false">
           <caption>Mobile phone number</caption>
           <description>The mobile phone number used for verification (maximum length 25).</description>
+          <attributeTypes>
+            <attributeType name="String" />
+          </attributeTypes>
+        </property>
+        <property key="threeDS_additionalInformation_ipAddress" type="attribute" required="false">
+          <caption>IP address</caption>
+          <description>The IP address of the consumer. IPv4 and IPv6 are supported.</description>
           <attributeTypes>
             <attributeType name="String" />
           </attributeTypes>
