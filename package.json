@@ -29,7 +29,7 @@
     "@types/classnames": "^2.2.4"
   },
   "dependencies": {
-    "braintree-web-drop-in": "^1.42.0"
+    "braintree-web-drop-in": "^1.43.0"
   },
   "overrides": {
     "react": "18.2.0",
