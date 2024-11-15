@@ -1,4 +1,3 @@
-# Mendix-BraintreeDropIn 💳
 > [!NOTE]
 > **This repository is no longer actively maintained.**
 > 
@@ -6,4 +5,5 @@
 > 
 > If you have any questions or need assistance, please refer to the existing documentation and issues. Thank you for your understanding.
 
-This widget wraps the Braintree Drop In client into a Mendix pluggable widget. It requires the [Mendix-BraintreeGateWay](https://github.com/shelterbox/Mendix-BraintreeGateway) to fully function.
+# Mendix-BraintreeDropIn 💳
+This widget wraps the Braintree Drop In client into a Mendix pluggable widget. It requires the [Mendix-BraintreeGateway](https://github.com/shelterbox/Mendix-BraintreeGateway) to fully function.
